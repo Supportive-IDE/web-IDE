@@ -1,10 +1,11 @@
 import Sk from "skulpt";
-import {EditorState} from "@codemirror/state";
-import {keymap} from "@codemirror/view";
+import { EditorState, Compartment } from "@codemirror/state";
+import { keymap} from "@codemirror/view";
 import { basicSetup, EditorView } from "codemirror";
-import {defaultKeymap, indentWithTab} from "@codemirror/commands";
-import {python} from "@codemirror/lang-python";
+import { defaultKeymap, indentWithTab } from "@codemirror/commands";
+import { python } from "@codemirror/lang-python";
 import { setDiagnostics, lintGutter } from "@codemirror/lint";
+import { lightTheme, darkTheme } from "./themes";
 import {feedback} from "./lib/side-lib.es";
 import { getCurrentFeedback, loadFeedback, updateFeedbackStatus } from "./showFeedback";
 import { clearSavedCode, getSavedCode, saveCode } from "./storage";
@@ -12,9 +13,7 @@ import { openSavedDialog } from "./dialog";
 
 /**
  * TODO: 
- * Code editor - dark / light themes
- * Feedback - set breakpoint to match this app
- * Move all hardcoded element selection into a configuration object in the editor
+ * Feedback - set breakpoint and dark mode to match this app
  */
 
 
@@ -24,14 +23,29 @@ import { openSavedDialog } from "./dialog";
  * @param {HTMLElement} output The HTML element used for terminal output.
  * @param {HTMLElement} help The HTML element used to display help.
  * @param {HTMLElement} runBtn The button that will run the code.
- * @param {HTMLElement} downloadBtn The button for downloading the code.
+ * @param {{
+ *      downloadBtn: undefined | HTMLElement, 
+ *      editorTitle: undefined | HTMLElement, 
+ *      feedbackAnimator: undefined | HTMLElement,
+ *      feedbackStatus: undefined | HTMLElement
+ * }} optionalElements HTMLElements used for various display changes
  */
-export const setupEditor = (editor, output, help, runBtn, downloadBtn) => {
+export const setupEditor = (editor, output, help, runBtn, optionalElements = {
+    downloadBtn: undefined,
+    editorTitle: undefined,
+    feedbackAnimator: undefined,
+    feedbackStatus: undefined
+}) => {
 
     // Indicators should be considered warnings by default. These indicators are errors.
     const errorIndicators = new Set(["AssignCompares", "ColonAssigns", "CompareMultipleValuesWithOr", "LocalVariablesAreGlobal",
                                     "PrintSameAsReturn", "ReturnWaitsForLoop", "StringMethodsModifyTheString", "TypeConversionModifiesArgument",
                                     "UnusedReturn"]);
+
+    const downloadBtn = optionalElements.downloadBtn;
+    const editorTitle = optionalElements.editorTitle;
+    const feedbackAnimator = optionalElements.feedbackAnimator;
+    const feedbackStatus = optionalElements.feedbackStatus;
 
     /**
      * Run the code in the editor using Skulpt.
@@ -112,8 +126,7 @@ export const setupEditor = (editor, output, help, runBtn, downloadBtn) => {
     const checkForIndicators = update => {
         // Only check if code has changed
         if (update.docChanged) {
-            // Test
-            saveCode(document.getElementById("code-title").innerText, view.state.doc.toString());
+            saveCode(editorTitle ? editorTitle.innerText : "untitled.py", view.state.doc.toString());
 
             const feedbackResults = feedback(view.state.doc.toString()).feedback;
             const currentFeedback = getCurrentFeedback(help);
@@ -130,7 +143,7 @@ export const setupEditor = (editor, output, help, runBtn, downloadBtn) => {
                     message: miscon.firstMessage,
                     actions: [{
                         name: "More",
-                        apply(view, from, to) { loadFeedback(help, miscon.extendedFeedbackParams) }
+                        apply(view, from, to) { loadFeedback(help, miscon.extendedFeedbackParams, feedbackAnimator, feedbackStatus) }
                     }]
                 })
             }
@@ -146,8 +159,7 @@ export const setupEditor = (editor, output, help, runBtn, downloadBtn) => {
      * @returns {string}
      */
     const getCodeTitle = () => {
-        // Avoid hardcoding
-        return document.getElementById("code-title").innerText;
+        return editorTitle ? editorTitle.innerText : "untitled.py";
     }
 
 
@@ -156,8 +168,9 @@ export const setupEditor = (editor, output, help, runBtn, downloadBtn) => {
      * @param {string} newTitle 
      */
     const setCodeTitle = newTitle => {
-        // Avoid hardcoding
-        document.getElementById("code-title").innerText = newTitle;
+        if (editorTitle) {
+            editorTitle.innerText = newTitle;
+        }
     }
 
 
@@ -166,7 +179,7 @@ export const setupEditor = (editor, output, help, runBtn, downloadBtn) => {
      */
     const downloadCode = () => {
         const title = getCodeTitle();
-        const fileName = title.innerText.endsWith(".py") ? title.innerText : `${title.innerText}.py`;
+        const fileName = title.endsWith(".py") ? title : `${title}.py`;
         const contents = view.state.doc.toString();
         const downloadLink = document.createElement("a");
         downloadLink.setAttribute("href", `data:text/plain;charset=utf-8,${encodeURIComponent(contents)}`);
@@ -195,33 +208,57 @@ export const setupEditor = (editor, output, help, runBtn, downloadBtn) => {
 
     /**
      * Creates and configures the code editor, loading code from localStorage if there is any
+     * @param {boolean} startingCode The code to load in the editor
      * @returns {EditorView}
      */
-    const createView = () => {
-        const savedCode = getSavedCode();
-        if (savedCode.hasOwnProperty("title") && savedCode.hasOwnProperty("contents")) {
-            openSavedDialog(savedCode["title"], savedCode["contents"], () => setEditorContents(savedCode["title"], savedCode["contents"]), clearSavedCode)
-        }
+    const createView = (startingCode = 'print("Hello, World!")') => {
+        const extensions = [basicSetup, python(), keymap.of([defaultKeymap, indentWithTab]), 
+                            EditorView.updateListener.of(checkForIndicators), lintGutter(),
+                            theme.of(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? darkTheme : lightTheme)];
+
         return new EditorView({
             state: EditorState.create({
-                doc: 'print("Hello, World!")',
-                extensions: [
-                    basicSetup, python(),
-                    keymap.of([defaultKeymap, indentWithTab]),
-                    EditorView.updateListener.of(checkForIndicators),
-                    lintGutter()
-                ]
+                doc: startingCode,
+                extensions,
             }),
             parent: editor
         });
     }
 
 
-    const LINE = "% ";
+    const savedCodeIsDifferent = (savedTitle, savedContents) => {
+        if (!editorTitle) {
+            return true;
+        }
+        return savedTitle !== editorTitle.innerText || savedContents !== view.state.doc.toString();
+    }
 
+
+    const LINE = "% ";
+    
+    const theme = new Compartment;
+    
     // Create a new Codemirror editor and add it to the DOM
     const view = createView();
+    // Check for saved code
+    const savedCode = getSavedCode();
+    if (savedCode.hasOwnProperty("title") && savedCode.hasOwnProperty("contents") && savedCodeIsDifferent(savedCode["title"], savedCode["contents"])) {
+        openSavedDialog(savedCode["title"], savedCode["contents"], () => setEditorContents(savedCode["title"], savedCode["contents"]), clearSavedCode)
+    }
 
+    // Button event listeners
     runBtn.addEventListener("click", runCode);
-    downloadBtn.addEventListener("click", downloadCode);
+    if (downloadBtn) {
+        downloadBtn.addEventListener("click", downloadCode);
+    }
+
+    // Theme change event listener
+    if (window.matchMedia) {
+        const checkMode = window.matchMedia('(prefers-color-scheme: dark)');
+        checkMode.addEventListener("change", event => {
+            view.dispatch({
+                effects: theme.reconfigure(event.matches ? darkTheme : lightTheme)
+            });
+        })
+    }
 }

@@ -16,6 +16,7 @@
     --background-color: #242424; /* For content backgrounds */
     --border-color: #4b4b4b;
     --gradient: linear-gradient(0.9turn, #535bf2, #9095fb);
+    --gradient-transparency: linear-gradient(0.9turn, #535bf2, #6ed2f9aa);
     --gradient-hover: linear-gradient(0.9turn, #08b3f7, #6ed2f9);
     --outline: 4px auto #08b3f7;
     --hover: #08b3f7;
@@ -262,4 +263,8 @@ dialog button.confirm {
 
 dialog button.confirm:hover {
     background: var(--gradient-hover);
+}
+
+dialog[open]::backdrop {
+    background: var(--gradient-transparency);
 }
