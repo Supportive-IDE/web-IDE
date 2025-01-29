@@ -51,7 +51,7 @@ export const lightTheme = createTheme(
 		selection: '#D6D6D6',
 		gutterBackground: '#FFFFFF',
 		gutterForeground: '#4D4D4C80',
-		lineHighlight: '#EFEFEF33'
+		lineHighlight: '#f2f1f1'
     },
     [
 		{
