@@ -3,6 +3,41 @@
     box-sizing: border-box;
 }
 
+/** default colour scheme = dark **/
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+
+    --text-color: rgba(255, 255, 255, 0.87);
+    --far-background-color: #000000; /* For pane backgrounds */
+    --background-color: #242424; /* For content backgrounds */
+    --border-color: #4b4b4b;
+    --gradient: linear-gradient(0.9turn, #535bf2, #9095fb);
+    --gradient-hover: linear-gradient(0.9turn, #08b3f7, #6ed2f9);
+    --outline: 4px auto #08b3f7;
+    --hover: #08b3f7;
+
+    color: var(--text-color);
+    background-color: var(--background-color);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --text-color: #213547;
+        --background-color: #ffffff;
+        --far-background-color: #f2f1f1;
+        --border-color: #e4e2e2;
+    }
+}
+
 body {
     min-height: 100vh;
     line-height: 1.5;
@@ -19,29 +54,20 @@ input, button, textarea, select {
     font-size: inherit;
 }
 
-/** Vite defaults - default colour scheme = dark **/
-:root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+button {
+    padding: 0.6em 1em;
+    border-radius: 6px;
+    min-width: 5em;
+    border: none;
+    background-color: var(--far-background-color);
 }
 
-a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
+button:hover {
+    background: var(--gradient-hover);
 }
-a:hover {
-    color: #535bf2;
+
+button:focus {
+    outline: var(--outline);
 }
 
 #app {
@@ -49,67 +75,146 @@ a:hover {
     height: 100vh;
 }
 
-
-
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-}
-button:hover {
-    border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-    color: #213547;
-    background-color: #ffffff;
-    }
-    a:hover {
-    color: #747bff;
-    }
-    button {
-    background-color: #f9f9f9;
-    }
-}
-
 /** Custom styles **/
 .container {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 100% 0%; 
     height: 100vh;
+    transition: 1s;
+}
+
+.feedback-active {
+    grid-template-rows: 20% 80%;
+}
+
+.controls {
+    position: relative;
+    height: 30px;
+    width: 100%;
 }
 
 .pane {
-    border: solid 1px #000;
+    background-color: var(--far-background-color);
+    align-self: stretch;
+    justify-self: stretch;
+    position: relative;
+}
+
+.tab {
+    background-color: var(--background-color);
+    display: inline-block;
+    position: absolute;
+    bottom: -1px;
+    left: 5px;
+    font-size: 0.8em;
+    padding: 0.2em 0.5em;
+    z-index: 100;
+    border: solid 1px var(--border-color);
+    border-bottom-color: var(--background-color);
+
+}
+
+.content {
+    position:relative;
+    width: 100%;
+    height: calc(100% - 30px);
+    background-color: var(--background-color);
+    overflow-y: scroll;
+}
+
+.button-panel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5px;
+    gap: 0.5em;
+}
+
+.button-panel.overlay {
+    height: 30px;
+    position: absolute;
+    z-index: 100;
+}
+
+.overlay + .content {
+    height: 100%;
+}
+
+.visually-hidden {
+    font-size: 0;
+}
+
+.icon-btn {
+    background: transparent;
+    padding: 0px;
+    min-width: 30px;
+    color: var(--text-color);
+    border: none;
+}
+
+.icon-btn:hover {
+    background: transparent;
+    color: var(--hover);
+}
+
+.icon-btn:focus {
+    outline: var(--outline);
 }
 
 #code-pane {
     grid-row-end: span 2;
-    overflow-y: scroll;
+    position: relative;
+    border-right: solid 1px var(--border-color);
 }
 
-#output-pane {
+#code-editor {
+    border-top: solid 1px var(--border-color);
+    border-right: solid 1px var(--border-color);
+}
+
+#run {
+    background: var(--gradient);
+    border: 0;
+    padding: 0;
+    min-width: 24px;
+    width: 24px;
+    height: 24px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: calc(50vw + 5px);
+}
+
+#run:hover {
+    background: var(--gradient-hover);
+}
+
+#run:focus {
+    outline: var(--outline);
+}
+
+#run-icon {
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid white;
+    border-right: 0px solid transparent;
+    margin-left: 3px;
+}
+
+#output {
     padding: 1em;
-    background-color: black;
-    color: white;
-    overflow-y: scroll;
     line-height: 1.2em;
     font-family: monospace;
+    border-bottom: solid 1px var(--border-color);
 }
 
-#output-pane > p {
+#output > p {
     padding: 0;
     margin: 0;
 }
@@ -118,8 +223,43 @@ button:focus-visible {
     overflow: hidden;
 }
 
-#feedback-pane > iframe {
+#feedback > iframe {
     width:100%;
     height: 100%;
     border: none;
+}
+
+#feedback-status {
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+dialog {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 1em;
+    padding: 2em;
+}
+
+dialog .small {
+    margin-bottom: 0.3em;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+dialog pre {
+    background-color: var(--far-background-color);
+    padding: 1em;
+    max-height: 40vh;
+    overflow-y:scroll;
+}
+
+dialog button.confirm {
+    background: var(--gradient);
+    color: #ffffff;
+}
+
+dialog button.confirm:hover {
+    background: var(--gradient-hover);
 }

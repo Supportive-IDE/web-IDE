@@ -1,13 +1,46 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web IDE</title>
-  </head>
-  <body>
-    <div id="app"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/src/assets/fontawesome/css/fontawesome.css" rel="stylesheet" />
+        <link href="/src/assets/fontawesome/css/solid.css" rel="stylesheet" />
+        <title>Web IDE</title>
+    </head>
+<body>
+    <div id="app">
+        <main>
+            <div class="container">
+                <div class="pane" id="code-pane">
+                    <div class="controls">
+                        <div id="code-title" class="tab" contenteditable="plaintext-only">untitled.py</div>
+                        <div class="button-panel">
+                            <button id="download" class="icon-btn" title="Download code file"><span class="visually-hidden">Download</span><i class="fa-regular fa-download"></i></button>
+                            <button id="run" title="run code"><span class="visually-hidden">Run</span><span id="run-icon"></span></button>
+                        </div>
+                    </div>
+                    <div id="code-editor" class="content"></div>
+                </div>
+                <div class="pane" id="output-pane">
+                    <div class="controls">
+                        <div class="tab" >Terminal</div>
+                        <div class="button-panel">
+                            <button id="clear" class="icon-btn" title="Clear output"><span class="visually-hidden">Clear</span><i class="fa-regular fa-eraser"></i></button>
+                        </div>
+                    </div>
+                    <div id="output" class="content"></div>
+                </div>
+                <div class="pane" id="feedback-pane">
+                    <div class="button-panel overlay">
+                        <p id="feedback-status" class="status"></p>
+                        <button id="close" class="icon-btn" title="Close"><span class="visually-hidden">Clear</span><i class="fa-regular fa-circle-xmark"></i></button>
+                    </div>
+                    <div id="feedback" class="content"></div>
+                </div>
+            </div>
+        </main>
+    </div>
     <script type="module" src="/src/main.js"></script>
-  </body>
+</body>
 </html>
