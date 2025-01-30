@@ -94,7 +94,7 @@ l(C, "Hash", new C("hash")), /** (Static) A single quote mark, ' */
 l(C, "SingleQuote", new C("singleQuote")), /** (Static) A double quote mark, " */
 l(C, "DoubleQuote", new C("doubleQuote")), /** (Static) Any other character not described. */
 l(C, "Unknown", new C("unknown"));
-let V = C;
+let R = C;
 const B = class B extends Ln {
 };
 l(B, "BlockDefinitions", new B("BlockDefinitions")), l(B, "LogicalOperators", new B("LogicalOperators")), l(B, "Types", new B("Types")), l(B, "MathsOperators", new B("MathsOperators")), l(B, "ComparisonOperators", new B("ComparisonOperators")), l(B, "OtherKeywords", new B("OtherKeywords")), l(B, "BuiltInFunctions", new B("BuiltInFunctions")), l(B, "BuiltInMethods", new B("BuiltInMethods")), l(B, "OtherMethods", new B("OtherMethods")), l(B, "Identifiers", new B("Identifiers")), l(B, "MagicMethods", new B("MagicMethods")), l(B, "SpecialVariables", new B("SpecialVariables")), l(B, "Properties", new B("Properties")), l(B, "BuiltInExceptions", new B("BuiltInExceptions")), l(B, "Literals", new B("Literals")), l(B, "CompoundTypes", new B("CompoundTypes")), l(B, "Other", new B("Other")), l(B, "Comment", new B("Comment")), l(B, "Unknown", new B("Unknown")), l(B, "BuiltInModules", new B("BuiltInModules")), l(B, "ModuleFunctions", new B("ModuleFunctions")), l(B, "ModuleProperties", new B("ModuleProperties")), l(B, "ClassAttributes", new B("ClassAttributes")), l(B, "ImportedEntities", new B("ImportedEntities")), l(B, "TypeHint", new B("TypeHint")), // Refactor: multipart expressions
@@ -314,12 +314,12 @@ l(r, "SubscriptedExpression", new r("SubscriptedExpression")), l(r, "CalculatedE
 l(r, "AssignmentStatement", new r("AssignmentStatement")), l(r, "ChangeStatement", new r("ChangeStatement")), // Statements beginning with keyword
 l(r, "ImportStatement", new r("ImportStatement")), l(r, "AssertStatement", new r("AssertStatement")), l(r, "GlobalStatement", new r("GlobalStatement")), l(r, "ThrowStatement", new r("ThrowStatement"));
 let t = r;
-const A = class A extends Ln {
+const k = class k extends Ln {
   constructor(i, e = !1, n = /* @__PURE__ */ new Map(), s = /* @__PURE__ */ new Map()) {
     super(i), this.isCustom = e, this.attributes = n, this.methods = s;
   }
   static createCustomType(i) {
-    return A[i] = new A(i, !0), A[i];
+    return k[i] = new k(i, !0), k[i];
   }
   toJSON() {
     return {
@@ -329,15 +329,15 @@ const A = class A extends Ln {
     };
   }
 };
-l(A, "Int", new A("int")), l(A, "Float", new A("float")), l(A, "Number", new A("number (int or float)")), l(A, "String", new A("string")), l(A, "Bool", new A("bool")), l(A, "List", new A("list")), l(A, "Set", new A("set")), l(A, "Tuple", new A("tuple")), l(A, "Dict", new A("dictionary")), l(A, "File", new A("file")), l(A, "Function", new A("function")), l(A, "Class", new A("class")), // Reserved for unknown classes
-l(A, "None", new A("none")), l(A, "Exception", new A("exception")), l(A, "Unknown", new A("unknown data type")), l(A, "NA", new A("N/A")), // For entities that don't have a type e.g. maths operators
-l(A, "NotParsed", new A("not parsed")), // Default starting type
-l(A, "Invalid", new A("invalid")), // Reserved for cases where an operation would result in a TypeError e.g. string / int
-l(A, "Undefined", new A("undefined")), // Reserved for cases where a variable is used before it is declared
+l(k, "Int", new k("int")), l(k, "Float", new k("float")), l(k, "Number", new k("number (int or float)")), l(k, "String", new k("string")), l(k, "Bool", new k("bool")), l(k, "List", new k("list")), l(k, "Set", new k("set")), l(k, "Tuple", new k("tuple")), l(k, "Dict", new k("dictionary")), l(k, "File", new k("file")), l(k, "Function", new k("function")), l(k, "Class", new k("class")), // Reserved for unknown classes
+l(k, "None", new k("none")), l(k, "Exception", new k("exception")), l(k, "Unknown", new k("unknown data type")), l(k, "NA", new k("N/A")), // For entities that don't have a type e.g. maths operators
+l(k, "NotParsed", new k("not parsed")), // Default starting type
+l(k, "Invalid", new k("invalid")), // Reserved for cases where an operation would result in a TypeError e.g. string / int
+l(k, "Undefined", new k("undefined")), // Reserved for cases where a variable is used before it is declared
 // Built in modules
-l(A, "Random", new A("random")), l(A, "Math", new A("math")), l(A, "StringModule", new A("string module")), l(A, "Re", new A("re")), l(A, "Pattern", new A("Pattern")), l(A, "Match", new A("Match")), l(A, "Sys", new A("sys"));
-let d = A;
-const k = class k extends Ln {
+l(k, "Random", new k("random")), l(k, "Math", new k("math")), l(k, "StringModule", new k("string module")), l(k, "Re", new k("re")), l(k, "Pattern", new k("Pattern")), l(k, "Match", new k("Match")), l(k, "Sys", new k("sys"));
+let d = k;
+const P = class P extends Ln {
   /**
    * Creates a new MisconceptionInfo
    * @param {String} name The unique name of the misconception
@@ -375,111 +375,111 @@ const k = class k extends Ln {
   }
 };
 // Progmiscon
-l(k, "AssignCompares", new k(
+l(P, "AssignCompares", new P(
   "AssignCompares",
   "A single equals is used where a boolean expression is expected, e.g. in a conditional statement. This may be a typo or confusion between single and double equals operators."
 )), // progmiscon
-l(k, "ColonAssigns", new k(
+l(P, "ColonAssigns", new P(
   "ColonAssigns",
   "A colon is used between a variable name and a value. This may be a typo."
-)), l(k, "CompareMultipleValuesWithOr", new k(
+)), l(P, "CompareMultipleValuesWithOr", new P(
   "CompareMultipleValuesWithOr",
   "A boolean expression has the form a == some_value or other_value, where other_value is non-boolean. There is likely a misunderstanding of the syntax of comparing multiple values."
 )), // Done
 // Progmiscon
-l(k, "ComparisonWithBoolLiteral", new k(
+l(P, "ComparisonWithBoolLiteral", new P(
   "ComparisonWithBoolLiteral",
   'A boolean expression contains "== True" or "== False". The programmer may believe that explicitly checking equality is always necessary in a boolean expression.'
 )), // Done
 // TODO: Progmiscon ConditionalIsSequence (symptom needed)
 // Progmiscon
-l(k, "DeferredReturn", new k(
+l(P, "DeferredReturn", new P(
   "DeferredReturn",
   "Code follows a return statement in a function. The programmer may not realise that a return statement causes the function to exit immediately."
 )), // Done
 // Gama PB.5
-l(k, "ForLoopVarIsLocal", new k(
+l(P, "ForLoopVarIsLocal", new P(
   "ForLoopVarIsLocal",
   "An iterating variable in a for loop overwrites a variable declared before the loop and the value is different from the overwritten value, or the values cannot be determined. This potential misconception is similar to IteratorInitialisedOutsideLoop."
-)), l(k, "FunctionCallsNoParentheses", new k(
+)), l(P, "FunctionCallsNoParentheses", new P(
   "FunctionCallsNoParentheses",
   "An undefined variable has the same name as a function. There may be a misunderstanding about how to call a function. Caution: functions in Python are first class objects, so it is possible that use of the function name without parentheses is intended and there is no misconception."
-)), l(k, "FunctionCallsUseSquareBrackets", new k(
+)), l(P, "FunctionCallsUseSquareBrackets", new P(
   "FunctionCallsUseSquareBrackets",
   "The name of a function is called followed by square brackets rather than parentheses. The programmer may not be aware of when to use which type of bracket."
 )), // Done - only in one file
-l(k, "IterationRequiresTwoLoops", new k(
+l(P, "IterationRequiresTwoLoops", new P(
   "IterationRequiresTwoLoops",
   "A while loop with an integer loop variable contains a nested for loop. The while loop variable is only modified in the nested for loop and is used to count items in the variable iterated in the for loop. The two nested loops could be replaced with a single for loop using enumerate() or range()."
-)), l(k, "IteratorInitialisedOutsideLoop", new k(
+)), l(P, "IteratorInitialisedOutsideLoop", new P(
   "TargetInitialisedOutsideLoop",
   "The target variable in a for loop is initialised before the loop with the same value. The programmer may not know that the iterating variable is initialised in the for loop definition."
 )), // Gama et al PA.3, PB.1, PB.3
-l(k, "LocalVariablesAreGlobal", new k(
+l(P, "LocalVariablesAreGlobal", new P(
   "LocalVariablesAreGlobal",
   "An undefined variable in document scope has the same name as a variable with function scope. This may indicate a misunderstanding of variable scope."
 )), // Gama et al PD.1
-l(k, "LoopCounter", new k(
+l(P, "LoopCounter", new P(
   "LoopCounter",
   "A for loop target variable is modified in the loop and the modified variable is not used. This may indicate confusion over how loops use loop variables."
 )), // Progmiscon
-l(k, "MapToBooleanWithIf", new k(
+l(P, "MapToBooleanWithIf", new P(
   "MapToBooleanWithIf",
   "A conditional statement checks a boolean expression only to return or assign a value that matches the value of the boolean expression. The programmer may not realise that a boolean expression can be assigned or returned directly."
 )), // Done
 // Progmiscon
-l(k, "MapToBooleanWithTernaryOperator", new k(
+l(P, "MapToBooleanWithTernaryOperator", new P(
   "MapToBooleanWithTernaryOperator",
   "A ternary checks a boolean expression only to return or assign a value that matches the value of the boolean expression. The programmer may not realise that a boolean expression can be assigned or returned directly."
 )), // Done
-l(k, "NoKeyword", new k(
+l(P, "NoKeyword", new P(
   "NoKeyword",
   "A block definition keyword (e.g. def, if, while) is missing where one is expected. The programmer may not realise that the keyword is required."
 )), // Progmiscon
-l(k, "NoReservedWords", new k(
+l(P, "NoReservedWords", new P(
   "NoReservedWords",
   "Any string that meets naming character constraints can be used as an identifier (name of a variable, function, method, or class)."
 )), //Gama et al PA.1 - Paramater value set by external source
-l(k, "ParameterMustBeAssignedInFunction", new k(
+l(P, "ParameterMustBeAssignedInFunction", new P(
   "ParameterMustBeAssignedInFunction",
   "A user defined function has named parameter but the parameter value is overwritten in the function before it is used e.g. by prompting for command line input. This indicates potential misconceptions about the purpose or use of function parameters."
 )), // Progmiscon
-l(k, "ParenthesesOnlyIfArgument", new k(
+l(P, "ParenthesesOnlyIfArgument", new P(
   "ParenthesesOnlyIfArgument",
   "An undefined variable has the same name as a user-defined function with no arguments. There may be a misunderstanding of the syntax of function calls."
 )), // Needs testing (no occurrences in dataset)
-l(k, "PrintSameAsReturn", new k(
+l(P, "PrintSameAsReturn", new P(
   "PrintSameAsReturn",
   "A call to a function that prints but does not return (including the print() function) is assigned or passed, or a call to a function that prints before returning a value is not assigned or passed. There may be confusion about printing a value versus returning a value."
 )), // Done
 // Progmiscon 
-l(k, "ReturnCall", new k(
+l(P, "ReturnCall", new P(
   "ReturnCall",
   "Function return values are surrounded by parentheses. There may be a belief that return needs to be called like a function."
 )), // TODO
-l(k, "ReturnWaitsForLoop", new k(
+l(P, "ReturnWaitsForLoop", new P(
   "ReturnWaitsForLoop",
   "A return statement in a loop causes the loop to consistently exit on the first iteration. Typically due to a missing if statement, there may be an expectation that the loop implicitly knows when to return and when to continue."
 )), // Progmiscon
-l(k, "SequentialIfsAreExclusive", new k(
+l(P, "SequentialIfsAreExclusive", new P(
   "ConditionalIsSequence",
   "If statements with very similar conditional statements appear in a sequence. There may be a belief that subsequent if statements will only execute if the previous condition does not. The programmer may not be aware of the efficiency drawbacks of using sequential if statements where a multiway conditional would be more appropriate."
-)), l(k, "StringMethodsModifyTheString", new k(
+)), l(P, "StringMethodsModifyTheString", new P(
   "StringMethodsModifyTheString",
   "A string method is called but the result is not saved or passed. There may be an assumption that string methods mutate the string."
-)), l(k, "TypeConversionModifiesArgument", new k(
+)), l(P, "TypeConversionModifiesArgument", new P(
   "TypeConversionModifiesArgument",
   "A type conversion function (e.g. int(), float()) is called but the return value is not saved or used."
-)), l(k, "TypeMustBeSpecified", new k(
+)), l(P, "TypeMustBeSpecified", new P(
   "TypeMustBeSpecified",
   "A value that is guaranteed to have a particular data type is passed to a type conversion function that returns the same data type. In the case of literals, there may be a belief that type must be specified as in strongly typed languages. In other cases, there may be a misunderstanding or lack of confidence in how Python dynamically determines type."
 )), // Done
-l(k, "UnusedReturn", new k("UnusedReturn", "The result of a call to a function / method that returns a value is not used in some way.")), // Gama et al PG.4
-l(k, "WhileSameAsIf", new k(
+l(P, "UnusedReturn", new P("UnusedReturn", "The result of a call to a function / method that returns a value is not used in some way.")), // Gama et al PG.4
+l(P, "WhileSameAsIf", new P(
   "WhileSameAsIf",
   "A while loop does not modify any of its loop variables and may also always exit during the first iteration. Where this behaviour is intentional, the while definition would be better replaced with an if statement. Where the loop does not exit, there is a risk of an infinite loop."
 ));
-let P = k;
+let L = P;
 const D = class D extends Ln {
   constructor(e, n) {
     super(e);
@@ -676,1113 +676,1113 @@ function pc(g) {
     throw new Error(`${g} is not a valid open bracket.`);
   return g === t.OpenBrace ? t.CloseBrace : g === t.OpenParenthesis ? t.CloseParenthesis : t.CloseSquareBracket;
 }
-const f = (g, i) => ({ entity: g, category: i }), We = (g) => {
+const h = (g, i) => ({ entity: g, category: i }), We = (g) => {
   switch (g) {
     // RESERVED
     case "class":
-      return f(t.ClassDefinition, a.BlockDefinitions);
+      return h(t.ClassDefinition, a.BlockDefinitions);
     // RESERVED
     case "def":
-      return f(t.FunctionDefinition, a.BlockDefinitions);
+      return h(t.FunctionDefinition, a.BlockDefinitions);
     // RESERVED
     case "elif":
-      return f(t.ElifDefinition, a.BlockDefinitions);
+      return h(t.ElifDefinition, a.BlockDefinitions);
     // RESERVED
     case "else":
-      return f(t.ElseDefinition, a.BlockDefinitions);
+      return h(t.ElseDefinition, a.BlockDefinitions);
     // RESERVED
     case "except":
-      return f(t.ExceptDefinition, a.BlockDefinitions);
+      return h(t.ExceptDefinition, a.BlockDefinitions);
     // RESERVED
     case "finally":
-      return f(t.FinallyDefinition, a.BlockDefinitions);
+      return h(t.FinallyDefinition, a.BlockDefinitions);
     // RESERVED
     case "for":
-      return f(t.ForDefinition, a.BlockDefinitions);
+      return h(t.ForDefinition, a.BlockDefinitions);
     // RESERVED
     case "if":
-      return f(t.IfDefinition, a.BlockDefinitions);
+      return h(t.IfDefinition, a.BlockDefinitions);
     // RESERVED
     case "lambda":
-      return f(t.LambdaDefinition, a.BlockDefinitions);
+      return h(t.LambdaDefinition, a.BlockDefinitions);
     // RESERVED
     case "try":
-      return f(t.TryDefinition, a.BlockDefinitions);
+      return h(t.TryDefinition, a.BlockDefinitions);
     // RESERVED
     case "while":
-      return f(t.WhileDefinition, a.BlockDefinitions);
+      return h(t.WhileDefinition, a.BlockDefinitions);
     // RESERVED
     case "with":
-      return f(t.WithKeyword, a.BlockDefinitions);
+      return h(t.WithKeyword, a.BlockDefinitions);
     // RESERVED
     case "and":
-      return f(t.AndOperator, a.LogicalOperators);
+      return h(t.AndOperator, a.LogicalOperators);
     // RESERVED
     case "not":
-      return f(t.NotOperator, a.LogicalOperators);
+      return h(t.NotOperator, a.LogicalOperators);
     // RESERVED
     case "or":
-      return f(t.OrOperator, a.LogicalOperators);
+      return h(t.OrOperator, a.LogicalOperators);
     // RESERVED
     case "False":
-      return f(t.FalseType, a.Types);
+      return h(t.FalseType, a.Types);
     // RESERVED
     case "None":
-      return f(t.NoneType, a.Types);
+      return h(t.NoneType, a.Types);
     // RESERVED
     case "True":
-      return f(t.TrueType, a.Types);
+      return h(t.TrueType, a.Types);
     // RESERVED
     case "as":
-      return f(t.AsKeyword, a.OtherKeywords);
+      return h(t.AsKeyword, a.OtherKeywords);
     // RESERVED
     case "global":
-      return f(t.GlobalKeyword, a.OtherKeywords);
+      return h(t.GlobalKeyword, a.OtherKeywords);
     // RESERVED
     case "assert":
-      return f(t.AssertKeyword, a.OtherKeywords);
+      return h(t.AssertKeyword, a.OtherKeywords);
     // RESERVED
     case "break":
-      return f(t.BreakKeyword, a.OtherKeywords);
+      return h(t.BreakKeyword, a.OtherKeywords);
     // RESERVED
     case "continue":
-      return f(t.ContinueKeyword, a.OtherKeywords);
+      return h(t.ContinueKeyword, a.OtherKeywords);
     // RESERVED
     case "del":
-      return f(t.DelKeyword, a.OtherKeywords);
+      return h(t.DelKeyword, a.OtherKeywords);
     // RESERVED
     case "from":
-      return f(t.FromKeyword, a.OtherKeywords);
+      return h(t.FromKeyword, a.OtherKeywords);
     // RESERVED
     case "import":
-      return f(t.ImportKeyword, a.OtherKeywords);
+      return h(t.ImportKeyword, a.OtherKeywords);
     // RESERVED
     case "in":
-      return f(t.InKeyword, a.ComparisonOperators);
+      return h(t.InKeyword, a.ComparisonOperators);
     //ExpressionCategory.OtherKeywords);
     // RESERVED
     case "is":
-      return f(t.IsKeyword, a.ComparisonOperators);
+      return h(t.IsKeyword, a.ComparisonOperators);
     //ExpressionCategory.OtherKeywords);
     // RESERVED
     case "pass":
-      return f(t.PassKeyword, a.OtherKeywords);
+      return h(t.PassKeyword, a.OtherKeywords);
     // RESERVED
     case "raise":
-      return f(t.RaiseKeyword, a.OtherKeywords);
+      return h(t.RaiseKeyword, a.OtherKeywords);
     // RESERVED
     case "return":
-      return f(t.ReturnKeyword, a.OtherKeywords);
+      return h(t.ReturnKeyword, a.OtherKeywords);
     // RESERVED
     case "yield":
-      return f(t.YieldKeyword, a.OtherKeywords);
+      return h(t.YieldKeyword, a.OtherKeywords);
     case "r":
-      return f(t.R, a.OtherKeywords);
+      return h(t.R, a.OtherKeywords);
     case "f":
-      return f(t.F, a.OtherKeywords);
+      return h(t.F, a.OtherKeywords);
     case "+":
-      return f(t.AddOperator, a.MathsOperators);
+      return h(t.AddOperator, a.MathsOperators);
     case "-":
-      return f(t.SubtractOperator, a.MathsOperators);
+      return h(t.SubtractOperator, a.MathsOperators);
     case "*":
-      return f(t.MultiplyOperator, a.MathsOperators);
+      return h(t.MultiplyOperator, a.MathsOperators);
     case "/":
-      return f(t.DivideOperator, a.MathsOperators);
+      return h(t.DivideOperator, a.MathsOperators);
     case "%":
-      return f(t.ModulusOperator, a.MathsOperators);
+      return h(t.ModulusOperator, a.MathsOperators);
     case "**":
-      return f(t.ExponentOperator, a.MathsOperators);
+      return h(t.ExponentOperator, a.MathsOperators);
     case "//":
-      return f(t.IntDivideOperator, a.MathsOperators);
+      return h(t.IntDivideOperator, a.MathsOperators);
     case "=":
-      return f(t.AssignmentOperator, a.MathsOperators);
+      return h(t.AssignmentOperator, a.MathsOperators);
     case "+=":
-      return f(t.IncrementOperator, a.MathsOperators);
+      return h(t.IncrementOperator, a.MathsOperators);
     case "-=":
-      return f(t.DecrementOperator, a.MathsOperators);
+      return h(t.DecrementOperator, a.MathsOperators);
     case "*=":
-      return f(t.MultiplyAssignOperator, a.MathsOperators);
+      return h(t.MultiplyAssignOperator, a.MathsOperators);
     case "/=":
-      return f(t.DivideAssignOperator, a.MathsOperators);
+      return h(t.DivideAssignOperator, a.MathsOperators);
     case "%=":
-      return f(t.RemainderAssignOperator, a.MathsOperators);
+      return h(t.RemainderAssignOperator, a.MathsOperators);
     case "//=":
-      return f(t.IntDivideAssignOperator, a.MathsOperators);
+      return h(t.IntDivideAssignOperator, a.MathsOperators);
     case "**=":
-      return f(t.ExponentAssignOperator, a.MathsOperators);
+      return h(t.ExponentAssignOperator, a.MathsOperators);
     case "==":
-      return f(t.EqualOperator, a.ComparisonOperators);
+      return h(t.EqualOperator, a.ComparisonOperators);
     case "!=":
-      return f(t.NotEqualOperator, a.ComparisonOperators);
+      return h(t.NotEqualOperator, a.ComparisonOperators);
     case ">":
-      return f(t.GreaterThanOperator, a.ComparisonOperators);
+      return h(t.GreaterThanOperator, a.ComparisonOperators);
     case "<":
-      return f(t.LessThanOperator, a.ComparisonOperators);
+      return h(t.LessThanOperator, a.ComparisonOperators);
     case ">=":
-      return f(t.GreaterThanOrEqualOperator, a.ComparisonOperators);
+      return h(t.GreaterThanOrEqualOperator, a.ComparisonOperators);
     case "<=":
-      return f(t.LessThanOrEqualOperator, a.ComparisonOperators);
+      return h(t.LessThanOrEqualOperator, a.ComparisonOperators);
     case "->":
-      return f(t.TypeHintReturn, a.TypeHint);
+      return h(t.TypeHintReturn, a.TypeHint);
     case "abs":
-      return f(t.AbsFunction, a.BuiltInFunctions);
+      return h(t.AbsFunction, a.BuiltInFunctions);
     case "all":
-      return f(t.AllFunction, a.BuiltInFunctions);
+      return h(t.AllFunction, a.BuiltInFunctions);
     case "any":
-      return f(t.AnyFunction, a.BuiltInFunctions);
+      return h(t.AnyFunction, a.BuiltInFunctions);
     case "ascii":
-      return f(t.AsciiFunction, a.BuiltInFunctions);
+      return h(t.AsciiFunction, a.BuiltInFunctions);
     case "bin":
-      return f(t.BinFunction, a.BuiltInFunctions);
+      return h(t.BinFunction, a.BuiltInFunctions);
     case "bool":
-      return f(t.BoolFunction, a.BuiltInFunctions);
+      return h(t.BoolFunction, a.BuiltInFunctions);
     case "callable":
-      return f(t.CallableFunction, a.BuiltInFunctions);
+      return h(t.CallableFunction, a.BuiltInFunctions);
     case "chr":
-      return f(t.ChrFunction, a.BuiltInFunctions);
+      return h(t.ChrFunction, a.BuiltInFunctions);
     case "dict":
-      return f(t.DictDefinition, a.BuiltInFunctions);
+      return h(t.DictDefinition, a.BuiltInFunctions);
     case "divmod":
-      return f(t.DivModFunction, a.BuiltInFunctions);
+      return h(t.DivModFunction, a.BuiltInFunctions);
     case "enumerate":
-      return f(t.EnumerateFunction, a.BuiltInFunctions);
+      return h(t.EnumerateFunction, a.BuiltInFunctions);
     case "eval":
-      return f(t.EvalFunction, a.BuiltInFunctions);
+      return h(t.EvalFunction, a.BuiltInFunctions);
     case "exec":
-      return f(t.ExecFunction, a.BuiltInFunctions);
+      return h(t.ExecFunction, a.BuiltInFunctions);
     case "exit":
-      return f(t.ExitFunction, a.BuiltInFunctions);
+      return h(t.ExitFunction, a.BuiltInFunctions);
     case "filter":
-      return f(t.FilterFunction, a.BuiltInFunctions);
+      return h(t.FilterFunction, a.BuiltInFunctions);
     case "float":
-      return f(t.FloatFunction, a.BuiltInFunctions);
+      return h(t.FloatFunction, a.BuiltInFunctions);
     case "getattr":
-      return f(t.GetAttrFunction, a.BuiltInFunctions);
+      return h(t.GetAttrFunction, a.BuiltInFunctions);
     case "globals":
-      return f(t.GlobalsFunction, a.BuiltInFunctions);
+      return h(t.GlobalsFunction, a.BuiltInFunctions);
     case "hasattr":
-      return f(t.HasAttrFunction, a.BuiltInFunctions);
+      return h(t.HasAttrFunction, a.BuiltInFunctions);
     case "input":
-      return f(t.InputFunction, a.BuiltInFunctions);
+      return h(t.InputFunction, a.BuiltInFunctions);
     case "int":
-      return f(t.IntFunction, a.BuiltInFunctions);
+      return h(t.IntFunction, a.BuiltInFunctions);
     case "isinstance":
-      return f(t.IsInstanceFunction, a.BuiltInFunctions);
+      return h(t.IsInstanceFunction, a.BuiltInFunctions);
     case "len":
-      return f(t.LenFunction, a.BuiltInFunctions);
+      return h(t.LenFunction, a.BuiltInFunctions);
     case "list":
-      return f(t.ListFunction, a.BuiltInFunctions);
+      return h(t.ListFunction, a.BuiltInFunctions);
     case "map":
-      return f(t.MapFunction, a.BuiltInFunctions);
+      return h(t.MapFunction, a.BuiltInFunctions);
     case "max":
-      return f(t.MaxFunction, a.BuiltInFunctions);
+      return h(t.MaxFunction, a.BuiltInFunctions);
     case "min":
-      return f(t.MinFunction, a.BuiltInFunctions);
+      return h(t.MinFunction, a.BuiltInFunctions);
     case "open":
-      return f(t.OpenFunction, a.BuiltInFunctions);
+      return h(t.OpenFunction, a.BuiltInFunctions);
     case "ord":
-      return f(t.OrdFunction, a.BuiltInFunctions);
+      return h(t.OrdFunction, a.BuiltInFunctions);
     case "pow":
-      return f(t.PowFunction, a.BuiltInFunctions);
+      return h(t.PowFunction, a.BuiltInFunctions);
     case "print":
-      return f(t.PrintFunction, a.BuiltInFunctions);
+      return h(t.PrintFunction, a.BuiltInFunctions);
     case "quit":
-      return f(t.QuitFunction, a.BuiltInFunctions);
+      return h(t.QuitFunction, a.BuiltInFunctions);
     case "range":
-      return f(t.RangeFunction, a.BuiltInFunctions);
+      return h(t.RangeFunction, a.BuiltInFunctions);
     case "reversed":
-      return f(t.ReversedFunction, a.BuiltInFunctions);
+      return h(t.ReversedFunction, a.BuiltInFunctions);
     case "round":
-      return f(t.RoundFunction, a.BuiltInFunctions);
+      return h(t.RoundFunction, a.BuiltInFunctions);
     case "set":
-      return f(t.SetFunction, a.BuiltInFunctions);
+      return h(t.SetFunction, a.BuiltInFunctions);
     case "sorted":
-      return f(t.SortedFunction, a.BuiltInFunctions);
+      return h(t.SortedFunction, a.BuiltInFunctions);
     case "str":
-      return f(t.StrFunction, a.BuiltInFunctions);
+      return h(t.StrFunction, a.BuiltInFunctions);
     case "sum":
-      return f(t.SumFunction, a.BuiltInFunctions);
+      return h(t.SumFunction, a.BuiltInFunctions);
     case "tuple":
-      return f(t.TupleFunction, a.BuiltInFunctions);
+      return h(t.TupleFunction, a.BuiltInFunctions);
     case "type":
-      return f(t.TypeFunction, a.BuiltInFunctions);
+      return h(t.TypeFunction, a.BuiltInFunctions);
     case "zip":
-      return f(t.ZipFunction, a.BuiltInFunctions);
+      return h(t.ZipFunction, a.BuiltInFunctions);
     case "__main__":
-      return f(t.Main, a.MagicMethods);
+      return h(t.Main, a.MagicMethods);
     case "__cmp__":
-      return f(t.Cmp, a.MagicMethods);
+      return h(t.Cmp, a.MagicMethods);
     case "__eq__":
-      return f(t.Eq, a.MagicMethods);
+      return h(t.Eq, a.MagicMethods);
     case "__ne__":
-      return f(t.Ne, a.MagicMethods);
+      return h(t.Ne, a.MagicMethods);
     case "__lt__":
-      return f(t.Lt, a.MagicMethods);
+      return h(t.Lt, a.MagicMethods);
     case "__gt__":
-      return f(t.Gt, a.MagicMethods);
+      return h(t.Gt, a.MagicMethods);
     case "__le__":
-      return f(t.Le, a.MagicMethods);
+      return h(t.Le, a.MagicMethods);
     case "__ge__":
-      return f(t.Ge, a.MagicMethods);
+      return h(t.Ge, a.MagicMethods);
     case "__str__":
-      return f(t.Str, a.MagicMethods);
+      return h(t.Str, a.MagicMethods);
     case "__getattr__":
-      return f(t.GetAttrVariable, a.MagicMethods);
+      return h(t.GetAttrVariable, a.MagicMethods);
     case "__setattr__":
-      return f(t.SetAttrVariable, a.MagicMethods);
+      return h(t.SetAttrVariable, a.MagicMethods);
     case "__contains__":
-      return f(t.SpecialContains, a.MagicMethods);
+      return h(t.SpecialContains, a.MagicMethods);
     case "__len__":
-      return f(t.SpecialLen, a.MagicMethods);
+      return h(t.SpecialLen, a.MagicMethods);
     case "__name__":
-      return f(t.Name, a.SpecialVariables);
+      return h(t.Name, a.SpecialVariables);
     case "__self__":
-      return f(t.Self, a.SpecialVariables);
+      return h(t.Self, a.SpecialVariables);
     case "__doc__":
-      return f(t.Doc, a.SpecialVariables);
+      return h(t.Doc, a.SpecialVariables);
     case "__class__":
-      return f(t.ClassVariable, a.SpecialVariables);
+      return h(t.ClassVariable, a.SpecialVariables);
     case "sep":
-      return f(t.Sep, a.SpecialVariables);
+      return h(t.Sep, a.SpecialVariables);
     case "end":
-      return f(t.End, a.SpecialVariables);
+      return h(t.End, a.SpecialVariables);
     case "ArtithmeticError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "AssertionError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "AttributeError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "BlockingIOError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "BrokenPipeError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "BufferError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ChildProcessError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ConnectionAbortedError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ConnectionError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ConnectionRefusedError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ConnectionResetError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "Exception":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "EOFError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "EnvironmentError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "FileExistsError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "FileNotFoundError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "FloatingPointError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "GeneratorExit":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ImportError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "IndentationError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "IndexError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "InterruptedError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "IOError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "IsADirectoryError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "KeyError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "KeyboardInterrupt":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "LookupError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "MemoryError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ModuleNotFoundError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "NameError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "NotADirectoryError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "NotImplementedError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "OSError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "OverflowError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "PermissionError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ProcessLookupError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "RecursionError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ReferenceError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "RuntimeError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "StopIteration":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "SyntaxError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "TabError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "TimeoutError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "SystemError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "SystemExit":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "TypeError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "UnboundLocalError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "UnicodeError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "UnicodeEncodeError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "UnicodeDecodeError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "UnicodeTranslateError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ValueError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "Warning":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     case "ZeroDivisionError":
-      return f(t.ExceptionName, a.BuiltInExceptions);
+      return h(t.ExceptionName, a.BuiltInExceptions);
     // String methods
     case "capitalize":
-      return f(t.Capitalize, a.BuiltInMethods);
+      return h(t.Capitalize, a.BuiltInMethods);
     case "casefold":
-      return f(t.Casefold, a.BuiltInMethods);
+      return h(t.Casefold, a.BuiltInMethods);
     case "center":
-      return f(t.Center, a.BuiltInMethods);
+      return h(t.Center, a.BuiltInMethods);
     case "count":
-      return f(t.Count, a.BuiltInMethods);
+      return h(t.Count, a.BuiltInMethods);
     // also a list, tuple method
     case "encode":
-      return f(t.Encode, a.BuiltInMethods);
+      return h(t.Encode, a.BuiltInMethods);
     case "endswith":
-      return f(t.EndsWith, a.BuiltInMethods);
+      return h(t.EndsWith, a.BuiltInMethods);
     case "expandtabs":
-      return f(t.ExpandTabs, a.BuiltInMethods);
+      return h(t.ExpandTabs, a.BuiltInMethods);
     case "find":
-      return f(t.Find, a.BuiltInMethods);
+      return h(t.Find, a.BuiltInMethods);
     case "format":
-      return f(t.Format, a.BuiltInMethods);
+      return h(t.Format, a.BuiltInMethods);
     case "format_map":
-      return f(t.FormatMap, a.BuiltInMethods);
+      return h(t.FormatMap, a.BuiltInMethods);
     case "index":
-      return f(t.Index, a.BuiltInMethods);
+      return h(t.Index, a.BuiltInMethods);
     // also a list, tuple method
     case "isalnum":
-      return f(t.IsAlnum, a.BuiltInMethods);
+      return h(t.IsAlnum, a.BuiltInMethods);
     case "isalpha":
-      return f(t.IsAlpha, a.BuiltInMethods);
+      return h(t.IsAlpha, a.BuiltInMethods);
     case "isascii":
-      return f(t.IsAscii, a.BuiltInMethods);
+      return h(t.IsAscii, a.BuiltInMethods);
     case "isdecimal":
-      return f(t.IsDecimal, a.BuiltInMethods);
+      return h(t.IsDecimal, a.BuiltInMethods);
     case "isdigit":
-      return f(t.IsDigit, a.BuiltInMethods);
+      return h(t.IsDigit, a.BuiltInMethods);
     case "isidentifier":
-      return f(t.IsIdentifier, a.BuiltInMethods);
+      return h(t.IsIdentifier, a.BuiltInMethods);
     case "islower":
-      return f(t.IsLower, a.BuiltInMethods);
+      return h(t.IsLower, a.BuiltInMethods);
     case "isnumeric":
-      return f(t.IsNumeric, a.BuiltInMethods);
+      return h(t.IsNumeric, a.BuiltInMethods);
     case "isprintable":
-      return f(t.IsPrintable, a.BuiltInMethods);
+      return h(t.IsPrintable, a.BuiltInMethods);
     case "isspace":
-      return f(t.IsSpace, a.BuiltInMethods);
+      return h(t.IsSpace, a.BuiltInMethods);
     case "istitle":
-      return f(t.IsTitle, a.BuiltInMethods);
+      return h(t.IsTitle, a.BuiltInMethods);
     case "isupper":
-      return f(t.IsUpper, a.BuiltInMethods);
+      return h(t.IsUpper, a.BuiltInMethods);
     case "join":
-      return f(t.Join, a.BuiltInMethods);
+      return h(t.Join, a.BuiltInMethods);
     case "ljust":
-      return f(t.LJust, a.BuiltInMethods);
+      return h(t.LJust, a.BuiltInMethods);
     case "lower":
-      return f(t.Lower, a.BuiltInMethods);
+      return h(t.Lower, a.BuiltInMethods);
     case "lstrip":
-      return f(t.LStrip, a.BuiltInMethods);
+      return h(t.LStrip, a.BuiltInMethods);
     case "maketrans":
-      return f(t.MakeTrans, a.BuiltInMethods);
+      return h(t.MakeTrans, a.BuiltInMethods);
     case "partition":
-      return f(t.Partition, a.BuiltInMethods);
+      return h(t.Partition, a.BuiltInMethods);
     case "replace":
-      return f(t.Replace, a.BuiltInMethods);
+      return h(t.Replace, a.BuiltInMethods);
     case "rfind":
-      return f(t.RFind, a.BuiltInMethods);
+      return h(t.RFind, a.BuiltInMethods);
     case "rindex":
-      return f(t.RIndex, a.BuiltInMethods);
+      return h(t.RIndex, a.BuiltInMethods);
     case "rjust":
-      return f(t.RJust, a.BuiltInMethods);
+      return h(t.RJust, a.BuiltInMethods);
     case "rpartition":
-      return f(t.RPartition, a.BuiltInMethods);
+      return h(t.RPartition, a.BuiltInMethods);
     case "rsplit":
-      return f(t.RSplit, a.BuiltInMethods);
+      return h(t.RSplit, a.BuiltInMethods);
     case "rstrip":
-      return f(t.RStrip, a.BuiltInMethods);
+      return h(t.RStrip, a.BuiltInMethods);
     case "split":
-      return f(t.Split, a.BuiltInMethods);
+      return h(t.Split, a.BuiltInMethods);
     case "splitlines":
-      return f(t.SplitLines, a.BuiltInMethods);
+      return h(t.SplitLines, a.BuiltInMethods);
     case "startswith":
-      return f(t.StartsWith, a.BuiltInMethods);
+      return h(t.StartsWith, a.BuiltInMethods);
     case "strip":
-      return f(t.Strip, a.BuiltInMethods);
+      return h(t.Strip, a.BuiltInMethods);
     case "swapcase":
-      return f(t.SwapCase, a.BuiltInMethods);
+      return h(t.SwapCase, a.BuiltInMethods);
     case "title":
-      return f(t.Title, a.BuiltInMethods);
+      return h(t.Title, a.BuiltInMethods);
     case "translate":
-      return f(t.Translate, a.BuiltInMethods);
+      return h(t.Translate, a.BuiltInMethods);
     case "upper":
-      return f(t.Upper, a.BuiltInMethods);
+      return h(t.Upper, a.BuiltInMethods);
     case "zfill":
-      return f(t.ZFill, a.BuiltInMethods);
+      return h(t.ZFill, a.BuiltInMethods);
     // Built-in list methods
     case "append":
-      return f(t.Append, a.BuiltInMethods);
+      return h(t.Append, a.BuiltInMethods);
     case "clear":
-      return f(t.Clear, a.BuiltInMethods);
+      return h(t.Clear, a.BuiltInMethods);
     // also dictionary, set
     case "copy":
-      return f(t.Copy, a.BuiltInMethods);
+      return h(t.Copy, a.BuiltInMethods);
     // also dictionary, set
     case "extend":
-      return f(t.Extend, a.BuiltInMethods);
+      return h(t.Extend, a.BuiltInMethods);
     case "insert":
-      return f(t.Insert, a.BuiltInMethods);
+      return h(t.Insert, a.BuiltInMethods);
     case "pop":
-      return f(t.Pop, a.BuiltInMethods);
+      return h(t.Pop, a.BuiltInMethods);
     // also dictionary, set
     case "remove":
-      return f(t.Remove, a.BuiltInMethods);
+      return h(t.Remove, a.BuiltInMethods);
     // also set
     case "reverse":
-      return f(t.Reverse, a.BuiltInMethods);
+      return h(t.Reverse, a.BuiltInMethods);
     case "sort":
-      return f(t.Sort, a.BuiltInMethods);
+      return h(t.Sort, a.BuiltInMethods);
     // Built-in dictionary methods
     case "fromkeys":
-      return f(t.FromKeys, a.BuiltInMethods);
+      return h(t.FromKeys, a.BuiltInMethods);
     case "get":
-      return f(t.Get, a.BuiltInMethods);
+      return h(t.Get, a.BuiltInMethods);
     case "items":
-      return f(t.Items, a.BuiltInMethods);
+      return h(t.Items, a.BuiltInMethods);
     case "keys":
-      return f(t.Keys, a.BuiltInMethods);
+      return h(t.Keys, a.BuiltInMethods);
     case "popitem":
-      return f(t.PopItem, a.BuiltInMethods);
+      return h(t.PopItem, a.BuiltInMethods);
     case "setdefault":
-      return f(t.SetDefault, a.BuiltInMethods);
+      return h(t.SetDefault, a.BuiltInMethods);
     case "update":
-      return f(t.Update, a.BuiltInMethods);
+      return h(t.Update, a.BuiltInMethods);
     // also set
     case "values":
-      return f(t.Values, a.BuiltInMethods);
+      return h(t.Values, a.BuiltInMethods);
     // Built-in set methods
     case "add":
-      return f(t.Add, a.BuiltInMethods);
+      return h(t.Add, a.BuiltInMethods);
     case "difference":
-      return f(t.Difference, a.BuiltInMethods);
+      return h(t.Difference, a.BuiltInMethods);
     case "difference_update":
-      return f(t.DifferenceUpdate, a.BuiltInMethods);
+      return h(t.DifferenceUpdate, a.BuiltInMethods);
     case "discard":
-      return f(t.Discard, a.BuiltInMethods);
+      return h(t.Discard, a.BuiltInMethods);
     case "intersection":
-      return f(t.Intersection, a.BuiltInMethods);
+      return h(t.Intersection, a.BuiltInMethods);
     case "intersection_update":
-      return f(t.IntersectionUpdate, a.BuiltInMethods);
+      return h(t.IntersectionUpdate, a.BuiltInMethods);
     case "isdisjoint":
-      return f(t.IsDisjoint, a.BuiltInMethods);
+      return h(t.IsDisjoint, a.BuiltInMethods);
     case "issubset":
-      return f(t.IsSubset, a.BuiltInMethods);
+      return h(t.IsSubset, a.BuiltInMethods);
     case "issuperset":
-      return f(t.IsSuperset, a.BuiltInMethods);
+      return h(t.IsSuperset, a.BuiltInMethods);
     case "symmetric_difference":
-      return f(t.SymmetricDifference, a.BuiltInMethods);
+      return h(t.SymmetricDifference, a.BuiltInMethods);
     case "symmetric_difference_update":
-      return f(t.SymmetricDifferenceUpdate, a.BuiltInMethods);
+      return h(t.SymmetricDifferenceUpdate, a.BuiltInMethods);
     case "union":
-      return f(t.Union, a.BuiltInMethods);
+      return h(t.Union, a.BuiltInMethods);
     // Built-in file methods
     case "close":
-      return f(t.Close, a.BuiltInMethods);
+      return h(t.Close, a.BuiltInMethods);
     case "detach":
-      return f(t.Detach, a.BuiltInMethods);
+      return h(t.Detach, a.BuiltInMethods);
     case "fileno":
-      return f(t.FileNo, a.BuiltInMethods);
+      return h(t.FileNo, a.BuiltInMethods);
     case "flush":
-      return f(t.Flush, a.BuiltInMethods);
+      return h(t.Flush, a.BuiltInMethods);
     case "isatty":
-      return f(t.IsAtty, a.BuiltInMethods);
+      return h(t.IsAtty, a.BuiltInMethods);
     case "read":
-      return f(t.Read, a.BuiltInMethods);
+      return h(t.Read, a.BuiltInMethods);
     case "readable":
-      return f(t.Readable, a.BuiltInMethods);
+      return h(t.Readable, a.BuiltInMethods);
     case "readline":
-      return f(t.ReadLine, a.BuiltInMethods);
+      return h(t.ReadLine, a.BuiltInMethods);
     case "readlines":
-      return f(t.ReadLines, a.BuiltInMethods);
+      return h(t.ReadLines, a.BuiltInMethods);
     case "seek":
-      return f(t.Seek, a.BuiltInMethods);
+      return h(t.Seek, a.BuiltInMethods);
     case "seekable":
-      return f(t.Seekable, a.BuiltInMethods);
+      return h(t.Seekable, a.BuiltInMethods);
     case "tell":
-      return f(t.Tell, a.BuiltInMethods);
+      return h(t.Tell, a.BuiltInMethods);
     case "truncate":
-      return f(t.Truncate, a.BuiltInMethods);
+      return h(t.Truncate, a.BuiltInMethods);
     case "writable":
-      return f(t.Writable, a.BuiltInMethods);
+      return h(t.Writable, a.BuiltInMethods);
     case "write":
-      return f(t.Write, a.BuiltInMethods);
+      return h(t.Write, a.BuiltInMethods);
     case "writelines":
-      return f(t.WriteLines, a.BuiltInMethods);
+      return h(t.WriteLines, a.BuiltInMethods);
     case "(":
-      return f(t.OpenParenthesis, a.Other);
+      return h(t.OpenParenthesis, a.Other);
     case ")":
-      return f(t.CloseParenthesis, a.Other);
+      return h(t.CloseParenthesis, a.Other);
     case "[":
-      return f(t.OpenSquareBracket, a.Other);
+      return h(t.OpenSquareBracket, a.Other);
     case "]":
-      return f(t.CloseSquareBracket, a.Other);
+      return h(t.CloseSquareBracket, a.Other);
     case "{":
-      return f(t.OpenBrace, a.Other);
+      return h(t.OpenBrace, a.Other);
     case "}":
-      return f(t.CloseBrace, a.Other);
+      return h(t.CloseBrace, a.Other);
     case ",":
-      return f(t.Comma, a.Other);
+      return h(t.Comma, a.Other);
     case ":":
-      return f(t.Colon, a.Other);
+      return h(t.Colon, a.Other);
     case ".":
-      return f(t.Dot, a.Other);
+      return h(t.Dot, a.Other);
     case "\\":
-      return f(t.ContinuationLine, a.Other);
+      return h(t.ContinuationLine, a.Other);
     case ";":
-      return f(t.Separator, a.Other);
+      return h(t.Separator, a.Other);
     case "'":
-      return f(t.SingleQuote, a.Other);
+      return h(t.SingleQuote, a.Other);
     case '"':
-      return f(t.DoubleQuote, a.Other);
+      return h(t.DoubleQuote, a.Other);
     // Built in modules
     case "random":
-      return f(t.RandomModule, a.BuiltInModules);
+      return h(t.RandomModule, a.BuiltInModules);
     case "math":
-      return f(t.MathModule, a.BuiltInModules);
+      return h(t.MathModule, a.BuiltInModules);
     case "string":
-      return f(t.StringModule, a.BuiltInModules);
+      return h(t.StringModule, a.BuiltInModules);
     case "re":
-      return f(t.ReModule, a.BuiltInModules);
+      return h(t.ReModule, a.BuiltInModules);
     case "sys":
-      return f(t.Sys, a.BuiltInModules);
+      return h(t.Sys, a.BuiltInModules);
     // random module methods
     case "seed":
-      return f(t.Seed, a.ModuleFunctions);
+      return h(t.Seed, a.ModuleFunctions);
     case "getstate":
-      return f(t.GetState, a.ModuleFunctions);
+      return h(t.GetState, a.ModuleFunctions);
     case "setstate":
-      return f(t.SetState, a.ModuleFunctions);
+      return h(t.SetState, a.ModuleFunctions);
     case "getrandbits":
-      return f(t.GetRandBits, a.ModuleFunctions);
+      return h(t.GetRandBits, a.ModuleFunctions);
     case "randrange":
-      return f(t.RandRange, a.ModuleFunctions);
+      return h(t.RandRange, a.ModuleFunctions);
     case "randint":
-      return f(t.RandInt, a.ModuleFunctions);
+      return h(t.RandInt, a.ModuleFunctions);
     case "choice":
-      return f(t.Choice, a.ModuleFunctions);
+      return h(t.Choice, a.ModuleFunctions);
     case "choices":
-      return f(t.Choices, a.ModuleFunctions);
+      return h(t.Choices, a.ModuleFunctions);
     case "shuffle":
-      return f(t.Shuffle, a.ModuleFunctions);
+      return h(t.Shuffle, a.ModuleFunctions);
     case "sample":
-      return f(t.Sample, a.ModuleFunctions);
+      return h(t.Sample, a.ModuleFunctions);
     case "uniform":
-      return f(t.Uniform, a.ModuleFunctions);
+      return h(t.Uniform, a.ModuleFunctions);
     case "triangular":
-      return f(t.Triangular, a.ModuleFunctions);
+      return h(t.Triangular, a.ModuleFunctions);
     case "betavariate":
-      return f(t.BetaVariate, a.ModuleFunctions);
+      return h(t.BetaVariate, a.ModuleFunctions);
     case "expovariate":
-      return f(t.ExpoVariate, a.ModuleFunctions);
+      return h(t.ExpoVariate, a.ModuleFunctions);
     case "gammavariate":
-      return f(t.GammaVariate, a.ModuleFunctions);
+      return h(t.GammaVariate, a.ModuleFunctions);
     case "gauss":
-      return f(t.Gauss, a.ModuleFunctions);
+      return h(t.Gauss, a.ModuleFunctions);
     case "lognormvariate":
-      return f(t.LogNormVariate, a.ModuleFunctions);
+      return h(t.LogNormVariate, a.ModuleFunctions);
     case "normalvariate":
-      return f(t.NormalVariate, a.ModuleFunctions);
+      return h(t.NormalVariate, a.ModuleFunctions);
     case "vonmisesvariate":
-      return f(t.VonMisesVariate, a.ModuleFunctions);
+      return h(t.VonMisesVariate, a.ModuleFunctions);
     case "paretovariate":
-      return f(t.ParetoVariate, a.ModuleFunctions);
+      return h(t.ParetoVariate, a.ModuleFunctions);
     case "weibullvariate":
-      return f(t.WeibullVariate, a.ModuleFunctions);
+      return h(t.WeibullVariate, a.ModuleFunctions);
     // maths module methods
     case "acos":
-      return f(t.Acos, a.ModuleFunctions);
+      return h(t.Acos, a.ModuleFunctions);
     case "acosh":
-      return f(t.Acosh, a.ModuleFunctions);
+      return h(t.Acosh, a.ModuleFunctions);
     case "asin":
-      return f(t.Asin, a.ModuleFunctions);
+      return h(t.Asin, a.ModuleFunctions);
     case "asinh":
-      return f(t.Asinh, a.ModuleFunctions);
+      return h(t.Asinh, a.ModuleFunctions);
     case "atan":
-      return f(t.Atan, a.ModuleFunctions);
+      return h(t.Atan, a.ModuleFunctions);
     case "atan2":
-      return f(t.Atan2, a.ModuleFunctions);
+      return h(t.Atan2, a.ModuleFunctions);
     case "atanh":
-      return f(t.Atanh, a.ModuleFunctions);
+      return h(t.Atanh, a.ModuleFunctions);
     case "ceil":
-      return f(t.Ceil, a.ModuleFunctions);
+      return h(t.Ceil, a.ModuleFunctions);
     case "comb":
-      return f(t.Comb, a.ModuleFunctions);
+      return h(t.Comb, a.ModuleFunctions);
     case "copysign":
-      return f(t.Copysign, a.ModuleFunctions);
+      return h(t.Copysign, a.ModuleFunctions);
     case "cos":
-      return f(t.Cos, a.ModuleFunctions);
+      return h(t.Cos, a.ModuleFunctions);
     case "cosh":
-      return f(t.Cosh, a.ModuleFunctions);
+      return h(t.Cosh, a.ModuleFunctions);
     case "degrees":
-      return f(t.Degrees, a.ModuleFunctions);
+      return h(t.Degrees, a.ModuleFunctions);
     case "dist":
-      return f(t.Dist, a.ModuleFunctions);
+      return h(t.Dist, a.ModuleFunctions);
     case "erf":
-      return f(t.Erf, a.ModuleFunctions);
+      return h(t.Erf, a.ModuleFunctions);
     case "erfc":
-      return f(t.Erfc, a.ModuleFunctions);
+      return h(t.Erfc, a.ModuleFunctions);
     case "exp":
-      return f(t.Exp, a.ModuleFunctions);
+      return h(t.Exp, a.ModuleFunctions);
     case "expm1":
-      return f(t.Expm1, a.ModuleFunctions);
+      return h(t.Expm1, a.ModuleFunctions);
     case "fabs":
-      return f(t.Fabs, a.ModuleFunctions);
+      return h(t.Fabs, a.ModuleFunctions);
     case "factorial":
-      return f(t.Factorial, a.ModuleFunctions);
+      return h(t.Factorial, a.ModuleFunctions);
     case "floor":
-      return f(t.Floor, a.ModuleFunctions);
+      return h(t.Floor, a.ModuleFunctions);
     case "fmod":
-      return f(t.Fmod, a.ModuleFunctions);
+      return h(t.Fmod, a.ModuleFunctions);
     case "frexp":
-      return f(t.Frexp, a.ModuleFunctions);
+      return h(t.Frexp, a.ModuleFunctions);
     case "fsum":
-      return f(t.Fsum, a.ModuleFunctions);
+      return h(t.Fsum, a.ModuleFunctions);
     case "gamma":
-      return f(t.Gamma, a.ModuleFunctions);
+      return h(t.Gamma, a.ModuleFunctions);
     case "gcd":
-      return f(t.Gcd, a.ModuleFunctions);
+      return h(t.Gcd, a.ModuleFunctions);
     case "hypot":
-      return f(t.Hypot, a.ModuleFunctions);
+      return h(t.Hypot, a.ModuleFunctions);
     case "isclose":
-      return f(t.IsClose, a.ModuleFunctions);
+      return h(t.IsClose, a.ModuleFunctions);
     case "isfinite":
-      return f(t.IsFinite, a.ModuleFunctions);
+      return h(t.IsFinite, a.ModuleFunctions);
     case "isinf":
-      return f(t.IsInf, a.ModuleFunctions);
+      return h(t.IsInf, a.ModuleFunctions);
     case "isnan":
-      return f(t.IsNaN, a.ModuleFunctions);
+      return h(t.IsNaN, a.ModuleFunctions);
     case "isqrt":
-      return f(t.ISqrt, a.ModuleFunctions);
+      return h(t.ISqrt, a.ModuleFunctions);
     case "ldexp":
-      return f(t.Ldexp, a.ModuleFunctions);
+      return h(t.Ldexp, a.ModuleFunctions);
     case "lgamma":
-      return f(t.LGamma, a.ModuleFunctions);
+      return h(t.LGamma, a.ModuleFunctions);
     case "log":
-      return f(t.Log, a.ModuleFunctions);
+      return h(t.Log, a.ModuleFunctions);
     case "log10":
-      return f(t.Log10, a.ModuleFunctions);
+      return h(t.Log10, a.ModuleFunctions);
     case "log1p":
-      return f(t.Log1P, a.ModuleFunctions);
+      return h(t.Log1P, a.ModuleFunctions);
     case "log2":
-      return f(t.Log2, a.ModuleFunctions);
+      return h(t.Log2, a.ModuleFunctions);
     case "perm":
-      return f(t.Perm, a.ModuleFunctions);
+      return h(t.Perm, a.ModuleFunctions);
     case "pow":
-      return f(t.Pow, a.ModuleFunctions);
+      return h(t.Pow, a.ModuleFunctions);
     case "prod":
-      return f(t.Prod, a.ModuleFunctions);
+      return h(t.Prod, a.ModuleFunctions);
     case "radians":
-      return f(t.Radians, a.ModuleFunctions);
+      return h(t.Radians, a.ModuleFunctions);
     case "remainder":
-      return f(t.Remainder, a.ModuleFunctions);
+      return h(t.Remainder, a.ModuleFunctions);
     case "sin":
-      return f(t.Sin, a.ModuleFunctions);
+      return h(t.Sin, a.ModuleFunctions);
     case "sinh":
-      return f(t.Sinh, a.ModuleFunctions);
+      return h(t.Sinh, a.ModuleFunctions);
     case "sqrt":
-      return f(t.Sqrt, a.ModuleFunctions);
+      return h(t.Sqrt, a.ModuleFunctions);
     case "tan":
-      return f(t.Tan, a.ModuleFunctions);
+      return h(t.Tan, a.ModuleFunctions);
     case "tanh":
-      return f(t.Tanh, a.ModuleFunctions);
+      return h(t.Tanh, a.ModuleFunctions);
     case "trun":
-      return f(t.Trunc, a.ModuleFunctions);
+      return h(t.Trunc, a.ModuleFunctions);
     case "e":
-      return f(t.E, a.ModuleProperties);
+      return h(t.E, a.ModuleProperties);
     case "inf":
-      return f(t.Inf, a.ModuleProperties);
+      return h(t.Inf, a.ModuleProperties);
     case "nan":
-      return f(t.Nan, a.ModuleProperties);
+      return h(t.Nan, a.ModuleProperties);
     case "pi":
-      return f(t.Pi, a.ModuleProperties);
+      return h(t.Pi, a.ModuleProperties);
     case "tau":
-      return f(t.Tau, a.ModuleProperties);
+      return h(t.Tau, a.ModuleProperties);
     // String module entities
     case "ascii_letters":
-      return f(t.AsciiLetters, a.ModuleProperties);
+      return h(t.AsciiLetters, a.ModuleProperties);
     case "ascii_lowercase":
-      return f(t.AsciiLowercase, a.ModuleProperties);
+      return h(t.AsciiLowercase, a.ModuleProperties);
     case "ascii_uppercase":
-      return f(t.AsciiUppercase, a.ModuleProperties);
+      return h(t.AsciiUppercase, a.ModuleProperties);
     case "digits":
-      return f(t.Digits, a.ModuleProperties);
+      return h(t.Digits, a.ModuleProperties);
     case "hexdigits":
-      return f(t.Hexdigits, a.ModuleProperties);
+      return h(t.Hexdigits, a.ModuleProperties);
     case "octdigits":
-      return f(t.Octdigits, a.ModuleProperties);
+      return h(t.Octdigits, a.ModuleProperties);
     case "punctuation":
-      return f(t.Punctuation, a.ModuleProperties);
+      return h(t.Punctuation, a.ModuleProperties);
     case "printable":
-      return f(t.Printable, a.ModuleProperties);
+      return h(t.Printable, a.ModuleProperties);
     case "whitespace":
-      return f(t.Whitespace, a.ModuleProperties);
+      return h(t.Whitespace, a.ModuleProperties);
     case "Formatter":
-      return f(t.Formatter, a.ModuleFunctions);
+      return h(t.Formatter, a.ModuleFunctions);
     case "Template":
-      return f(t.Template, a.ModuleFunctions);
+      return h(t.Template, a.ModuleFunctions);
     case "capwords":
-      return f(t.Capwords, a.ModuleFunctions);
+      return h(t.Capwords, a.ModuleFunctions);
     // Regular expression
     case "Pattern":
-      return f(t.Pattern, a.Types);
+      return h(t.Pattern, a.Types);
     case "Match":
-      return f(t.Match, a.Types);
+      return h(t.Match, a.Types);
     case "A":
-      return f(t.ReA, a.ModuleProperties);
+      return h(t.ReA, a.ModuleProperties);
     case "ASCII":
-      return f(t.ReASCII, a.ModuleProperties);
+      return h(t.ReASCII, a.ModuleProperties);
     case "DEBUG":
-      return f(t.ReDebug, a.ModuleProperties);
+      return h(t.ReDebug, a.ModuleProperties);
     case "I":
-      return f(t.ReI, a.ModuleProperties);
+      return h(t.ReI, a.ModuleProperties);
     case "IGNORECASE":
-      return f(t.ReIGNORECASE, a.ModuleProperties);
+      return h(t.ReIGNORECASE, a.ModuleProperties);
     case "L":
-      return f(t.ReL, a.ModuleProperties);
+      return h(t.ReL, a.ModuleProperties);
     case "LOCALE":
-      return f(t.ReLOCALE, a.ModuleProperties);
+      return h(t.ReLOCALE, a.ModuleProperties);
     case "M":
-      return f(t.ReM, a.ModuleProperties);
+      return h(t.ReM, a.ModuleProperties);
     case "MULTILINE":
-      return f(t.ReMULTILINE, a.ModuleProperties);
+      return h(t.ReMULTILINE, a.ModuleProperties);
     case "S":
-      return f(t.ReS, a.ModuleProperties);
+      return h(t.ReS, a.ModuleProperties);
     case "DOTALL":
-      return f(t.ReDOTALL, a.ModuleProperties);
+      return h(t.ReDOTALL, a.ModuleProperties);
     case "X":
-      return f(t.ReX, a.ModuleProperties);
+      return h(t.ReX, a.ModuleProperties);
     case "VERBOSE":
-      return f(t.ReVERBOSE, a.ModuleProperties);
+      return h(t.ReVERBOSE, a.ModuleProperties);
     case "compile":
-      return f(t.Compile, a.ModuleFunctions);
+      return h(t.Compile, a.ModuleFunctions);
     case "search":
-      return f(t.Search, a.ModuleFunctions);
+      return h(t.Search, a.ModuleFunctions);
     case "match":
-      return f(t.Match, a.ModuleFunctions);
+      return h(t.Match, a.ModuleFunctions);
     case "fullmatch":
-      return f(t.FullMatch, a.ModuleFunctions);
+      return h(t.FullMatch, a.ModuleFunctions);
     case "findall":
-      return f(t.FindAll, a.ModuleFunctions);
+      return h(t.FindAll, a.ModuleFunctions);
     case "finditer":
-      return f(t.FindIter, a.ModuleFunctions);
+      return h(t.FindIter, a.ModuleFunctions);
     case "sub":
-      return f(t.Sub, a.ModuleFunctions);
+      return h(t.Sub, a.ModuleFunctions);
     case "subn":
-      return f(t.SubN, a.ModuleFunctions);
+      return h(t.SubN, a.ModuleFunctions);
     case "escape":
-      return f(t.Escape, a.ModuleFunctions);
+      return h(t.Escape, a.ModuleFunctions);
     case "purge":
-      return f(t.Purge, a.ModuleFunctions);
+      return h(t.Purge, a.ModuleFunctions);
     // Sys module entities
     case "addaudithook":
-      return f(t.AddAuditHook, a.ModuleFunctions);
+      return h(t.AddAuditHook, a.ModuleFunctions);
     // none, function
     case "audit":
-      return f(t.Audit, a.ModuleFunctions);
+      return h(t.Audit, a.ModuleFunctions);
     // none, function
     case "call_tracing":
-      return f(t.CallTracing, a.ModuleFunctions);
+      return h(t.CallTracing, a.ModuleFunctions);
     // unknown function
     case "_clear_type_cache":
-      return f(t.ClearTypeCache, a.ModuleFunctions);
+      return h(t.ClearTypeCache, a.ModuleFunctions);
     // none function
     case "_current_frames":
-      return f(t.CurrentFrames, a.ModuleFunctions);
+      return h(t.CurrentFrames, a.ModuleFunctions);
     // dict function
     case "_current_exceptions":
-      return f(t.CurrentExceptions, a.ModuleFunctions);
+      return h(t.CurrentExceptions, a.ModuleFunctions);
     // dict function
     case "breakpointhook":
-      return f(t.BreakpointHook, a.ModuleFunctions);
+      return h(t.BreakpointHook, a.ModuleFunctions);
     // none function
     case "_debugmallocstats":
-      return f(t.DebugMallocStats, a.ModuleFunctions);
+      return h(t.DebugMallocStats, a.ModuleFunctions);
     // none function
     case "displayhook":
-      return f(t.DisplayHook, a.ModuleFunctions);
+      return h(t.DisplayHook, a.ModuleFunctions);
     // non function
     case "excepthook":
-      return f(t.ExceptHook, a.ModuleFunctions);
+      return h(t.ExceptHook, a.ModuleFunctions);
     // none function
     case "exc_info":
-      return f(t.ExcInfo, a.ModuleFunctions);
+      return h(t.ExcInfo, a.ModuleFunctions);
     // tuple function
     // duplicates built in function of same name
     //case "exit": return keywordMap(ExpressionEntity.Exit, ExpressionEntity.ModuleFunctions); // none, function
     case "getallocatedblocks":
-      return f(t.GetAllocatedBlocks, a.ModuleFunctions);
+      return h(t.GetAllocatedBlocks, a.ModuleFunctions);
     // int function
     case "getandroidapilevel":
-      return f(t.GetAndroidApiLevel, a.ModuleFunctions);
+      return h(t.GetAndroidApiLevel, a.ModuleFunctions);
     // int function
     case "getdefaultencoding":
-      return f(t.GetDefaultEncoding, a.ModuleFunctions);
+      return h(t.GetDefaultEncoding, a.ModuleFunctions);
     // string function
     case "getdlopenflags":
-      return f(t.GetDLOpenFlags, a.ModuleFunctions);
+      return h(t.GetDLOpenFlags, a.ModuleFunctions);
     // int function
     case "getfilesystemencoding":
-      return f(t.GetFileSystemEncoding, a.ModuleFunctions);
+      return h(t.GetFileSystemEncoding, a.ModuleFunctions);
     // string function
     case "getfilesystemencodeerrors":
-      return f(t.GetFileSystemEncodeErrors, a.ModuleFunctions);
+      return h(t.GetFileSystemEncodeErrors, a.ModuleFunctions);
     // string function
     case "getrefcount":
-      return f(t.GetRefCount, a.ModuleFunctions);
+      return h(t.GetRefCount, a.ModuleFunctions);
     // int function
     case "getrecursionlimit":
-      return f(t.GetRecursionLimit, a.ModuleFunctions);
+      return h(t.GetRecursionLimit, a.ModuleFunctions);
     // int function
     case "getsizeof":
-      return f(t.GetSizeOf, a.ModuleFunctions);
+      return h(t.GetSizeOf, a.ModuleFunctions);
     // int function
     case "getswitchinterval":
-      return f(t.GetSwitchInterval, a.ModuleFunctions);
+      return h(t.GetSwitchInterval, a.ModuleFunctions);
     // float function
     case "_getframe":
-      return f(t.GetFrame, a.ModuleFunctions);
+      return h(t.GetFrame, a.ModuleFunctions);
     // unknown function
     case "getprofile":
-      return f(t.GetProfile, a.ModuleFunctions);
+      return h(t.GetProfile, a.ModuleFunctions);
     // none function
     case "gettrace":
-      return f(t.GetTrace, a.ModuleFunctions);
+      return h(t.GetTrace, a.ModuleFunctions);
     // none function
     case "getwindowsversion":
-      return f(t.GetWindowsVersion, a.ModuleFunctions);
+      return h(t.GetWindowsVersion, a.ModuleFunctions);
     // tuple function
     case "get_asyncgen_hooks":
-      return f(t.GetAsyncGenHooks, a.ModuleFunctions);
+      return h(t.GetAsyncGenHooks, a.ModuleFunctions);
     // unknown function
     case "get_coroutine_origin_tracking_depth":
-      return f(t.GetCoroutineOriginTrackingDepth, a.ModuleFunctions);
+      return h(t.GetCoroutineOriginTrackingDepth, a.ModuleFunctions);
     // int function
     case "intern":
-      return f(t.Intern, a.ModuleFunctions);
+      return h(t.Intern, a.ModuleFunctions);
     // unknown function
     case "is_finalizing":
-      return f(t.IsFinalizing, a.ModuleFunctions);
+      return h(t.IsFinalizing, a.ModuleFunctions);
     // bool function
     case "setdlopenflags":
-      return f(t.SetDLOpenFlags, a.ModuleFunctions);
+      return h(t.SetDLOpenFlags, a.ModuleFunctions);
     // none function
     case "setprofile":
-      return f(t.SetProfile, a.ModuleFunctions);
+      return h(t.SetProfile, a.ModuleFunctions);
     // unknown function
     case "setrecursionlimit":
-      return f(t.SetRecursionLimit, a.ModuleFunctions);
+      return h(t.SetRecursionLimit, a.ModuleFunctions);
     // none function
     case "setswitchinterval":
-      return f(t.SetSwitchInterval, a.ModuleFunctions);
+      return h(t.SetSwitchInterval, a.ModuleFunctions);
     // none function
     case "settrace":
-      return f(t.SetTrace, a.ModuleFunctions);
+      return h(t.SetTrace, a.ModuleFunctions);
     // none function
     case "set_asyncgen_hooks":
-      return f(t.SetAsyncgenHooks, a.ModuleFunctions);
+      return h(t.SetAsyncgenHooks, a.ModuleFunctions);
     // none function
     case "_enablelegacywindowsfsencoding":
-      return f(t.EnableLegacyWindowsFSEncoding, a.ModuleFunctions);
+      return h(t.EnableLegacyWindowsFSEncoding, a.ModuleFunctions);
     // none function
     case "abiflags":
-      return f(t.ABIFlags, a.ModuleProperties);
+      return h(t.ABIFlags, a.ModuleProperties);
     // string, prop
     case "argv":
-      return f(t.Argv, a.ModuleProperties);
+      return h(t.Argv, a.ModuleProperties);
     // list, prop
     case "base_exec_prefix":
-      return f(t.BaseExecPrefix, a.ModuleProperties);
+      return h(t.BaseExecPrefix, a.ModuleProperties);
     // string, prop
     case "base_prefix":
-      return f(t.BasePrefix, a.ModuleProperties);
+      return h(t.BasePrefix, a.ModuleProperties);
     // string prop
     case "byte_order":
-      return f(t.ByteOrder, a.ModuleProperties);
+      return h(t.ByteOrder, a.ModuleProperties);
     // string prop
     case "built_in_module_names":
-      return f(t.BuiltInModuleNames, a.ModuleProperties);
+      return h(t.BuiltInModuleNames, a.ModuleProperties);
     // tuple prop
     case "copyright":
-      return f(t.Copyright, a.ModuleProperties);
+      return h(t.Copyright, a.ModuleProperties);
     // string prop
     case "dllhandle":
-      return f(t.DllHandle, a.ModuleProperties);
+      return h(t.DllHandle, a.ModuleProperties);
     // int prop
     case "dont_write_bytecode":
-      return f(t.DontWriteBytecode, a.ModuleProperties);
+      return h(t.DontWriteBytecode, a.ModuleProperties);
     // bool prop
     case "pycache_prefix":
-      return f(t.PycachePrefix, a.ModuleProperties);
+      return h(t.PycachePrefix, a.ModuleProperties);
     // unknown prop
     case "exec_prefix":
-      return f(t.ExecPrefix, a.ModuleProperties);
+      return h(t.ExecPrefix, a.ModuleProperties);
     // string prop
     case "executable":
-      return f(t.Executable, a.ModuleProperties);
+      return h(t.Executable, a.ModuleProperties);
     // string prop
     case "flags":
-      return f(t.Flags, a.ModuleProperties);
+      return h(t.Flags, a.ModuleProperties);
     // unknown prop
     case "float_info":
-      return f(t.FloatInfo, a.ModuleProperties);
+      return h(t.FloatInfo, a.ModuleProperties);
     // unknown prop
     case "float_repr_style":
-      return f(t.FloatReprStyle, a.ModuleProperties);
+      return h(t.FloatReprStyle, a.ModuleProperties);
     // string prop
     case "hash_info":
-      return f(t.HashInfo, a.ModuleProperties);
+      return h(t.HashInfo, a.ModuleProperties);
     // unknown prop
     case "hexversion":
-      return f(t.HexVersion, a.ModuleProperties);
+      return h(t.HexVersion, a.ModuleProperties);
     // int prop
     case "implementation":
-      return f(t.Implementation, a.ModuleProperties);
+      return h(t.Implementation, a.ModuleProperties);
     // unknown prop
     case "int_info":
-      return f(t.IntInfo, a.ModuleProperties);
+      return h(t.IntInfo, a.ModuleProperties);
     // unknown prop
     case "last_type":
-      return f(t.LastType, a.ModuleProperties);
+      return h(t.LastType, a.ModuleProperties);
     // unknown prop
     case "last_value":
-      return f(t.LastValue, a.ModuleProperties);
+      return h(t.LastValue, a.ModuleProperties);
     // unknown prop
     case "last_traceback":
-      return f(t.LastTraceback, a.ModuleProperties);
+      return h(t.LastTraceback, a.ModuleProperties);
     // unknown prop
     case "maxsize":
-      return f(t.MaxSize, a.ModuleProperties);
+      return h(t.MaxSize, a.ModuleProperties);
     // int prop
     case "maxunicode":
-      return f(t.MaxUnicode, a.ModuleProperties);
+      return h(t.MaxUnicode, a.ModuleProperties);
     // int prop
     case "meta_path":
-      return f(t.MetaPath, a.ModuleProperties);
+      return h(t.MetaPath, a.ModuleProperties);
     // list prop
     case "modules":
-      return f(t.Modules, a.ModuleProperties);
+      return h(t.Modules, a.ModuleProperties);
     // dict prop
     case "orig_argv":
-      return f(t.OrigArgv, a.ModuleProperties);
+      return h(t.OrigArgv, a.ModuleProperties);
     // list prop
     case "path":
-      return f(t.Path, a.ModuleProperties);
+      return h(t.Path, a.ModuleProperties);
     // list prop
     case "path_hooks":
-      return f(t.PathHooks, a.ModuleProperties);
+      return h(t.PathHooks, a.ModuleProperties);
     // list prop
     case "path_importer_cache":
-      return f(t.PathImporterCache, a.ModuleProperties);
+      return h(t.PathImporterCache, a.ModuleProperties);
     // dict prop
     case "platform":
-      return f(t.Platform, a.ModuleProperties);
+      return h(t.Platform, a.ModuleProperties);
     // string prop
     case "prefix":
-      return f(t.Prefix, a.ModuleProperties);
+      return h(t.Prefix, a.ModuleProperties);
     // string prop
     case "ps1":
-      return f(t.PS1, a.ModuleProperties);
+      return h(t.PS1, a.ModuleProperties);
     // string prop
     case "ps2":
-      return f(t.PS2, a.ModuleProperties);
+      return h(t.PS2, a.ModuleProperties);
     // string prop
     case "stdin":
-      return f(t.StdIn, a.ModuleProperties);
+      return h(t.StdIn, a.ModuleProperties);
     // unknown prop
     case "stdout":
-      return f(t.StdOut, a.ModuleProperties);
+      return h(t.StdOut, a.ModuleProperties);
     // unknown prop
     case "stderr":
-      return f(t.StdErr, a.ModuleProperties);
+      return h(t.StdErr, a.ModuleProperties);
     // unknown prop
     case "stdlib_module_names":
-      return f(t.StdLibModuleNames, a.ModuleProperties);
+      return h(t.StdLibModuleNames, a.ModuleProperties);
     // unknown prop
     case "thread_info":
-      return f(t.ThreadInfo, a.ModuleProperties);
+      return h(t.ThreadInfo, a.ModuleProperties);
     // unknown prop
     case "tracebacklimit":
-      return f(t.TracebackLimit, a.ModuleProperties);
+      return h(t.TracebackLimit, a.ModuleProperties);
     // int prop
     case "version":
-      return f(t.Version, a.ModuleProperties);
+      return h(t.Version, a.ModuleProperties);
     // string prop
     case "api_version":
-      return f(t.ApiVersion, a.ModuleProperties);
+      return h(t.ApiVersion, a.ModuleProperties);
     // int prop
     case "version_info":
-      return f(t.VersionInfo, a.ModuleProperties);
+      return h(t.VersionInfo, a.ModuleProperties);
     // tuple prop
     case "warnoptions":
-      return f(t.WarnOptions, a.ModuleProperties);
+      return h(t.WarnOptions, a.ModuleProperties);
     // list prop
     case "winver":
-      return f(t.WinVer, a.ModuleProperties);
+      return h(t.WinVer, a.ModuleProperties);
     // int prop
     case "_xoptions":
-      return f(t.XOptions, a.ModuleProperties);
+      return h(t.XOptions, a.ModuleProperties);
     // dict prop
     default:
-      return f(t.Unknown, a.Unknown);
+      return h(t.Unknown, a.Unknown);
   }
 }, fr = (g) => {
   switch (g) {
     case "str":
-      return f(t.StrType, a.Types);
+      return h(t.StrType, a.Types);
     case "int":
-      return f(t.IntType, a.Types);
+      return h(t.IntType, a.Types);
     case "float":
-      return f(t.FloatType, a.Types);
+      return h(t.FloatType, a.Types);
     case "bool":
-      return f(t.BoolType, a.Types);
+      return h(t.BoolType, a.Types);
     case "list":
-      return f(t.ListType, a.Types);
+      return h(t.ListType, a.Types);
     case "set":
-      return f(t.SetType, a.Types);
+      return h(t.SetType, a.Types);
     case "dict":
-      return f(t.DictType, a.Types);
+      return h(t.DictType, a.Types);
     case "tuple":
-      return f(t.TupleType, a.Types);
+      return h(t.TupleType, a.Types);
     default:
-      return f(t.Unknown, a.Unknown);
+      return h(t.Unknown, a.Unknown);
   }
 }, Wt = /* @__PURE__ */ new Map([
   [t.AbsFunction, d.Number],
@@ -2966,7 +2966,7 @@ class H {
    * @param {String} affectedText The text affected by the symptom
    * @param {Object} additionalInfo An optional object containing more information about the symptom
    */
-  constructor(i, e, n, s, o, u = "", h = {}) {
+  constructor(i, e, n, s, o, u = "", f = {}) {
     /** @type {String} */
     I(this, Mt);
     // The logging ID of the symptom
@@ -2987,7 +2987,7 @@ class H {
     // Properties vary by symptom
     /** @type {String} */
     I(this, Zt);
-    y(this, Mt, i), y(this, xt, e), y(this, Zt, n), y(this, Dt, s), y(this, Bt, o), y(this, At, u), y(this, Xt, h);
+    y(this, Mt, i), y(this, xt, e), y(this, Zt, n), y(this, Dt, s), y(this, Bt, o), y(this, At, u), y(this, Xt, f);
   }
   /**
    * Gets the ID of the symptom
@@ -3348,8 +3348,8 @@ class x {
    * @param {boolean} includeIndents Optional. Whether or not to include the first expression indent in the affected text. Default = false
    * @returns {Symptom}
    */
-  static createStatementSymptom(i, e, n, s, o = {}, u = "", h = !1) {
-    const p = e[n].getStartLineNumber(), w = u === "" ? e[n].getBlockId() : u, S = e[n].getDocumentStartIndex(), F = e[n].getIndexOnLine(), N = oe(e.slice(n, s + 1), h);
+  static createStatementSymptom(i, e, n, s, o = {}, u = "", f = !1) {
+    const p = e[n].getStartLineNumber(), w = u === "" ? e[n].getBlockId() : u, S = e[n].getDocumentStartIndex(), F = e[n].getIndexOnLine(), N = oe(e.slice(n, s + 1), f);
     switch (i) {
       case b.AssignmentInBoolean:
         return new wc(i.name, p, w, S, F, N, o);
@@ -3589,7 +3589,7 @@ class pr extends ei {
     const n = e.getVariable();
     if (c(this, Pe).length > 0) {
       let s = c(this, Pe).length - 1, o = !1;
-      const u = /* @__PURE__ */ new Set(), h = [];
+      const u = /* @__PURE__ */ new Set(), f = [];
       for (; s >= 0 && !o; ) {
         const p = c(this, Pe)[s], w = p.getVariable();
         if (p.isInConditionalDefinition()) {
@@ -3604,7 +3604,7 @@ class pr extends ei {
         else if (!e.isInAlternateBranch(p) && !u.has(p.getBlock())) {
           n.addLastUsage(w);
           const S = p.getBlock();
-          u.add(S), S.isBranchBlock() && S.isBranchOfConditional() && (S.getBlockEntity() === t.ElseDefinition || S.getBlockEntity() === t.ExceptDefinition ? h.push(/* @__PURE__ */ new Set([...S.getSiblingConditionalBranches()])) : S.isBranchOfExhaustiveConditional() && (o = m(this, Ae, ci).call(this, S, e.getBlock(), h, u)));
+          u.add(S), S.isBranchBlock() && S.isBranchOfConditional() && (S.getBlockEntity() === t.ElseDefinition || S.getBlockEntity() === t.ExceptDefinition ? f.push(/* @__PURE__ */ new Set([...S.getSiblingConditionalBranches()])) : S.isBranchOfExhaustiveConditional() && (o = m(this, Ae, ci).call(this, S, e.getBlock(), f, u)));
         }
         s--;
       }
@@ -3720,12 +3720,12 @@ ci = function(e, n, s, o) {
       if (e.getParentBlock().hasChild(n))
         return !0;
       o.add(e.getParentBlock());
-      const h = e.getParentBlock();
-      if (h.isBranchBlock()) {
-        if (h.getBlockEntity() === t.ElseDefinition || h.getBlockEntity() === t.ExceptDefinition)
-          s.push(/* @__PURE__ */ new Set([...h.getSiblingConditionalBranches()]));
-        else if (h.isBranchOfExhaustiveConditional())
-          return m(this, Ae, ci).call(this, h, n, s, o);
+      const f = e.getParentBlock();
+      if (f.isBranchBlock()) {
+        if (f.getBlockEntity() === t.ElseDefinition || f.getBlockEntity() === t.ExceptDefinition)
+          s.push(/* @__PURE__ */ new Set([...f.getSiblingConditionalBranches()]));
+        else if (f.isBranchOfExhaustiveConditional())
+          return m(this, Ae, ci).call(this, f, n, s, o);
       }
     }
   return !1;
@@ -3738,8 +3738,8 @@ xr = function(e) {
   var o;
   const n = [], s = e.getUsages();
   if (s.length === 1) {
-    const h = s[0].getVariable(), p = h.getParent() && h.getParent().is(t.MethodDefinitionStatement) && h.getParent().getClassVar().getTextValue() === h.getTextValue();
-    s.length === 1 && h.isAssignedOrChanged() && !p && !m(o = e, Ae, Dr).call(o, h) && h.getDataType() !== d.Undefined && n.push(x.createStatementSymptom(b.UnusedVariable, [s[0].getVariable()], 0, 0));
+    const f = s[0].getVariable(), p = f.getParent() && f.getParent().is(t.MethodDefinitionStatement) && f.getParent().getClassVar().getTextValue() === f.getTextValue();
+    s.length === 1 && f.isAssignedOrChanged() && !p && !m(o = e, Ae, Dr).call(o, f) && f.getDataType() !== d.Undefined && n.push(x.createStatementSymptom(b.UnusedVariable, [s[0].getVariable()], 0, 0));
   }
   return n;
 }, /**
@@ -4448,18 +4448,18 @@ Lr = function(e) {
   let s = e.getStatements();
   s.length === 1 && s[0].isBlockStatement() && s[0].getFirstExpression().getBlockId() === e.getId() && (s = s[0].getStatements().slice(1));
   for (let u = 0; u < s.length; u++) {
-    const h = s[u].getFirstExpression();
-    if (h.is(t.WhileDefinitionStatement) && m(o = e, J, Vr).call(o, s[u])) {
+    const f = s[u].getFirstExpression();
+    if (f.is(t.WhileDefinitionStatement) && m(o = e, J, Vr).call(o, s[u])) {
       const p = s[u].getDefinitionStatement().getFirstExpression();
       if (n.push(x.createStatementSymptom(b.InfiniteLoop, [p], 0, 0)), u < s.length - 1) {
         const w = xs(s.slice(u + 1));
         n.push(x.createStatementSymptom(b.UnreachableInfiniteLoop, w, 0, w.length - 1, {
-          infiniteLoopLine: h.getStartLineNumber()
+          infiniteLoopLine: f.getStartLineNumber()
         }));
       }
     }
-    if (zt(h) && u < s.length - 1) {
-      const p = s.slice(u + 1), w = xs(p), S = h.getFirstExpressionOf([t.ReturnKeyword, t.BreakKeyword, t.ExitFunction, t.SysExit, t.QuitFunction]);
+    if (zt(f) && u < s.length - 1) {
+      const p = s.slice(u + 1), w = xs(p), S = f.getFirstExpressionOf([t.ReturnKeyword, t.BreakKeyword, t.ExitFunction, t.SysExit, t.QuitFunction]);
       n.push(x.createStatementSymptom(b.UnreachableExit, w, 0, w.length - 1, {
         exitKeyword: S !== void 0 ? S.getTextValue() : "undefined"
       }));
@@ -4474,8 +4474,8 @@ Lr = function(e) {
 Vr = function(e) {
   const o = e.getDefinitionStatement().getFirstExpression().getVariableExpressions();
   for (const u of e.getStatements()) {
-    const h = u.getExpressions();
-    for (const p of h) {
+    const f = u.getExpressions();
+    for (const p of f) {
       if (zt(p))
         return !1;
       const w = p.getVariableExpressions().filter((F) => F.isAssignedOrChanged()), S = new Set(w.map((F) => F.getTextValue()));
@@ -4495,16 +4495,16 @@ vr = function(e) {
   for (const s of e.getChildBlocks())
     if (s.getBlockEntity() === t.IfDefinition && s.isBranchOfExhaustiveConditional() && s.hasTopLevelExit()) {
       const o = s.getSiblingConditionalBranches();
-      let u = !0, h = -1;
+      let u = !0, f = -1;
       for (const p of o) {
         if (!p.hasTopLevelExit()) {
           u = !1;
           break;
         }
-        p.getBlockEntity() === t.ElseDefinition && (h = p.getStartLine());
+        p.getBlockEntity() === t.ElseDefinition && (f = p.getStartLine());
       }
-      if (u && h > 0) {
-        const p = e.getStatements().filter((w) => w.getFirstLineNumber() > h);
+      if (u && f > 0) {
+        const p = e.getStatements().filter((w) => w.getFirstLineNumber() > f);
         if (p.length > 0) {
           const w = xs(p);
           n.push(x.createStatementSymptom(b.UnreachableExhaustiveConditional, w, 0, w.length - 1));
@@ -4518,14 +4518,14 @@ vr = function(e) {
  * @returns {Symptom[]}
  */
 Rr = function(e) {
-  var u, h, p, w;
+  var u, f, p, w;
   const n = [];
   let s = e.getStatements();
   s.length === 1 && s[0].isBlockStatement() && (s = s[0].getStatements().slice(1));
   let o = [];
   for (let S = 0; S < s.length - 1; S++) {
     const F = s[S].getFirstExpression(), N = s[S + 1].getFirstExpression();
-    if (F.is(t.IfDefinitionStatement) && N.is(t.IfDefinitionStatement) && !m(u = e, J, ui).call(u, s[S]) && !m(h = e, J, ui).call(h, s[S + 1]))
+    if (F.is(t.IfDefinitionStatement) && N.is(t.IfDefinitionStatement) && !m(u = e, J, ui).call(u, s[S]) && !m(f = e, J, ui).call(f, s[S + 1]))
       o.length === 0 && o.push(s[S]), o.push(s[S + 1]);
     else if (o.length > 0) {
       const v = m(p = e, J, di).call(p, o);
@@ -4558,10 +4558,10 @@ di = function(e) {
   const n = [];
   let s = [];
   for (let u = 0; u < e.length - 1; u++) {
-    let h = e[u].getFirstExpression().getCondition();
-    h = h.length === 1 && h[0].is(t.GroupStatement) ? h[0].getContents() : h;
+    let f = e[u].getFirstExpression().getCondition();
+    f = f.length === 1 && f[0].is(t.GroupStatement) ? f[0].getContents() : f;
     let p = e[u + 1].getFirstExpression().getCondition();
-    p = p.length === 1 && p[0].is(t.GroupStatement) ? p[0].getContents() : p, m(this, J, hi).call(this, h, p) && m(this, J, hi).call(this, p, h) ? ((s.length === 0 || s[s.length - 1].docIndex !== e[u].getFirstExpression().getDocumentStartIndex()) && s.push({
+    p = p.length === 1 && p[0].is(t.GroupStatement) ? p[0].getContents() : p, m(this, J, hi).call(this, f, p) && m(this, J, hi).call(this, p, f) ? ((s.length === 0 || s[s.length - 1].docIndex !== e[u].getFirstExpression().getDocumentStartIndex()) && s.push({
       lineNum: e[u].getFirstExpression().getStartLineNumber(),
       docIndex: e[u].getFirstExpression().getDocumentStartIndex()
     }), s.push({
@@ -4600,7 +4600,7 @@ hi = function(e, n) {
  * @returns {Symptom[]}
  */
 Ur = function(e) {
-  var u, h, p, w;
+  var u, f, p, w;
   const n = (S) => {
     try {
       const N = S.getFirstExpression().getCondition();
@@ -4616,34 +4616,34 @@ Ur = function(e) {
     let F = {};
     const N = o[S].getFirstExpression(), v = o[S + 1].getFirstExpression();
     if (N.is(t.IfDefinitionStatement)) {
-      const R = o[S].getStatements();
+      const A = o[S].getStatements();
       if (v.is(t.ElseDefinitionStatement)) {
         const O = o[S + 1].getStatements();
-        if (R.length === 2 && O.length === 2 && m(u = e, J, gi).call(u, R[1], O[1])) {
-          const Ft = n(R[0]);
+        if (A.length === 2 && O.length === 2 && m(u = e, J, gi).call(u, A[1], O[1])) {
+          const Ft = n(A[0]);
           F = {
             form: oi,
             condition: Ft
           };
-        } else if (R.length === 2 && O.length === 2 && m(h = e, J, fi).call(h, R[1], O[1])) {
-          const Ft = n(R[0]);
+        } else if (A.length === 2 && O.length === 2 && m(f = e, J, fi).call(f, A[1], O[1])) {
+          const Ft = n(A[0]);
           F = {
             form: ai,
-            variableAssigned: R[1].getFirstExpression().getTargetVariables()[0].getTextValue(),
+            variableAssigned: A[1].getFirstExpression().getTargetVariables()[0].getTextValue(),
             condition: Ft
           };
         }
-      } else if (R.length === 2 && m(p = e, J, gi).call(p, R[1], o[S + 1])) {
-        const O = n(R[0]);
+      } else if (A.length === 2 && m(p = e, J, gi).call(p, A[1], o[S + 1])) {
+        const O = n(A[0]);
         F = {
           form: oi,
           condition: O
         };
-      } else if (R.length === 2 && m(w = e, J, fi).call(w, R[1], o[S + 1])) {
-        const O = n(R[0]);
+      } else if (A.length === 2 && m(w = e, J, fi).call(w, A[1], o[S + 1])) {
+        const O = n(A[0]);
         F = {
           form: ai,
-          variableAssigned: R[1].getFirstExpression().getTargetVariables()[0].getTextValue(),
+          variableAssigned: A[1].getFirstExpression().getTargetVariables()[0].getTextValue(),
           condition: O
         };
       }
@@ -4663,8 +4663,8 @@ Ur = function(e) {
 fi = function(e, n) {
   const s = e.getFirstExpression(), o = n.getFirstExpression();
   if (s.getDataType() === d.Bool && o.getDataType() === d.Bool && s.is(t.AssignmentStatement) && o.is(t.AssignmentStatement)) {
-    const u = m(this, J, Rn).call(this, s.getAssignedValues()), h = m(this, J, Rn).call(this, o.getAssignedValues()), p = s.getTargetVariables(), w = o.getTargetVariables();
-    return u.length !== 1 || h.length !== 1 || p.length !== 1 || w.length !== 1 ? !1 : p[0].getTextValue() === w[0].getTextValue() && m(this, J, pi).call(this, u[0], h[0]);
+    const u = m(this, J, Rn).call(this, s.getAssignedValues()), f = m(this, J, Rn).call(this, o.getAssignedValues()), p = s.getTargetVariables(), w = o.getTargetVariables();
+    return u.length !== 1 || f.length !== 1 || p.length !== 1 || w.length !== 1 ? !1 : p[0].getTextValue() === w[0].getTextValue() && m(this, J, pi).call(this, u[0], f[0]);
   }
   return !1;
 }, /**
@@ -4676,8 +4676,8 @@ fi = function(e, n) {
 gi = function(e, n) {
   const s = e.getFirstExpression(), o = n.getFirstExpression();
   if (s.getDataType() === d.Bool && o.getDataType() === d.Bool && s.is(t.ReturnStatement) && o.is(t.ReturnStatement)) {
-    const u = m(this, J, Rn).call(this, s.getReturnedValue()), h = m(this, J, Rn).call(this, o.getReturnedValue());
-    return u.length !== 1 || h.length !== 1 ? !1 : m(this, J, pi).call(this, u[0], h[0]);
+    const u = m(this, J, Rn).call(this, s.getReturnedValue()), f = m(this, J, Rn).call(this, o.getReturnedValue());
+    return u.length !== 1 || f.length !== 1 ? !1 : m(this, J, pi).call(this, u[0], f[0]);
   }
   return !1;
 }, /**
@@ -4941,8 +4941,8 @@ const Es = class Es extends Cs {
     I(this, es);
     const s = n.getFirstExpression(), o = s.getEntity() === t.FunctionDefinitionStatement ? s.getFunctionNameExpression() : s.getMethodNameExpression();
     if (y(this, es, o !== void 0 ? o.getTextValue() : "not parsed"), e.getScope().addUserDefinedFunction(o), s.is(t.MethodDefinitionStatement) && s.getClassVar() && e.getBlockEntity() === t.ClassDefinition) {
-      const h = e.getStatements()[0].getFirstExpression().getDataType();
-      s.getClassVar().setDataType(h);
+      const f = e.getStatements()[0].getFirstExpression().getDataType();
+      s.getClassVar().setDataType(f);
     }
     this.addStatement(n), this.addRules([m(this, Us, Er)]);
   }
@@ -4994,9 +4994,9 @@ Er = function(e) {
   var o;
   const n = [], s = e.getFunctionExpression();
   if (s !== void 0) {
-    const u = e.getStatements(), h = m(o = Es, ts, wi).call(o, u);
-    h.length > 0 && n.push(x.createStatementSymptom(b.FunctionPrints, [s], 0, 0, {
-      printLines: h,
+    const u = e.getStatements(), f = m(o = Es, ts, wi).call(o, u);
+    f.length > 0 && n.push(x.createStatementSymptom(b.FunctionPrints, [s], 0, 0, {
+      printLines: f,
       functionReturns: s.getReturnType() !== d.None
     }));
   }
@@ -5222,11 +5222,11 @@ Kr = function(e) {
     for (const p of e.getSiblingConditionalBranches())
       if (!p.hasTopLevelExit())
         return n;
-    const u = e.getParentBlock().getStatements()[0].getExpressions(), h = u.flatMap((p) => p.getExpressionsOfKind(t.ReturnKeyword).concat(p.getExpressionsOfKind(t.BreakKeyword), p.getExpressionsOfKind(t.ExitFunction), p.getExpressionsOfKind(t.SysExit), p.getExpressionsOfKind(t.QuitFunction))).map((p) => p.getTextValue());
+    const u = e.getParentBlock().getStatements()[0].getExpressions(), f = u.flatMap((p) => p.getExpressionsOfKind(t.ReturnKeyword).concat(p.getExpressionsOfKind(t.BreakKeyword), p.getExpressionsOfKind(t.ExitFunction), p.getExpressionsOfKind(t.SysExit), p.getExpressionsOfKind(t.QuitFunction))).map((p) => p.getTextValue());
     n.push(x.createStatementSymptom(b.LoopReturn, [u[0]], 0, 0, {
       loopType: e.getParentBlock().getBlockEntity().name,
       exitLevel: cc,
-      exitTypes: h
+      exitTypes: f
     }, e.getParentBlock().getId()));
   }
   return n;
@@ -5239,32 +5239,32 @@ Wr = function(e) {
   var s, o;
   const n = [];
   if (e.getBlockEntity() === t.WhileDefinition) {
-    const u = m(s = e, K, He).call(s)[0].getFirstExpression(), h = new Set(u.getVariableExpressions().map((F) => F.getTextValue())), p = m(o = e, K, He).call(o).slice(1), w = /* @__PURE__ */ new Map(), S = /* @__PURE__ */ new Map();
-    for (const F of h)
+    const u = m(s = e, K, He).call(s)[0].getFirstExpression(), f = new Set(u.getVariableExpressions().map((F) => F.getTextValue())), p = m(o = e, K, He).call(o).slice(1), w = /* @__PURE__ */ new Map(), S = /* @__PURE__ */ new Map();
+    for (const F of f)
       w.set(F, !1), S.set(F, []);
     for (const F of p)
       for (const N of F.getExpressions()) {
-        const v = N.getExpressionsOfKind(t.ChangeStatement).flatMap((O) => O.getTargetVariables()).filter((O) => h.has(O.getTextValue())), R = N.getExpressionsOfKind(t.AssignmentStatement).flatMap((O) => O.getTargetVariables()).filter((O) => h.has(O.getTextValue()));
+        const v = N.getExpressionsOfKind(t.ChangeStatement).flatMap((O) => O.getTargetVariables()).filter((O) => f.has(O.getTextValue())), A = N.getExpressionsOfKind(t.AssignmentStatement).flatMap((O) => O.getTargetVariables()).filter((O) => f.has(O.getTextValue()));
         for (const O of v)
           w.has(O.getTextValue()) && w.set(O.getTextValue(), !0);
-        for (const O of R)
+        for (const O of A)
           S.has(O.getTextValue()) && S.get(O.getTextValue()).push(O);
       }
-    for (const F of h)
+    for (const F of f)
       if (!w.get(F) && S.get(F).length > 0) {
         let N = [], v = !1;
-        for (const R of S.get(F)) {
-          const O = R.getParent().getAssignedValues();
+        for (const A of S.get(F)) {
+          const O = A.getParent().getAssignedValues();
           if (O.length === 1 && O[0].is(t.IntLiteral))
-            N.push(R);
+            N.push(A);
           else {
             v = !0;
             break;
           }
         }
         if (!v)
-          for (const R of N)
-            n.push(x.createStatementSymptom(b.WhileLoopVarAssignedIntLiteral, [R], 0, 0));
+          for (const A of N)
+            n.push(x.createStatementSymptom(b.WhileLoopVarAssignedIntLiteral, [A], 0, 0));
       }
   }
   return n;
@@ -5277,20 +5277,20 @@ qr = function(e) {
   var s, o, u;
   const n = [];
   if (e.getBlockEntity() === t.WhileDefinition) {
-    const h = m(s = e, K, He).call(s)[0].getFirstExpression(), p = new Set(h.getVariableExpressions());
+    const f = m(s = e, K, He).call(s)[0].getFirstExpression(), p = new Set(f.getVariableExpressions());
     if (p.size > 0) {
       const w = m(o = e, K, Si).call(o, p), S = /* @__PURE__ */ new Set(), F = /* @__PURE__ */ new Map();
       for (const N of p) {
         const v = w.get(N);
-        for (const R of v) {
-          R === e && S.add(N);
-          const O = R.getNearestParentOfAny([t.WhileDefinition, t.ForDefinition]);
+        for (const A of v) {
+          A === e && S.add(N);
+          const O = A.getNearestParentOfAny([t.WhileDefinition, t.ForDefinition]);
           O !== void 0 && O !== e && e.hasChild(O) ? (F.has(N) || F.set(N, /* @__PURE__ */ new Set()), F.get(N).add(O)) : O !== void 0 && O === e && S.add(N);
         }
       }
       S.size === 0 && n.push(x.createStatementSymptom(
         b.LoopVarNotModified,
-        [h],
+        [f],
         0,
         0,
         {
@@ -5300,17 +5300,17 @@ qr = function(e) {
         e.getId()
       ));
       for (const [N, v] of F) {
-        const R = x.createStatementSymptom(b.LoopVarModifiedInChildLoop, [N], 0, 0, {
+        const A = x.createStatementSymptom(b.LoopVarModifiedInChildLoop, [N], 0, 0, {
           modifiedIn: [],
           varDataType: []
         }, e.getId());
         for (const O of v)
-          R.getAdditionalInfo().modifiedIn.push({
+          A.getAdditionalInfo().modifiedIn.push({
             loopType: O.getBlockEntity().name,
             startLine: O.getStatements()[0].getFirstLineNumber(),
             varDataType: N.getDataType().name
           });
-        n.push(R);
+        n.push(A);
       }
     }
   }
@@ -5321,17 +5321,17 @@ qr = function(e) {
   for (const u of e)
     s.set(u, /* @__PURE__ */ new Set());
   for (const u of n) {
-    const h = u.getExpressions();
-    for (const p of h) {
+    const f = u.getExpressions();
+    for (const p of f) {
       const w = p.getVariableExpressions().filter((F) => F.isAssignedOrChanged()), S = new Set(w.map((F) => F.getTextValue()));
       for (const F of e)
         S.has(F.getTextValue()) && s.get(F).add(this);
     }
   }
-  for (const u of this.getChildBlocks().filter((h) => h.isBranchBlock())) {
-    const h = m(o = u, K, Si).call(o, e);
+  for (const u of this.getChildBlocks().filter((f) => f.isBranchBlock())) {
+    const f = m(o = u, K, Si).call(o, e);
     for (const p of e)
-      h.get(p).size > 0 && s.get(p).add(...h.get(p));
+      f.get(p).size > 0 && s.get(p).add(...f.get(p));
   }
   return s;
 };
@@ -5342,7 +5342,7 @@ class En {
     multilineCommentDelimiter: s = void 0,
     stringLiteralDelimiter: o = void 0,
     groupCharCounts: u = { "(": 0, "[": 0, "{": 0 },
-    lastLineExpressions: h = [],
+    lastLineExpressions: f = [],
     startFrom: p = 0,
     moduleNames: w = [],
     varsWithTypeNames: S = [],
@@ -5381,7 +5381,7 @@ class En {
     // The index of the last character in this statement. Will generally be the end of the text but may be earlier if the line contains a line separator such as : or ;
     /** @type {Symptom[]} */
     I(this, tr, []);
-    y(this, U, i), y(this, ht, c(this, U).length - 1), y(this, Me, e), y(this, Ve, n), y(this, Ke, s), y(this, Fe, o), y(this, he, u), y(this, Vt, m(this, T, Hr).call(this, i)), y(this, ss, new kr(i.substring(0, c(this, Vt)))), y(this, Lt, h), c(this, U).length > 0 ? m(this, T, jr).call(this, p > 0 ? p : c(this, Vt), S, w, F) : m(this, T, Ii).call(this);
+    y(this, U, i), y(this, ht, c(this, U).length - 1), y(this, Me, e), y(this, Ve, n), y(this, Ke, s), y(this, Fe, o), y(this, he, u), y(this, Vt, m(this, T, Hr).call(this, i)), y(this, ss, new kr(i.substring(0, c(this, Vt)))), y(this, Lt, f), c(this, U).length > 0 ? m(this, T, jr).call(this, p > 0 ? p : c(this, Vt), S, w, F) : m(this, T, Ii).call(this);
   }
   //#endregion - parsing operators
   //#endregion - parsing helper methods
@@ -5504,16 +5504,16 @@ class En {
 }
 Y = new WeakMap(), Lt = new WeakMap(), ns = new WeakMap(), on = new WeakMap(), Ke = new WeakMap(), Fe = new WeakMap(), U = new WeakMap(), Vt = new WeakMap(), ss = new WeakMap(), Me = new WeakMap(), Ve = new WeakMap(), he = new WeakMap(), ht = new WeakMap(), tr = new WeakMap(), T = new WeakSet(), //#region - raw text parsing
 jr = function(i, e, n, s) {
-  c(this, Ke) !== void 0 ? i = m(this, T, bi).call(this, c(this, Ke), 0) + 1 : c(this, Fe) !== void 0 && (i = m(this, T, yi).call(this, V.getCategory(c(this, Fe).charCodeAt(0)), 0) + 1);
+  c(this, Ke) !== void 0 ? i = m(this, T, bi).call(this, c(this, Ke), 0) + 1 : c(this, Fe) !== void 0 && (i = m(this, T, yi).call(this, R.getCategory(c(this, Fe).charCodeAt(0)), 0) + 1);
   for (let o = i; o < c(this, U).length; o++) {
-    const u = V.getCategory(c(this, U).charCodeAt(o));
-    if (u === V.Hash)
+    const u = R.getCategory(c(this, U).charCodeAt(o));
+    if (u === R.Hash)
       o = c(this, U).length - 1;
     else if (u.isQuote())
       o = m(this, T, Qr).call(this, u, o);
     else if (m(this, T, _r).call(this, u))
       o = m(this, T, eo).call(this, o, e, n, s);
-    else if (m(this, T, lo).call(this, u, o, o === 0 || V.getCategory(c(this, U).charCodeAt(o - 1)) === V.Space))
+    else if (m(this, T, lo).call(this, u, o, o === 0 || R.getCategory(c(this, U).charCodeAt(o - 1)) === R.Space))
       o = m(this, T, uo).call(this, o);
     else if (m(this, T, ho).call(this, u))
       o = m(this, T, fo).call(this, o);
@@ -5539,7 +5539,7 @@ Ii = function() {
   (c(this, Ke) !== void 0 || c(this, Fe) !== void 0 || this.hasOpenGroupChars() || m(this, T, Je).call(this) && m(this, T, be).call(this).isOneOf([t.ContinuationLine, t.AddOperator, t.Comma])) && y(this, ns, !0);
 }, zr = function() {
   const i = c(this, U).substring(c(this, ht) + 1).trim();
-  i.length === 0 || V.getCategory(i.charCodeAt(0)) === V.Hash ? y(this, on, !1) : y(this, on, !0);
+  i.length === 0 || R.getCategory(i.charCodeAt(0)) === R.Hash ? y(this, on, !1) : y(this, on, !0);
 }, /**
  * Searches the expressions for the given entitiy.
  * @param {ExpressionEntity} entity 
@@ -5610,18 +5610,18 @@ yi = function(i, e) {
   const n = m(this, T, Fi).call(this, c(this, U)), s = c(this, Fe) === void 0 ? m(this, T, Zr).call(this, i, e, n) : c(this, Fe);
   let o = c(this, Fe) === void 0 ? e + s.length : e, u = o + n.substring(o).indexOf(s);
   u === -1 || u < o ? (y(this, Fe, s), u = c(this, U).length) : y(this, Fe, void 0);
-  const h = Math.min(c(this, U).length - 1, u + s.length - 1), p = c(this, U).substring(e, h + 1), w = new oa(
+  const f = Math.min(c(this, U).length - 1, u + s.length - 1), p = c(this, U).substring(e, f + 1), w = new oa(
     p,
     c(this, Me),
     c(this, Ve) + e,
     e,
-    c(this, Ve) + h
+    c(this, Ve) + f
   );
   if (m(this, T, Je).call(this) && m(this, T, be).call(this).is(t.F)) {
     const S = [m(this, T, be).call(this), w], F = new iu(oe(S), S);
     c(this, Y)[c(this, Y).length - 1] = F;
   } else c(this, Y).push(w);
-  return h;
+  return f;
 }, /**
  * Gets the string value of the string delimiter
  * @param {Character} quoteChar The quote Character
@@ -5630,8 +5630,8 @@ yi = function(i, e) {
  * @returns {String} The string delimiter (e.g. "\"" or "'''")
  */
 Zr = function(i, e, n) {
-  const s = i === V.SingleQuote ? "'" : '"';
-  return e < n.length - 2 && V.getCategory(n.charCodeAt(e)) === i && V.getCategory(n.charCodeAt(e + 1)) === i && V.getCategory(n.charCodeAt(e + 2)) === i ? s + s + s : s;
+  const s = i === R.SingleQuote ? "'" : '"';
+  return e < n.length - 2 && R.getCategory(n.charCodeAt(e)) === i && R.getCategory(n.charCodeAt(e + 1)) === i && R.getCategory(n.charCodeAt(e + 2)) === i ? s + s + s : s;
 }, /**
  * Removes escaped characters from a string. The escaping backslash and the character that follows
  * are replaced with spaces.
@@ -5647,7 +5647,7 @@ Fi = function(i) {
  * @returns {Boolean} True if the quote is the start of a multiline comment, false otherwise.
  */
 Yr = function(i, e) {
-  return m(this, T, Je).call(this) && m(this, T, be).call(this).is(t.AssignmentOperator) || c(this, he)["("] > 0 || c(this, he)["["] > 0 || c(this, he)["{"] > 0 ? !1 : i.isQuote() && c(this, U).length > e + 2 && V.getCategory(c(this, U).charCodeAt(e)) === i && V.getCategory(c(this, U).charCodeAt(e + 1)) === i && V.getCategory(c(this, U).charCodeAt(e + 2)) === i;
+  return m(this, T, Je).call(this) && m(this, T, be).call(this).is(t.AssignmentOperator) || c(this, he)["("] > 0 || c(this, he)["["] > 0 || c(this, he)["{"] > 0 ? !1 : i.isQuote() && c(this, U).length > e + 2 && R.getCategory(c(this, U).charCodeAt(e)) === i && R.getCategory(c(this, U).charCodeAt(e + 1)) === i && R.getCategory(c(this, U).charCodeAt(e + 2)) === i;
 }, //#endregion - parsing block comments and string literals
 //#region - parsing keywords and identifiers
 /**
@@ -5657,7 +5657,7 @@ Yr = function(i, e) {
  * @returns {Boolean} True if the character is the start of an identifier or keyword
  */
 _r = function(i) {
-  return i === V.Underscore || i === V.Letter;
+  return i === R.Underscore || i === R.Letter;
 }, /**
  * Creates an expression representing the identifier and adds it to the expressions array. 
  * Variables, function calls, and other identifiers are tracked.
@@ -5669,8 +5669,8 @@ _r = function(i) {
  */
 eo = function(i, e, n, s) {
   let o = m(this, T, to).call(this, i), u = m(this, T, no).call(this, o, m(this, T, ao).call(this, i + o.length), e, n, s);
-  const h = Gn(o, u, c(this, Me), c(this, Ve) + i, i);
-  return m(this, T, Je).call(this) && (u.entity === t.InKeyword && m(this, T, be).call(this).is(t.NotOperator) || u.entity === t.NotOperator && m(this, T, be).call(this).is(t.IsKeyword)) ? (o = oe([m(this, T, be).call(this), h]), u = new Q(u.entity === t.InKeyword ? t.NotInKeyword : t.IsNotKeyword, a.ComparisonOperators), i = m(this, T, be).call(this).getDocumentStartIndex() - c(this, Ve), c(this, Y)[c(this, Y).length - 1] = Gn(o, u, c(this, Me), m(this, T, be).call(this).getDocumentStartIndex())) : c(this, Y).push(h), i + o.length - 1;
+  const f = Gn(o, u, c(this, Me), c(this, Ve) + i, i);
+  return m(this, T, Je).call(this) && (u.entity === t.InKeyword && m(this, T, be).call(this).is(t.NotOperator) || u.entity === t.NotOperator && m(this, T, be).call(this).is(t.IsKeyword)) ? (o = oe([m(this, T, be).call(this), f]), u = new Q(u.entity === t.InKeyword ? t.NotInKeyword : t.IsNotKeyword, a.ComparisonOperators), i = m(this, T, be).call(this).getDocumentStartIndex() - c(this, Ve), c(this, Y)[c(this, Y).length - 1] = Gn(o, u, c(this, Me), m(this, T, be).call(this).getDocumentStartIndex())) : c(this, Y).push(f), i + o.length - 1;
 }, /**
  * Gets the string text of a possibile identifier or keyword. E.g., if the entity is a 
  * variable, this returns the variable name.
@@ -5680,8 +5680,8 @@ eo = function(i, e, n, s) {
 to = function(i) {
   let e = i;
   for (let n = i + 1; n < c(this, U).length; n++) {
-    const s = V.getCategory(c(this, U).charCodeAt(n));
-    if (s === V.Underscore || s === V.Letter || s === V.Digit)
+    const s = R.getCategory(c(this, U).charCodeAt(n));
+    if (s === R.Underscore || s === R.Letter || s === R.Digit)
       e = n;
     else
       break;
@@ -5699,13 +5699,13 @@ to = function(i) {
 no = function(i, e, n, s, o) {
   const u = We(i);
   if (m(this, T, Je).call(this)) {
-    const h = m(this, T, be).call(this);
-    if (h.is(t.FunctionDefinition))
+    const f = m(this, T, be).call(this);
+    if (f.is(t.FunctionDefinition))
       return o ? new Q(t.MethodName, a.Identifiers) : new Q(t.FunctionName, a.Identifiers);
-    if (h.is(t.ClassDefinition))
+    if (f.is(t.ClassDefinition))
       return new Q(t.ClassName, a.Identifiers);
-    if (h.is(t.FromKeyword) || m(this, T, Nt).call(this, t.ImportKeyword) && !m(this, T, Nt).call(this, t.FromKeyword))
-      if (h.is(t.AsKeyword) && c(this, Y).length > 1) {
+    if (f.is(t.FromKeyword) || m(this, T, Nt).call(this, t.ImportKeyword) && !m(this, T, Nt).call(this, t.FromKeyword))
+      if (f.is(t.AsKeyword) && c(this, Y).length > 1) {
         const p = c(this, Y)[c(this, Y).length - 2];
         return new Q(p.getEntity(), p.getCategory());
       } else
@@ -5715,9 +5715,9 @@ no = function(i, e, n, s, o) {
         return u.category === a.Unknown ? new Q(t.PropertyName, a.ModuleProperties) : u;
       if (m(this, T, Nt).call(this, t.FromKeyword) && m(this, T, Nt).call(this, t.ImportKeyword))
         return m(this, T, oo).call(this, i);
-      if ((i === "sep" || i === "end") && !(h.is(t.Comma) && e === "="))
+      if ((i === "sep" || i === "end") && !(f.is(t.Comma) && e === "="))
         return new Q(t.VariableName, a.Identifiers);
-      if (u.entity !== t.VariableName && hc(i) && m(this, T, Nt).call(this, t.FunctionDefinition) && h.isOneOf([t.OpenParenthesis, t.Comma]))
+      if (u.entity !== t.VariableName && hc(i) && m(this, T, Nt).call(this, t.FunctionDefinition) && f.isOneOf([t.OpenParenthesis, t.Comma]))
         return new Q(t.VariableName, a.Identifiers);
     }
   } else if (i === "sep" || i === "end")
@@ -5772,7 +5772,7 @@ zc = function(i, e) {
  * @returns {String} The next non-space character (string, not index).
  */
 ao = function(i) {
-  for (; V.getCategory(c(this, U).charCodeAt(i)) === V.Space; )
+  for (; R.getCategory(c(this, U).charCodeAt(i)) === R.Space; )
     i++;
   return c(this, U).charAt(i);
 }, //#endregion - parsing keywords and identifiers
@@ -5785,11 +5785,11 @@ ao = function(i) {
  * @returns {Boolean} True if the character at localIndex is the start of a number
  */
 lo = function(i, e, n) {
-  if (i === V.Minus && m(this, T, Je).call(this) && !n && m(this, T, be).call(this).isOneOf([a.Identifiers, t.CloseBrace, t.CloseParenthesis, t.CloseSquareBracket]))
+  if (i === R.Minus && m(this, T, Je).call(this) && !n && m(this, T, be).call(this).isOneOf([a.Identifiers, t.CloseBrace, t.CloseParenthesis, t.CloseSquareBracket]))
     return !1;
-  let s = 0, o = 0, u = 0, h = e;
-  for (; h < c(this, U).length && (i === V.Digit || i === V.Decimal || i === V.Minus && h === e); )
-    i === V.Digit ? s++ : i === V.Decimal ? o++ : u++, h++, i = V.getCategory(c(this, U).charCodeAt(h));
+  let s = 0, o = 0, u = 0, f = e;
+  for (; f < c(this, U).length && (i === R.Digit || i === R.Decimal || i === R.Minus && f === e); )
+    i === R.Digit ? s++ : i === R.Decimal ? o++ : u++, f++, i = R.getCategory(c(this, U).charCodeAt(f));
   return s >= 1 && o <= 1 && u <= 1;
 }, /**
  * Gets a complete number literal including a leading - and any decimal places
@@ -5799,8 +5799,8 @@ lo = function(i, e, n) {
 co = function(i) {
   let e = i;
   for (let n = i + 1; n < c(this, U).length; n++) {
-    const s = V.getCategory(c(this, U).charCodeAt(n));
-    if (s === V.Digit || s === V.Decimal)
+    const s = R.getCategory(c(this, U).charCodeAt(n));
+    if (s === R.Digit || s === R.Decimal)
       e = n;
     else break;
   }
@@ -5821,7 +5821,7 @@ uo = function(i) {
  * @returns {Boolean} True if the character *could* be the start of a multi character operator
  */
 ho = function(i) {
-  return i === V.Equals || i === V.Exclamation || i === V.Minus || i === V.Plus || i === V.Asterisk || i === V.ForwardSlash || i === V.Modulo || i === V.GreaterThan || i === V.LessThan;
+  return i === R.Equals || i === R.Exclamation || i === R.Minus || i === R.Plus || i === R.Asterisk || i === R.ForwardSlash || i === R.Modulo || i === R.GreaterThan || i === R.LessThan;
 }, /**
  * Identifies and adds an operator that might be multiple characters long e.g. + or ==
  * @param {Number} localIndex The local index of the first character in the operator
@@ -5839,7 +5839,7 @@ fo = function(i) {
  * @returns {Boolean} True if the current character is not a space or tab, false otherwise.
  */
 go = function(i) {
-  return i !== V.Space && i !== V.Tab;
+  return i !== R.Space && i !== R.Tab;
 }, /**
  * Creates and adds an expression for a single character
  * @param {Number} localIndex The local index of the character
@@ -5855,7 +5855,7 @@ po = function(i) {
  * @returns {Boolean} True if the character is a Python line separator, false otherwise.
  */
 mo = function(i) {
-  return i === V.Semicolon ? !0 : !!(i === V.Colon && m(this, T, Je).call(this) && c(this, Y)[0].isOneOf([t.IfDefinition, t.ElifDefinition, t.ElseDefinition, t.FunctionDefinition, t.ClassDefinition, t.ForDefinition, t.WhileDefinition, t.TryDefinition, t.ExceptDefinition]) && c(this, he)["{"] <= 0 && c(this, he)["("] <= 0 && c(this, he)["["] <= 0);
+  return i === R.Semicolon ? !0 : !!(i === R.Colon && m(this, T, Je).call(this) && c(this, Y)[0].isOneOf([t.IfDefinition, t.ElifDefinition, t.ElseDefinition, t.FunctionDefinition, t.ClassDefinition, t.ForDefinition, t.WhileDefinition, t.TryDefinition, t.ExceptDefinition]) && c(this, he)["{"] <= 0 && c(this, he)["("] <= 0 && c(this, he)["["] <= 0);
 }, /**
  * Updates the counts of open group characters (open parentheses) depending on the provided 
  * text
@@ -5895,14 +5895,14 @@ const $n = class $n {
    */
   static splitMultiple(i, e) {
     const n = [];
-    let s = 0, o = 0, u = 0, h = 0;
+    let s = 0, o = 0, u = 0, f = 0;
     for (let p = 0; p < i.length; p++)
-      if (p === h && i[p].isOneOf(e))
-        h++;
-      else if (i[p].isOneOf(e) && p > h || p === i.length - 1) {
+      if (p === f && i[p].isOneOf(e))
+        f++;
+      else if (i[p].isOneOf(e) && p > f || p === i.length - 1) {
         if (s === 0 && o === 0 && u === 0 || p === i.length - 1 && (s === 1 && i[p].is(t.CloseParenthesis) || u === 1 && i[p].is(t.CloseSquareBracket) || o === 1 && i[p].is(t.CloseBrace))) {
-          const w = i.slice(h, i[p].isOneOf(e) ? p : p + 1);
-          n.push(w), h = p + 1;
+          const w = i.slice(f, i[p].isOneOf(e) ? p : p + 1);
+          n.push(w), f = p + 1;
         }
       } else i[p].is(t.OpenParenthesis) ? s++ : i[p].is(t.CloseParenthesis) ? s-- : i[p].is(t.OpenBrace) ? o++ : i[p].is(t.CloseBrace) ? o-- : i[p].is(t.OpenSquareBracket) ? u++ : i[p].is(t.CloseSquareBracket) && u--;
     return n;
@@ -5916,17 +5916,17 @@ const $n = class $n {
     var w, S;
     const n = e.getScope();
     !i.isBlank() && i.getFirstExpression().is(t.ImportStatement) && m(w = $n, M, bo).call(w, i, n), i.isBlockStatement() && !i.isBlank() && i.getFirstExpression().is(t.ForDefinitionStatement) && (e = m(S = $n, M, Io).call(S, e));
-    const s = i.getVariableUsages(), o = n.getVariableMap(), u = n.findAllModules(), h = new Map(Array.from(u.values()).flatMap((F) => Array.from(F.getDirectImports()))), p = !i.isBlank() && i.getFirstExpression().is(t.GlobalStatement);
+    const s = i.getVariableUsages(), o = n.getVariableMap(), u = n.findAllModules(), f = new Map(Array.from(u.values()).flatMap((F) => Array.from(F.getDirectImports()))), p = !i.isBlank() && i.getFirstExpression().is(t.GlobalStatement);
     for (let [F, N] of s) {
       if (e.getBlockEntity() === t.ClassDefinition && N.length > 0 && (N[0].getParent() === void 0 || N[0].getParent().is(t.AssignmentStatement) && N[0].getParent().getTargetVariables().includes(N[0]))) {
         m(this, M, Ni).call(this, N[0], e.getClassType(), i, e, n);
         continue;
       }
-      let v = N.map((R) => new mr(R, e, p));
+      let v = N.map((A) => new mr(A, e, p));
       if (p && n.addGlobalVar(F), o.has(F)) {
         o.get(F).addUsages(v);
-        for (const R of v) {
-          const O = R.getVariable().getParent();
+        for (const A of v) {
+          const O = A.getVariable().getParent();
           if (O && O.is(t.PropertyCallExpression) && O.getObject().getDataType().isCustom) {
             const Ft = O.getObject().getDataType();
             m(this, M, Ni).call(this, O.getProperty(), Ft, i, e, n);
@@ -5935,14 +5935,14 @@ const $n = class $n {
       } else {
         if (u.has(F))
           v[0].getVariable().setDataType(Ys(u.get(F).getEntity()));
-        else if (h.has(F)) {
-          const O = Wt.has(h.get(F).entity) ? Wt.get(h.get(F).entity) : d.Unknown;
+        else if (f.has(F)) {
+          const O = Wt.has(f.get(F).entity) ? Wt.get(f.get(F).entity) : d.Unknown;
           v[0].getVariable().setDataType(O);
         }
-        const R = new pr(v[0], i, e);
-        if (v.length > 1 && R.addUsages(v.slice(1)), m(this, M, So).call(this, e, F, R.getUsages()[0].getVariable()) && this.checkIfVariableExistsInParent(R, e))
+        const A = new pr(v[0], i, e);
+        if (v.length > 1 && A.addUsages(v.slice(1)), m(this, M, So).call(this, e, F, A.getUsages()[0].getVariable()) && this.checkIfVariableExistsInParent(A, e))
           continue;
-        o.set(F, R);
+        o.set(F, A);
       }
     }
   }
@@ -5959,14 +5959,14 @@ const $n = class $n {
       let s = e[e.length - 2], o;
       if (s.isBlockStatement()) {
         o = s.getDefinitionStatement().getExpressions();
-        let u = s.getFirstExpression(), h = n.getFirstExpression();
-        if (!(u.isOneOf([t.IfDefinitionStatement, t.ElifDefinitionStatement]) && h.isOneOf([t.ElseDefinitionStatement, t.ElifDefinitionStatement]))) {
+        let u = s.getFirstExpression(), f = n.getFirstExpression();
+        if (!(u.isOneOf([t.IfDefinitionStatement, t.ElifDefinitionStatement]) && f.isOneOf([t.ElseDefinitionStatement, t.ElifDefinitionStatement]))) {
           const p = s.getExpressions();
           p[p.length - 1].addConnection(n.getFirstExpression());
           const w = s.getStatements();
           w.length > 1 && w[w.length - 1].isBlockStatement() && w[w.length - 1].getDefinitionStatement().getFirstExpression().addConnection(n.getFirstExpression());
         }
-        if (!h.isOneOf([t.ElifDefinitionStatement, t.ElseDefinitionStatement, t.ReturnStatement]) && u.isOneOf([t.IfDefinitionStatement, t.ElifDefinitionStatement, t.ElseDefinitionStatement])) {
+        if (!f.isOneOf([t.ElifDefinitionStatement, t.ElseDefinitionStatement, t.ReturnStatement]) && u.isOneOf([t.IfDefinitionStatement, t.ElifDefinitionStatement, t.ElseDefinitionStatement])) {
           const p = [];
           for (let w = e.length - 2; w >= 0; w--) {
             const S = e[w].getFirstExpression();
@@ -5995,8 +5995,8 @@ const $n = class $n {
   static connectUserDefinedFunctions(i, e) {
     const n = e.findAllFunctions(), s = e.getRootBlock().getUserDefinedClasses(), o = i.getExpressions();
     for (let u of o) {
-      const h = u.getExpressionsOfKind(t.UserDefinedFunctionCall);
-      for (let p of h) {
+      const f = u.getExpressionsOfKind(t.UserDefinedFunctionCall);
+      for (let p of f) {
         const w = p.getFunctionName();
         if (n.has(w)) {
           const S = n.get(w);
@@ -6022,13 +6022,13 @@ const $n = class $n {
     const s = i.getExpressions();
     for (let o of s) {
       const u = o.getExpressionsOfKind(t.UserDefinedMethodCall);
-      for (let h of u) {
-        const p = h.getMethodName();
+      for (let f of u) {
+        const p = f.getMethodName();
         if (n.has(p)) {
           const w = n.get(p);
-          h.setDataType(w.getDataType()), w.addObserver(h);
+          f.setDataType(w.getDataType()), w.addObserver(f);
         } else
-          e.addUnconnectedMethodCall(h);
+          e.addUnconnectedMethodCall(f);
       }
     }
   }
@@ -6047,8 +6047,8 @@ const $n = class $n {
         if (o.has(i.getName())) {
           const u = o.get(i.getName());
           i.setDefinedInBlock(u.getDefinedInBlock());
-          const h = u.getUsages();
-          return i.insertUsages(h), !0;
+          const f = u.getUsages();
+          return i.insertUsages(f), !0;
         }
         n = n.getScope().getParentBlock();
       }
@@ -6069,11 +6069,11 @@ const $n = class $n {
   //#endregion
 };
 M = new WeakSet(), Ni = function(i, e, n, s, o) {
-  const u = i.getTextValue(), h = new mr(i, s);
+  const u = i.getTextValue(), f = new mr(i, s);
   if (e.attributes.has(u))
-    e.attributes.get(u).addUsage(h);
+    e.attributes.get(u).addUsage(f);
   else {
-    const p = o.getNearestParentOfAny([t.ClassDefinition]), w = new pr(h, n, s);
+    const p = o.getNearestParentOfAny([t.ClassDefinition]), w = new pr(f, n, s);
     p && p.getClassType().name === e.name ? e.attributes.set(u, w) : console.log("add to unconnected attribute tracking");
   }
 }, So = function(i, e, n) {
@@ -6093,25 +6093,25 @@ M = new WeakSet(), Ni = function(i, e, n, s, o) {
 }, bo = function(i, e) {
   const n = i.getRawExpressions(), s = e.getModuleMap(), o = [];
   let u = !1;
-  for (const h of n)
-    if (h.isOneOf([t.ModuleName, a.BuiltInModules]))
+  for (const f of n)
+    if (f.isOneOf([t.ModuleName, a.BuiltInModules]))
       if (u)
         for (const p of o)
-          p.getEntity() === h.getEntity() && p.setAlias(h.getTextValue());
+          p.getEntity() === f.getEntity() && p.setAlias(f.getTextValue());
       else {
-        const p = new Wc(h.getTextValue(), h.getEntity());
+        const p = new Wc(f.getTextValue(), f.getEntity());
         o.push(p);
       }
-    else if (h.is(t.AsKeyword))
-      u = h;
-    else if (h.isOneOf([a.ModuleProperties, t.NamedImport]))
+    else if (f.is(t.AsKeyword))
+      u = f;
+    else if (f.isOneOf([a.ModuleProperties, t.NamedImport]))
       for (const p of o)
-        p.addDirectImport(h.getTextValue(), qc(h.getEntity(), h.getCategory()));
-    else if (h.is(t.ImportAll))
+        p.addDirectImport(f.getTextValue(), qc(f.getEntity(), f.getCategory()));
+    else if (f.is(t.ImportAll))
       for (const p of o)
         p.setImportAll();
-  for (const h of o)
-    s.set(h.getAlias(), h);
+  for (const f of o)
+    s.set(f.getAlias(), f);
 }, yo = function(i) {
   return i.length > 0 && i[0].is(a.BlockDefinitions) && !m(this, M, Fo).call(this, i);
 }, Fo = function(i) {
@@ -6157,7 +6157,7 @@ M = new WeakSet(), Ni = function(i, e, n, s, o) {
   let n = i, s;
   for (; e.length > 0 && (s === void 0 || e.length !== s.length); ) {
     const o = n[e[0][0]];
-    o.is(t.OpenParenthesis) ? n = m(this, M, Oo).call(this, e[0], n) : o.is(t.OpenSquareBracket) ? n = m(this, M, Mo).call(this, e[0], n) : n = m(this, M, Do).call(this, e[0], n), s = e, e = m(this, M, Ti).call(this, n), e.sort((u, h) => u[0] - h[0]);
+    o.is(t.OpenParenthesis) ? n = m(this, M, Oo).call(this, e[0], n) : o.is(t.OpenSquareBracket) ? n = m(this, M, Mo).call(this, e[0], n) : n = m(this, M, Do).call(this, e[0], n), s = e, e = m(this, M, Ti).call(this, n), e.sort((u, f) => u[0] - f[0]);
   }
   return n;
 }, Ti = function(i) {
@@ -6184,18 +6184,18 @@ M = new WeakSet(), Ni = function(i, e, n, s, o) {
 }, Oo = function(i, e) {
   const n = i[0], s = i[1];
   if (n > 0 && e[n - 1].isOneOf([a.BuiltInFunctions, t.FunctionName])) {
-    const u = e[n - 1].is(a.BuiltInFunctions) ? t.BuiltInFunctionCall : t.UserDefinedFunctionCall, h = m(this, M, ae).call(this, e.slice(n - 1, s + 1), u);
-    return e.slice(0, n - 1).concat([h], e.slice(s + 1));
+    const u = e[n - 1].is(a.BuiltInFunctions) ? t.BuiltInFunctionCall : t.UserDefinedFunctionCall, f = m(this, M, ae).call(this, e.slice(n - 1, s + 1), u);
+    return e.slice(0, n - 1).concat([f], e.slice(s + 1));
   } else if (n > 2 && e[n - 1].isOneOf([a.BuiltInMethods, t.MethodName, a.MagicMethods, a.ModuleFunctions]) && e[n - 2].is(t.Dot)) {
-    const u = e[n - 1].is(t.MethodName) ? t.UserDefinedMethodCall : t.BuiltInMethodCall, h = m(this, M, ae).call(this, e.slice(n - 3, s + 1), u);
-    return e.slice(0, n - 3).concat([h], e.slice(s + 1));
+    const u = e[n - 1].is(t.MethodName) ? t.UserDefinedMethodCall : t.BuiltInMethodCall, f = m(this, M, ae).call(this, e.slice(n - 3, s + 1), u);
+    return e.slice(0, n - 3).concat([f], e.slice(s + 1));
   } else if (n > 0 && e[n - 1].is(t.ExceptionName)) {
     const u = m(this, M, ae).call(this, e.slice(n - 1, s + 1), t.ExceptionCall);
     return e.slice(0, n - 1).concat([u], e.slice(s + 1));
   } else if (s > n + 1) {
-    const u = e.slice(n + 1, s), h = this.split(u, t.Comma);
-    if (h.length > 1) {
-      const p = m(this, M, ae).call(this, e.slice(n, s + 1), t.TupleDefinition, h);
+    const u = e.slice(n + 1, s), f = this.split(u, t.Comma);
+    if (f.length > 1) {
+      const p = m(this, M, ae).call(this, e.slice(n, s + 1), t.TupleDefinition, f);
       return e.slice(0, n).concat([p], e.slice(s + 1));
     }
   }
@@ -6217,11 +6217,11 @@ M = new WeakSet(), Ni = function(i, e, n, s, o) {
     a.OtherKeywords,
     t.ContinuationLine
   ])) {
-    const h = m(this, M, ae).call(this, e.slice(n, s + 1), t.ListDefinition, o);
-    return e.slice(0, n).concat([h], e.slice(s + 1));
+    const f = m(this, M, ae).call(this, e.slice(n, s + 1), t.ListDefinition, o);
+    return e.slice(0, n).concat([f], e.slice(s + 1));
   } else {
-    let h = this.split(u, t.Colon);
-    const p = m(this, M, xo).call(this, h, e, n, s) ? m(this, M, ae).call(this, e.slice(n, s + 1), t.Slice, h) : m(this, M, ae).call(this, e.slice(n, s + 1), t.IndexKey);
+    let f = this.split(u, t.Colon);
+    const p = m(this, M, xo).call(this, f, e, n, s) ? m(this, M, ae).call(this, e.slice(n, s + 1), t.Slice, f) : m(this, M, ae).call(this, e.slice(n, s + 1), t.IndexKey);
     let w = n - 1;
     for (; w >= 0 && !e[w].isOneOf([
       a.Identifiers,
@@ -6247,12 +6247,12 @@ M = new WeakSet(), Ni = function(i, e, n, s, o) {
   if (s === n + 1)
     o = m(this, M, ae).call(this, e.slice(n, s + 1), t.DictDefinition);
   else {
-    const u = e.slice(n + 1, s), h = this.split(u, t.Comma), p = [];
-    for (let w of h) {
+    const u = e.slice(n + 1, s), f = this.split(u, t.Comma), p = [];
+    for (let w of f) {
       const S = this.split(w, t.Colon);
       S.length === 2 && p.push(S);
     }
-    p.length === h.length ? o = m(this, M, ae).call(this, e.slice(n, s + 1), t.DictDefinition, p) : o = m(this, M, ae).call(this, e.slice(n, s + 1), t.SetDefinition, h);
+    p.length === f.length ? o = m(this, M, ae).call(this, e.slice(n, s + 1), t.DictDefinition, p) : o = m(this, M, ae).call(this, e.slice(n, s + 1), t.SetDefinition, f);
   }
   return e.slice(0, n).concat([o], e.slice(s + 1));
 }, ae = function(i, e, n = []) {
@@ -6475,7 +6475,7 @@ class _e extends Ps {
    * @param {Number} documentEndIndex Optional. The index of the last characters of the expression in the raw text of the document
    * @param {Number} endLineNumber Optional. The zero-indexed document line number that the expression ends on. Same as start line by default.
    */
-  constructor(e, n, s, o, u, h, p = d.NotParsed, w = u + e.length - 1, S = o) {
+  constructor(e, n, s, o, u, f, p = d.NotParsed, w = u + e.length - 1, S = o) {
     super();
     /** @type {String} */
     I(this, ft);
@@ -6511,7 +6511,7 @@ class _e extends Ps {
     I(this, rs, []);
     if (w < u)
       throw new Error("Could not create expression: end index cannot be less than start index");
-    y(this, ft, e), y(this, gt, n), y(this, pt, s), y(this, an, o), y(this, cn, u), y(this, is, h), y(this, un, w), y(this, ln, S), y(this, me, p);
+    y(this, ft, e), y(this, gt, n), y(this, pt, s), y(this, an, o), y(this, cn, u), y(this, is, f), y(this, un, w), y(this, ln, S), y(this, me, p);
   }
   /**
    * Gets the text value of the expression.
@@ -7008,11 +7008,11 @@ const Jn = class Jn extends X {
     I(this, fe);
     /** @type {Number} */
     I(this, os, 0);
-    const u = 3, h = o.length - 3;
-    if (h < u)
+    const u = 3, f = o.length - 3;
+    if (f < u)
       y(this, fe, []);
     else {
-      const w = o.slice(u, h + 1);
+      const w = o.slice(u, f + 1);
       y(this, fe, $.split(w, t.Comma)), m(this, Cn, Wo).call(this);
     }
     this.addRule(m(this, Cn, $o));
@@ -7357,11 +7357,11 @@ const $s = class $s extends X {
     I(this, Ce);
     I(this, le);
     if (m(this, Ce, Bs).call(this), this.isComplete()) {
-      const h = n.length - 2;
-      if (h < 2)
+      const f = n.length - 2;
+      if (f < 2)
         y(this, le, []);
       else {
-        const p = n.slice(2, h + 1);
+        const p = n.slice(2, f + 1);
         y(this, le, $.checkForListComp(p));
         for (let w = 0; w < c(this, le).length; w++)
           c(this, le)[w].length > 1 && (c(this, le)[w] = $.createTree(c(this, le)[w]));
@@ -7548,8 +7548,8 @@ Ho = function(e) {
 zo = function(e) {
   const n = [], s = e.getArguments();
   for (const o of s) {
-    const h = o.flatMap((p) => p.is(t.GroupStatement) ? p.getContents() : p).filter((p) => qt(p) || p.getDataType() === d.None && !p.isOneOf([t.NoneType, t.VariableName]));
-    h.length > 0 && n.push(...h.map((p) => x.createStatementSymptom(
+    const f = o.flatMap((p) => p.is(t.GroupStatement) ? p.getContents() : p).filter((p) => qt(p) || p.getDataType() === d.None && !p.isOneOf([t.NoneType, t.VariableName]));
+    f.length > 0 && n.push(...f.map((p) => x.createStatementSymptom(
       b.AssignedNone,
       [p],
       0,
@@ -7686,11 +7686,11 @@ class Xo extends X {
     I(this, Oe);
     I(this, ce);
     if (m(this, Oe, As).call(this), this.isComplete()) {
-      const h = n.length - 2;
-      if (h < 4)
+      const f = n.length - 2;
+      if (f < 4)
         y(this, ce, []);
       else {
-        let p = n.slice(4, h + 1);
+        let p = n.slice(4, f + 1);
         y(this, ce, $.checkForListComp(p));
         for (let w = 0; w < c(this, ce).length; w++)
           c(this, ce)[w].length > 1 && (c(this, ce)[w] = $.createTree(c(this, ce)[w]));
@@ -7900,8 +7900,8 @@ _o = function(e) {
 ea = function(e) {
   const n = [], s = e.getArguments();
   for (const o of s) {
-    const h = o.flatMap((p) => p.is(t.GroupStatement) ? p.getContents() : p).filter((p) => qt(p) || p.getDataType() === d.None && !p.isOneOf([t.NoneType, t.VariableName]));
-    h.length > 0 && n.push(...h.map((p) => x.createStatementSymptom(
+    const f = o.flatMap((p) => p.is(t.GroupStatement) ? p.getContents() : p).filter((p) => qt(p) || p.getDataType() === d.None && !p.isOneOf([t.NoneType, t.VariableName]));
+    f.length > 0 && n.push(...f.map((p) => x.createStatementSymptom(
       b.AssignedNone,
       [p],
       0,
@@ -7955,16 +7955,16 @@ ta = function() {
  */
 na = function(e) {
   const n = [], o = e.getObject().getDataType(), u = e.getMethod();
-  let h = !0;
+  let f = !0;
   switch (o) {
     case d.Number:
     case d.Int:
     case d.Float:
     case d.Bool:
     case d.None:
-      h = !1;
+      f = !1;
   }
-  if (h && li.has(o) && (h = li.get(o).has(u.getEntity()) || u.is(a.MagicMethods)), !h) {
+  if (f && li.has(o) && (f = li.get(o).has(u.getEntity()) || u.is(a.MagicMethods)), !f) {
     const p = e.getChildren();
     n.push(x.createStatementSymptom(
       b.UnknownMethod,
@@ -8168,8 +8168,8 @@ class oa extends su {
    * @param {Number} documentEndIndex 
    * @param {Number} endLineNumber 
    */
-  constructor(e, n, s, o, u = s + e.length, h = n) {
-    super(e, t.StringLiteral, a.Literals, n, s, o, d.String, u, h);
+  constructor(e, n, s, o, u = s + e.length, f = n) {
+    super(e, t.StringLiteral, a.Literals, n, s, o, d.String, u, f);
     I(this, Ws);
     this.addRule(m(this, Ws, aa));
   }
@@ -8363,14 +8363,14 @@ ca = function() {
   const e = [];
   if (this.isComplete()) {
     const n = this.getChildren()[1], s = n.getTextValue();
-    let o = 0, u = 0, h = -1, p = -1;
+    let o = 0, u = 0, f = -1, p = -1;
     for (let w = 0; w < s.length; w++)
       if (s.charAt(w) === "{")
-        o === 0 && (h = w + 1), o++;
+        o === 0 && (f = w + 1), o++;
       else if (o > 0)
         if (s.charAt(w) === "}") {
           if (o--, o === 0) {
-            const S = p === -1 ? s.substring(h, w) : s.substring(h, p), F = new En(S, n.getStartLineNumber(), n.getDocumentStartIndex());
+            const S = p === -1 ? s.substring(f, w) : s.substring(f, p), F = new En(S, n.getStartLineNumber(), n.getDocumentStartIndex());
             e.push($.createTree(F.getExpressions()));
           }
         } else s.charAt(w) === "[" ? u++ : s.charAt(w) === "]" ? u-- : u === 0 && s.charAt(w) === ":" && (p = w);
@@ -8487,8 +8487,8 @@ class Sr extends _e {
    * @param {Number} documentStartIndex The index of the first character of the expression in the raw text of the document
    * @param {Number} indexOnLine
    */
-  constructor(e, n, s, o, u, h) {
-    super(e, n, s, o, u, h, Ys(n));
+  constructor(e, n, s, o, u, f) {
+    super(e, n, s, o, u, f, Ys(n));
     /** @type {String} */
     I(this, mt);
     y(this, mt, e);
@@ -8561,7 +8561,7 @@ class Tn extends _e {
    * @param {Number} indexOnLine
    * @param {Boolean} proxy Optional. Used to indicate that is a "proxy" variable used to support an operation rather than a "real" instance of a variable in the source code
    */
-  constructor(e, n, s, o, u, h, p = !1) {
+  constructor(e, n, s, o, u, f, p = !1) {
     var i = (...Dd) => (super(...Dd), I(this, se), /**
      * @type {VariableExpression[]}
      */
@@ -8576,11 +8576,11 @@ class Tn extends _e {
      */
     I(this, us, !1), this);
     if (s === a.Identifiers)
-      i(e, n, s, o, u, h);
+      i(e, n, s, o, u, f);
     else if (s === a.SpecialVariables)
-      i(e, n, s, o, u, h, Ys(n));
+      i(e, n, s, o, u, f, Ys(n));
     else if (s === a.ModuleProperties)
-      i(e, n, s, o, u, h, Wt.has(n) ? Wt.get(n) : d.Unknown);
+      i(e, n, s, o, u, f, Wt.has(n) ? Wt.get(n) : d.Unknown);
     else
       throw new Error(`No constructor for VariableExpression with ${n.name}`);
     y(this, cs, p), this.addRules([m(this, se, pa), m(this, se, ga)]), this.addConstructRule(m(this, se, fa));
@@ -8730,14 +8730,14 @@ pa = function(e) {
   if (!e.getScopeId().includes("listComprehension") && !e.isProxy() && e.isAssignedOrChanged() && s.length > 0 && o !== void 0 && o.isOneOf([t.AssignmentStatement, t.IteratorExpression])) {
     if (o.is(t.AssignmentStatement) && m(u = e, se, ma).call(u, e.getTextValue(), o))
       return n;
-    let h = !0;
+    let f = !0;
     const p = e.getBlockId().split("-")[1];
     for (const w of s)
       if (w.getScopeId() === e.getScopeId() && (!w.isAssignedOrChanged() || p !== "for" && w.getBlockId() !== e.getBlockId())) {
-        h = !1;
+        f = !1;
         break;
       }
-    if (h) {
+    if (f) {
       const w = s.length === 1 && s[0].isParameter(), S = o.is(t.IteratorExpression) ? o.getParent().getTextValue() : o.getTextValue();
       n.push(x.createStatementSymptom(b.OverwrittenVariable, [e], 0, 0, {
         isParameter: w,
@@ -8817,9 +8817,9 @@ Bi = function(e) {
   if (n === void 0) return;
   const s = n.getTargetVariables(), o = n.getAssignedValues();
   let u = -1;
-  for (let h = 0; h < s.length; h++)
-    if (s[h].getTextValue() === e.getTextValue()) {
-      u = h;
+  for (let f = 0; f < s.length; f++)
+    if (s[f].getTextValue() === e.getTextValue()) {
+      u = f;
       break;
     }
   if (u > -1 && u < o.length)
@@ -8836,8 +8836,8 @@ class ri extends Tn {
    * @param {Number} documentStartIndex The index of the first character of the expression in the raw text of the document
    * @param {Number} indexOnLine
    */
-  constructor(e, n, s, o, u, h) {
-    super(e, n, s, o, u, h);
+  constructor(e, n, s, o, u, f) {
+    super(e, n, s, o, u, f);
     /** @type {DataType} */
     I(this, ds);
   }
@@ -8899,8 +8899,8 @@ class Ia extends _e {
    * @param {Number} indexOnLine
    * @param {DataType} dataType Optional. The data type of the individual expression. NotParsed by default.
    */
-  constructor(i, e, n, s, o, u, h = d.NotParsed) {
-    super(i, e, n, s, o, u, h);
+  constructor(i, e, n, s, o, u, f = d.NotParsed) {
+    super(i, e, n, s, o, u, f);
   }
   //#region - overrides
   /**
@@ -8942,8 +8942,8 @@ class ba extends Ia {
    * @param {Number} documentStartIndex The index of the first character of the expression in the raw text of the document
    * @param {Number} indexOnLine
    */
-  constructor(e, n, s, o, u, h) {
-    super(e, n, s, o, u, h, d.NotParsed);
+  constructor(e, n, s, o, u, f) {
+    super(e, n, s, o, u, f, d.NotParsed);
     I(this, hs);
     /** @type {ExpressionNode[]} */
     I(this, Xe, []);
@@ -9065,12 +9065,12 @@ class lu extends _e {
    * @param {Number} documentStartIndex The index of the first character of the expression in the raw text of the document
    * @param {Number} indexOnLine
    */
-  constructor(e, n, s, o, u, h) {
+  constructor(e, n, s, o, u, f) {
     var i = (...Bd) => (super(...Bd), I(this, Hs), this);
     if (n === t.TrueType || n === t.FalseType)
-      i(e, n, s, o, u, h, d.Bool);
+      i(e, n, s, o, u, f, d.Bool);
     else if (n === t.NoneType)
-      i(e, n, s, o, u, h, d.None);
+      i(e, n, s, o, u, f, d.None);
     else
       throw new Error(`Not a valid type value: ${n.name}`);
     this.addRule(m(this, Hs, ya));
@@ -9125,8 +9125,8 @@ class or extends _e {
    * @param {Number} indexOnLine
    * @param {DataType} dataType 
    */
-  constructor(i, e, n, s, o, u, h) {
-    super(i, e, n, s, o, u, h);
+  constructor(i, e, n, s, o, u, f) {
+    super(i, e, n, s, o, u, f);
   }
   //#region - overrides
   /**
@@ -9250,15 +9250,15 @@ class ti extends X {
     /** @type {ExpressionNode[][]} */
     I(this, _);
     y(this, _, o);
-    for (let h = 0; h < c(this, _).length; h++)
+    for (let f = 0; f < c(this, _).length; f++)
       if (s !== t.DictDefinition) {
-        c(this, _)[h].length > 1 && (c(this, _)[h] = $.createTree(c(this, _)[h]));
-        for (const p of c(this, _)[h])
+        c(this, _)[f].length > 1 && (c(this, _)[f] = $.createTree(c(this, _)[f]));
+        for (const p of c(this, _)[f])
           p.setParent(this), this.addConnection(p);
       } else
-        for (let p = 0; p < c(this, _)[h].length; p++) {
-          c(this, _)[h][p].length > 1 && (c(this, _)[h][p] = $.createTree(c(this, _)[h][p]));
-          for (const w of c(this, _)[h][p])
+        for (let p = 0; p < c(this, _)[f].length; p++) {
+          c(this, _)[f][p].length > 1 && (c(this, _)[f][p] = $.createTree(c(this, _)[f][p]));
+          for (const w of c(this, _)[f][p])
             w.setParent(this), this.addConnection(w);
         }
     this.addRule(m(this, zs, Fa));
@@ -9446,13 +9446,13 @@ class et extends X {
           y(this, re, u);
         else if (u[0].is(t.ComparisonExpression)) {
           u[0] = u[0].convertToIterator(), y(this, re, [u[0]]);
-          const h = u.slice(1).filter((p) => !p.is(t.Colon));
-          h.length > 0 && y(this, re, c(this, re).concat(h));
+          const f = u.slice(1).filter((p) => !p.is(t.Colon));
+          f.length > 0 && y(this, re, c(this, re).concat(f));
         } else
           u = [new ar(e, u)], y(this, re, u);
       else s === t.WithDefinitionStatement || s === t.ExceptDefinitionStatement ? u.length === 3 && u[1].is(t.AsKeyword) && u[2].is(t.VariableName) && y(this, re, [new Ca(e, u)]) : y(this, re, u);
-      for (const h of u)
-        h.setParent(this), this.addConnection(h);
+      for (const f of u)
+        f.setParent(this), this.addConnection(f);
     }
     s === t.WhileDefinitionStatement && this.addRule(m(this, Bn, Ta));
   }
@@ -9740,14 +9740,14 @@ Aa = function(e) {
  * @returns {Symptom[]}
  */
 ka = function(e) {
-  const n = [], u = e.getAssignedValues().flatMap((h) => h.is(t.GroupStatement) ? h.getContents() : h).filter((h) => qt(h) || h.getDataType() === d.None && !h.isOneOf([t.NoneType, t.VariableName]));
-  return u.length > 0 && n.push(...u.map((h) => x.createStatementSymptom(
+  const n = [], u = e.getAssignedValues().flatMap((f) => f.is(t.GroupStatement) ? f.getContents() : f).filter((f) => qt(f) || f.getDataType() === d.None && !f.isOneOf([t.NoneType, t.VariableName]));
+  return u.length > 0 && n.push(...u.map((f) => x.createStatementSymptom(
     b.AssignedNone,
-    [h],
+    [f],
     0,
     0,
     {
-      expression: h,
+      expression: f,
       usage: sr,
       target: c(e, z)[0].getTextValue()
     }
@@ -9847,8 +9847,8 @@ ve = new WeakMap(), De = new WeakMap(), fn = new WeakMap(), it = new WeakMap(), 
     const u = new Tn(n.getTextValue(), n.getEntity(), n.getCategory(), -1, -1, -1, !0);
     s.unshift(u);
   } else {
-    const u = n.getChildren(), h = new vs("Placeholder", [u[0], u[1]]);
-    s.unshift(h);
+    const u = n.getChildren(), f = new vs("Placeholder", [u[0], u[1]]);
+    s.unshift(f);
   }
   const o = new Rs("Placeholder", s);
   c(this, fn).push(o), n.setDataType(o.getDataType()), o.addObserver(n);
@@ -10326,15 +10326,15 @@ const Ct = class Ct extends X {
     if (n.length !== s.length) return !1;
     const o = /* @__PURE__ */ new Map();
     for (const u of n) {
-      let h = !1;
+      let f = !1;
       for (const p of s)
         if (u.matchesPattern(p)) {
-          h = !0;
+          f = !0;
           break;
         }
-      if (!h && !u.is(t.VariableName))
+      if (!f && !u.is(t.VariableName))
         return !1;
-      u.is(t.VariableName) && o.set(u.getTextValue(), h);
+      u.is(t.VariableName) && o.set(u.getTextValue(), f);
     }
     return o.size === 0 ? !0 : Array.from(o.values()).filter((u) => u === !0).length > 0;
   }
@@ -10401,14 +10401,14 @@ za = function(e) {
  * @returns {Symptom[]}
  */
 Qa = function(e) {
-  const n = [], u = e.getChildren().flatMap((h) => h.is(t.GroupStatement) ? h.getContents() : h).filter((h) => qt(h) || h.getDataType() === d.None && !h.isOneOf([t.NoneType, t.VariableName]));
-  return u.length > 0 && n.push(...u.map((h) => x.createStatementSymptom(
+  const n = [], u = e.getChildren().flatMap((f) => f.is(t.GroupStatement) ? f.getContents() : f).filter((f) => qt(f) || f.getDataType() === d.None && !f.isOneOf([t.NoneType, t.VariableName]));
+  return u.length > 0 && n.push(...u.map((f) => x.createStatementSymptom(
     b.AssignedNone,
-    [h],
+    [f],
     0,
     0,
     {
-      expression: h,
+      expression: f,
       usage: uc
     }
   ))), n;
@@ -10459,15 +10459,15 @@ const Wn = class Wn extends X {
             return u > 0 && u < n.length - 1 && w > 0 && w < s.length - 1 ? n[u - 1].matchesPattern(s[w - 1]) && n[u + 1].matchesPattern(s[w + 1]) : !1;
         return !1;
       }
-      let h = !1;
+      let f = !1;
       for (const p of s)
         if (n[u].matchesPattern(p)) {
-          h = !0;
+          f = !0;
           break;
         }
-      if (!h && !n[u].isOneOf([t.VariableName, t.BuiltInFunctionCall, t.UserDefinedFunctionCall, t.SubscriptedExpression]))
+      if (!f && !n[u].isOneOf([t.VariableName, t.BuiltInFunctionCall, t.UserDefinedFunctionCall, t.SubscriptedExpression]))
         return !1;
-      n[u].isOneOf([t.VariableName, t.BuiltInFunctionCall, t.UserDefinedFunctionCall, t.SubscriptedExpression]) && o.set(n[u].getTextValue(), h);
+      n[u].isOneOf([t.VariableName, t.BuiltInFunctionCall, t.UserDefinedFunctionCall, t.SubscriptedExpression, t.CalculatedExpression]) && o.set(n[u].getTextValue(), f);
     }
     return o.size === 0 ? !1 : Array.from(o.values()).filter((u) => u === !0).length > 0;
   }
@@ -10524,7 +10524,7 @@ Ya = function(e) {
  */
 _a = function(e) {
   const n = [], s = e.getChildren();
-  return s.length === 3 && s[1].isOneOf([t.EqualOperator, t.IsKeyword]) && s[2].isOneOf([t.TrueType, t.FalseType]) && n.push(x.createStatementSymptom(
+  return s.length === 3 && s[0].getDataType() === d.Bool && s[1].isOneOf([t.EqualOperator, t.IsKeyword]) && s[2].isOneOf([t.TrueType, t.FalseType]) && n.push(x.createStatementSymptom(
     b.CompareBoolLiteral,
     s,
     0,
@@ -10543,14 +10543,14 @@ _a = function(e) {
  * @returns {Symptom[]}
  */
 el = function(e) {
-  const n = [], u = e.getChildren().flatMap((h) => h.is(t.GroupStatement) ? h.getContents() : h).filter((h) => !(h.is(t.BuiltInFunctionCall) && h.getFunctionExpression().is(t.AssertFunction)) && (qt(h) || h.getDataType() === d.None && !h.isOneOf([t.NoneType, t.VariableName])));
-  return u.length > 0 && n.push(...u.map((h) => x.createStatementSymptom(
+  const n = [], u = e.getChildren().flatMap((f) => f.is(t.GroupStatement) ? f.getContents() : f).filter((f) => !(f.is(t.BuiltInFunctionCall) && f.getFunctionExpression().is(t.AssertFunction)) && (qt(f) || f.getDataType() === d.None && !f.isOneOf([t.NoneType, t.VariableName])));
+  return u.length > 0 && n.push(...u.map((f) => x.createStatementSymptom(
     b.AssignedNone,
-    [h],
+    [f],
     0,
     0,
     {
-      expression: h,
+      expression: f,
       usage: dc
     }
   ))), n;
@@ -10593,15 +10593,15 @@ const qn = class qn extends X {
     for (const u of n) {
       if (u.is(t.NotOperator))
         continue;
-      let h = !1;
+      let f = !1;
       for (const p of s)
         if (!p.is(t.NotOperator) && u.matchesPattern(p)) {
-          h = !0;
+          f = !0;
           break;
         }
-      if (!h && !u.is(t.VariableName))
+      if (!f && !u.is(t.VariableName))
         return !1;
-      u.is(t.VariableName) && o.set(u.getTextValue(), h);
+      u.is(t.VariableName) && o.set(u.getTextValue(), f);
     }
     return o.size === 0 ? !0 : Array.from(o.values()).filter((u) => u === !0).length > 0;
   }
@@ -10807,19 +10807,19 @@ ll = function(e) {
   for (const o of c(e, te))
     for (const u of s)
       if (o.getTextValue() === u.getTextValue()) {
-        const h = o.getLastUsages(), p = u.getLastUsages().length > 0 && u.getLastUsages()[0].isParameter();
+        const f = o.getLastUsages(), p = u.getLastUsages().length > 0 && u.getLastUsages()[0].isParameter();
         n.push(x.createStatementSymptom(b.OverwrittenVariable, [o], 0, 0, {
           isParameter: p,
-          functionBlock: p ? h[0].getBlockId() : "",
+          functionBlock: p ? f[0].getBlockId() : "",
           prevUsageIsDefinition: !1,
           overwriteType: rc,
-          overwriteValue: o.compareValues(o, [h[h.length - 1]]),
+          overwriteValue: o.compareValues(o, [f[f.length - 1]]),
           usageText: e.getParent().getTextValue(),
           overwrittenVar: [{
-            lineNumber: h[h.length - 1].getStartLineNumber(),
-            blockId: h[h.length - 1].getBlockId(),
-            docIndex: h[h.length - 1].getDocumentStartIndex(),
-            forLoopDefinition: h[h.length - 1].getParent().is(t.IteratorExpression) && h[h.length - 1].getParent().getLoopVariables().filter((w) => w.getTextValue() === h[h.length - 1].getTextValue()).length > 0
+            lineNumber: f[f.length - 1].getStartLineNumber(),
+            blockId: f[f.length - 1].getBlockId(),
+            docIndex: f[f.length - 1].getDocumentStartIndex(),
+            forLoopDefinition: f[f.length - 1].getParent().is(t.IteratorExpression) && f[f.length - 1].getParent().getLoopVariables().filter((w) => w.getTextValue() === f[f.length - 1].getTextValue()).length > 0
           }]
         }));
       }
@@ -10853,8 +10853,8 @@ class pu extends X {
     if (s.length !== 2)
       throw new Error("Lambda expects at least one argument and a return value");
     const o = $.split(s[0], t.Comma);
-    for (const h of o)
-      for (const p of h)
+    for (const f of o)
+      for (const p of f)
         p.is(t.VariableName) && (p.setAssignedOrChanged(), p.setDataType(d.Unknown));
     const u = $.createTree(s[1]);
     if (u.length !== 1)
@@ -10938,8 +10938,8 @@ ul = function(e) {
       let o = e.getParent();
       for (; o.is(t.GroupStatement); )
         o = o.getParent();
-      const u = (h) => {
-        switch (h) {
+      const u = (f) => {
+        switch (f) {
           case t.ReturnStatement.name:
             return "return";
           case t.AssignmentStatement.name:
@@ -11051,8 +11051,8 @@ class mu extends X {
     else if (n.length > 2)
       if (Hn(n, t.Comma)) {
         s = d.Tuple;
-        const o = n.slice(1), u = $.split(o, t.Comma), h = new ti(oe(o), o, t.TupleDefinition, u);
-        n = [n[0], h];
+        const o = n.slice(1), u = $.split(o, t.Comma), f = new ti(oe(o), o, t.TupleDefinition, u);
+        n = [n[0], f];
       } else
         s = d.Invalid;
     super(e, n, t.ReturnStatement, a.MultipartValue, s);
@@ -11135,14 +11135,14 @@ pl = function(e) {
  * @returns {Symptom[]}
  */
 ml = function(e) {
-  const n = [], u = e.getChildren().flatMap((h) => h.is(t.GroupStatement) ? h.getContents() : h).filter((h) => qt(h) || h.getDataType() === d.None && !h.isOneOf([t.NoneType, t.VariableName]));
-  return u.length > 0 && n.push(...u.map((h) => x.createStatementSymptom(
+  const n = [], u = e.getChildren().flatMap((f) => f.is(t.GroupStatement) ? f.getContents() : f).filter((f) => qt(f) || f.getDataType() === d.None && !f.isOneOf([t.NoneType, t.VariableName]));
+  return u.length > 0 && n.push(...u.map((f) => x.createStatementSymptom(
     b.AssignedNone,
-    [h],
+    [f],
     0,
     0,
     {
-      expression: h,
+      expression: f,
       usage: Ir
     }
   ))), n;
@@ -11156,7 +11156,7 @@ wl = function(e) {
   const n = e.getChildren(), s = [];
   for (let o = 1; o < n.length; o++)
     if (n[o].is(t.AssignmentStatement)) {
-      const u = n[o].getTargetVariables().map((h) => h.getTextValue());
+      const u = n[o].getTargetVariables().map((f) => f.getTextValue());
       s.push(x.createStatementSymptom(
         b.AssignmentInReturn,
         n,
@@ -11427,12 +11427,12 @@ Sl = function(e) {
  * Rule checker. Checks symptoms in the raw expressions
  */
 Il = function(e) {
-  var o, u, h;
+  var o, u, f;
   const n = e.getRawExpressions(), s = [];
   for (let p = 0; p < n.length; p++)
     m(o = Ot, yt, Fl).call(o, n, p) && s.push(x.createStatementSymptom(b.NaturalLanguageBoolean, n, p, p + 1, {
       form: ac
-    })), m(u = Ot, yt, Tl).call(u, n, p) && s.push(x.createStatementSymptom(b.OutOfPlaceBooleanOperator, n, p, p)), m(h = Ot, yt, Nl).call(h, n, p) && s.push(x.createStatementSymptom(b.DoubleComparisonOperators, n, p, p + 1));
+    })), m(u = Ot, yt, Tl).call(u, n, p) && s.push(x.createStatementSymptom(b.OutOfPlaceBooleanOperator, n, p, p)), m(f = Ot, yt, Nl).call(f, n, p) && s.push(x.createStatementSymptom(b.DoubleComparisonOperators, n, p, p + 1));
   return s;
 }, /**
  * 
@@ -11515,8 +11515,8 @@ class Iu extends Jt {
         if (!e.has(o))
           e.set(o, u);
         else {
-          const h = e.get(o).concat(u);
-          e.set(o, h);
+          const f = e.get(o).concat(u);
+          e.set(o, f);
         }
     }
     return e;
@@ -11599,12 +11599,12 @@ class Iu extends Jt {
   addStatement(e, n) {
     const s = c(this, W).length > 0 && c(this, W)[c(this, W).length - 1].getExpressions().length > 0 ? c(this, W)[c(this, W).length - 1].getFirstExpression().getBlockId() : "unknown";
     c(this, W).push(e);
-    for (const h of e.getExpressions())
-      h.setBlockId(s), h.setScopeId(n.getScope().getId());
+    for (const f of e.getExpressions())
+      f.setBlockId(s), f.setScopeId(n.getScope().getId());
     const o = oe(this.getExpressions());
     this.updateRawText(o);
-    for (let h of e.getLineNumbers())
-      this.addLineNumber(h);
+    for (let f of e.getLineNumbers())
+      this.addLineNumber(f);
     $.connectVariableUsages(e, n);
     const u = n.getBlockEntity() === t.DocumentDefinition ? n : n.getParentBlock().getScope();
     $.connectUserDefinedFunctions(e, u), $.connectUserDefinedMethods(e, u), $.makeGraphConnections(c(this, W));
@@ -11643,9 +11643,9 @@ class Iu extends Jt {
 W = new WeakMap(), Ye = new WeakSet(), //#endregion - extensions
 //#region - symptoms
 Hi = function(e) {
-  var u, h, p;
+  var u, f, p;
   const n = [], s = e.getDefinitionStatement();
-  s.getFirstExpression().is(t.ForDefinitionStatement) ? n.push(...m(u = e, Ye, Ol).call(u, e, s)) : s.getFirstExpression().is(t.ExceptDefinitionStatement) && n.push(...m(h = e, Ye, Cl).call(h, e, s));
+  s.getFirstExpression().is(t.ForDefinitionStatement) ? n.push(...m(u = e, Ye, Ol).call(u, e, s)) : s.getFirstExpression().is(t.ExceptDefinitionStatement) && n.push(...m(f = e, Ye, Cl).call(f, e, s));
   const o = e.getStatements().filter((w) => w.isBlockStatement());
   for (const w of o)
     n.push(...m(p = w, Ye, Hi).call(p, w));
@@ -11660,8 +11660,8 @@ Cl = function(e, n) {
   const s = [];
   if (n.getFirstExpression().getChildren().length === 3 && n.getFirstExpression().getChildren()[1].is(t.ExceptionName)) {
     const o = n.getFirstExpression().getChildren()[1], u = e.getStatements().slice(1);
-    for (const h of u) {
-      const p = h.getFirstExpression();
+    for (const f of u) {
+      const p = f.getFirstExpression();
       if (p.is(t.ThrowStatement)) {
         const w = p.getExpressionsOfKind(t.ExceptionName);
         for (const S of w)
@@ -11678,8 +11678,8 @@ Cl = function(e, n) {
  */
 bu = function(e, n) {
   const s = [], o = n.getFirstExpression(), u = o.getVariableExpressions();
-  for (const h of e.getStatements()) {
-    const p = h.getExpressions();
+  for (const f of e.getStatements()) {
+    const p = f.getExpressions();
     for (const w of p) {
       if (zt(w))
         return s;
@@ -11699,20 +11699,25 @@ bu = function(e, n) {
 Ol = function(e, n) {
   const s = [], o = n.getFirstExpression().getCondition()[0];
   if (o !== void 0 && o.is(t.IteratorExpression)) {
-    const u = o.getLoopVariables(), h = e.getVariableUsages();
+    const u = o.getLoopVariables(), f = e.getVariableUsages();
     for (const p of u)
-      if (h.has(p.getTextValue())) {
-        const w = h.get(p.getTextValue()).filter((S) => S.getStartLineNumber() !== n.getFirstLineNumber());
-        for (let S = 0; S < w.length; S++)
-          if (w[S].isAssignedOrChanged() && !(w.slice(S + 1).filter((N) => !N.isAssignedOrChanged()).length > 0)) {
-            const N = n.getFirstExpression().getTextValue(), v = p.getDataType().name;
+      if (f.has(p.getTextValue())) {
+        const w = f.get(p.getTextValue()).filter((S) => S.getStartLineNumber() !== n.getFirstLineNumber());
+        for (let S = 0; S < w.length; S++) {
+          const F = w[S].getParent();
+          if (F.is(t.IteratorExpression) && F.getLoopVariables().filter((N) => N === w[S]).length > 0)
+            break;
+          if (w[S].isAssignedOrChanged() && !(w.slice(S + 1).filter((v) => !v.isAssignedOrChanged()).length > 0)) {
+            const v = n.getFirstExpression().getTextValue(), A = p.getDataType().name;
             s.push(x.createStatementSymptom(b.ForLoopIteratorModified, [w[S]], 0, 0, {
               // Add the for loop definition text
-              definitionText: N.trim(),
-              loopVarTypeAtDefinition: v,
+              definitionText: v.trim(),
+              loopVarTypeAtDefinition: A,
               modificationText: w[S].getParent().getTextValue()
             }));
+            break;
           }
+        }
       }
   }
   return s;
@@ -11741,16 +11746,16 @@ const yu = (g, i, e) => {
 }, Tu = (g) => {
   const i = g.filter((o) => o.getID() === b.NaturalLanguageBoolean.name && o.getAdditionalInfo().operator === "or"), e = /* @__PURE__ */ new Map(), n = [];
   for (const o of i) {
-    let u, h = o.getAdditionalInfo().tempExpression.is(t.BooleanExpression) ? o.getAdditionalInfo().tempExpression : void 0;
+    let u, f = o.getAdditionalInfo().tempExpression.is(t.BooleanExpression) ? o.getAdditionalInfo().tempExpression : void 0;
     try {
       for (u = o.getAdditionalInfo().tempExpression.getParent(); u.is(t.BooleanExpression); )
-        h = u, u = u.getParent();
+        f = u, u = u.getParent();
     } catch {
       u = void 0;
     }
     if (u)
       try {
-        u.getFirstExpressionOf(t.ComparisonExpression) && o.getAdditionalInfo().operator === "or" ? (e.has(u) || e.set(u, []), e.get(u).push(o), o.getAdditionalInfo().parentText = u.getTextValue(), o.getAdditionalInfo().parentEntity = u.getEntity(), h && (o.getAdditionalInfo().completeBooleanExpression = h.getTextValue())) : n.push(o);
+        u.getFirstExpressionOf(t.ComparisonExpression) && o.getAdditionalInfo().operator === "or" ? (e.has(u) || e.set(u, []), e.get(u).push(o), o.getAdditionalInfo().parentText = u.getTextValue(), o.getAdditionalInfo().parentEntity = u.getEntity(), f && (o.getAdditionalInfo().completeBooleanExpression = f.getTextValue())) : n.push(o);
       } catch {
         n.push(o);
       }
@@ -11759,7 +11764,7 @@ const yu = (g, i, e) => {
   }
   let s = [];
   for (const o of e.values()) {
-    o.sort((h, p) => h.getDocIndex() - p.getDocIndex());
+    o.sort((f, p) => f.getDocIndex() - p.getDocIndex());
     const u = new E(
       o,
       "One or more non-boolean value is used where a boolean expression is expected."
@@ -11811,16 +11816,16 @@ const yu = (g, i, e) => {
   }
   return e;
 }, xu = (g, i) => {
-  const e = g.filter((h) => h.getID() === b.UndefinedVariable.name), n = Array.from(i.values()).flatMap((h) => h).flatMap((h) => h.getUsages()).filter((h) => h.getVariable().getDataType() === d.Function).map((h) => h.getVariable()), s = g.filter((h) => h.getID() === b.SubscriptedNonSubscriptable.name), o = g.filter((h) => h.getID() === b.VariableWithSameNameAsFunction.name && (h.getAdditionalInfo().funcType === vn || h.getAdditionalInfo().funcType === Vn && h.getAdditionalInfo().numArgsExpected > 0));
+  const e = g.filter((f) => f.getID() === b.UndefinedVariable.name), n = Array.from(i.values()).flatMap((f) => f).flatMap((f) => f.getUsages()).filter((f) => f.getVariable().getDataType() === d.Function).map((f) => f.getVariable()), s = g.filter((f) => f.getID() === b.SubscriptedNonSubscriptable.name), o = g.filter((f) => f.getID() === b.VariableWithSameNameAsFunction.name && (f.getAdditionalInfo().funcType === vn || f.getAdditionalInfo().funcType === Vn && f.getAdditionalInfo().numArgsExpected > 0));
   let u = [];
   if (o.length === 0 || e.length === 0 && n.length === 0)
     return u;
-  for (let h of o) {
-    const p = h.getAffectedText(), w = h.getDocIndex();
+  for (let f of o) {
+    const p = f.getAffectedText(), w = f.getDocIndex();
     for (let S of e)
       if (S.getAffectedText() === p && S.getDocIndex() === w && s.filter((N) => N.getAdditionalInfo().varName === p && N.getDocIndex() === w).length === 0) {
         const N = new E(
-          [S, h],
+          [S, f],
           `The variable ${p} has not been assigned a value and the file contains a user-defined function of the same name.`
         );
         u.push(new G(S.getLineNumber(), S.getDocIndex(), N));
@@ -11828,10 +11833,10 @@ const yu = (g, i, e) => {
     for (let S of n)
       if (S.getTextValue() === p && S.getDocumentStartIndex() === w && s.filter((N) => N.getAdditionalInfo().varName === p && N.getDocIndex() === w).length === 0) {
         const N = new E(
-          [h],
+          [f],
           `The variable ${p} has not been assigned a value and the file contains a user-defined function of the same name.`
         );
-        u.push(new G(h.getLineNumber(), h.getDocIndex(), N));
+        u.push(new G(f.getLineNumber(), f.getDocIndex(), N));
       }
   }
   return u;
@@ -11840,10 +11845,10 @@ const yu = (g, i, e) => {
   let n = [];
   for (let s of i) {
     let o = s.getAdditionalInfo().varName, u = s.getDocIndex();
-    for (let h of e)
-      if (h.getAffectedText() === o && h.getDocIndex() === u) {
+    for (let f of e)
+      if (f.getAffectedText() === o && f.getDocIndex() === u) {
         const p = s.getAdditionalInfo().isUndefined ? "undefined variable" : s.getAdditionalInfo().subscriptedType === "unknown data type" ? "variable with unknown data type" : `variable with ${s.getAdditionalInfo().subscriptedType} data type`, w = new E(
-          [s, h],
+          [s, f],
           `${o} (${p}) has the same name as a function. ${o} is subscripted, suggesting a mistake may have been made while calling a function of the same name. It is possible there is confusion about when to use square brackets versus parentheses.`
         );
         n.push(new G(s.getLineNumber(), s.getDocIndex(), w));
@@ -11855,10 +11860,10 @@ const yu = (g, i, e) => {
   let n = [];
   for (let s of i) {
     const o = s.getAffectedText(), u = s.getBlock();
-    for (const h of e)
-      if (h.getBlock() === u && h.getAdditionalInfo().unmodifiedVars.includes(o)) {
+    for (const f of e)
+      if (f.getBlock() === u && f.getAdditionalInfo().unmodifiedVars.includes(o)) {
         const p = new E(
-          [s, h],
+          [s, f],
           `The int variable ${o} is referenced in a while loop condition but only modified in a nested for loop. If ${o} is being used to count the iterated items, the two loops could be replaced with a single for loop using enumerate() or range() to count the items.`
         );
         n.push(new G(s.getLineNumber(), s.getDocIndex(), p));
@@ -11881,18 +11886,18 @@ const yu = (g, i, e) => {
   const e = g.filter((s) => s.getID() === b.UndefinedVariable.name && s.getAdditionalInfo().variable.getScope().getBlockEntity() === t.DocumentDefinition);
   let n = [];
   for (let s of e) {
-    const o = s.getAdditionalInfo().variable.getName(), u = i.get(o).filter((h) => h.getScope().getBlockEntity() !== t.DocumentDefinition);
+    const o = s.getAdditionalInfo().variable.getName(), u = i.get(o).filter((f) => f.getScope().getBlockEntity() !== t.DocumentDefinition);
     if (u.length > 0) {
       s.getAdditionalInfo().localVariables = [];
       for (const p of u) {
         const w = { scope: p.getScope().getBlockEntity().name };
         p.getScope().getBlockEntity() === t.FunctionDefinition && (w.functionName = p.getScope().getFunctionName()), s.getAdditionalInfo().localVariables.push(w);
       }
-      const h = new E(
+      const f = new E(
         [s],
         `The undefined variable ${s.getAffectedText()} has global scope. The document contains ${u.length} other ${u.length === 1 ? "variable" : "variables"} with the same name in function scope.`
       );
-      n.push(new G(s.getLineNumber(), s.getDocIndex(), h));
+      n.push(new G(s.getLineNumber(), s.getDocIndex(), f));
     }
   }
   return n;
@@ -11979,16 +11984,16 @@ const yu = (g, i, e) => {
   }
   return n;
 }, Uu = (g, i) => {
-  const e = g.filter((h) => h.getID() === b.UndefinedVariable.name), n = Array.from(i.values()).flatMap((h) => h).flatMap((h) => h.getUsages()).filter((h) => h.getVariable().getDataType() === d.Function).map((h) => h.getVariable()), s = g.filter((h) => h.getID() === b.SubscriptedNonSubscriptable.name), o = g.filter((h) => h.getID() === b.VariableWithSameNameAsFunction.name && h.getAdditionalInfo().funcType === Vn && h.getAdditionalInfo().numArgsExpected === 0);
+  const e = g.filter((f) => f.getID() === b.UndefinedVariable.name), n = Array.from(i.values()).flatMap((f) => f).flatMap((f) => f.getUsages()).filter((f) => f.getVariable().getDataType() === d.Function).map((f) => f.getVariable()), s = g.filter((f) => f.getID() === b.SubscriptedNonSubscriptable.name), o = g.filter((f) => f.getID() === b.VariableWithSameNameAsFunction.name && f.getAdditionalInfo().funcType === Vn && f.getAdditionalInfo().numArgsExpected === 0);
   let u = [];
   if (o.length === 0 || e.length === 0 && n.length === 0)
     return u;
-  for (let h of o) {
-    const p = h.getAffectedText(), w = h.getDocIndex();
+  for (let f of o) {
+    const p = f.getAffectedText(), w = f.getDocIndex();
     for (let S of e)
       if (S.getAffectedText() === p && S.getDocIndex() === w && s.filter((N) => N.getAdditionalInfo().varName === p && N.getDocIndex() === w).length === 0) {
         const N = new E(
-          [S, h],
+          [S, f],
           `The variable ${p} has not been assigned a value and the file contains a user-defined function of the same name, which does not expect any arguments.`
         );
         u.push(new G(S.getLineNumber(), S.getDocIndex(), N));
@@ -11996,10 +12001,10 @@ const yu = (g, i, e) => {
     for (let S of n)
       if (S.getTextValue() === p && S.getDocumentStartIndex() === w && s.filter((N) => N.getAdditionalInfo().varName === p && N.getDocIndex() === w).length === 0) {
         const N = new E(
-          [h],
+          [f],
           `The variable ${p} has not been assigned a value and the file contains a user-defined function of the same name, which does not expect any arguments.`
         );
-        u.push(new G(h.getLineNumber(), h.getDocIndex(), N));
+        u.push(new G(f.getLineNumber(), f.getDocIndex(), N));
       }
   }
   return u;
@@ -12009,34 +12014,34 @@ const yu = (g, i, e) => {
   for (let o of i) {
     const u = o.toJSON();
     if (u.expressionNoValue.type === Vn) {
-      const h = u.expressionNoValue.value.split("(")[0], p = e.filter((S) => S.getAffectedText() === h);
+      const f = u.expressionNoValue.value.split("(")[0], p = e.filter((S) => S.getAffectedText() === f);
       if (p.length > 0) {
         const S = new E(
           [o, ...p],
-          `User-defined function ${h} prints to the console but does not return a value.`
+          `User-defined function ${f} prints to the console but does not return a value.`
         );
         s.push(new G(o.getLineNumber(), o.getDocIndex(), S));
       } else {
         const S = new E(
           [o],
-          `User-defined function ${h} does not return a value but it is used as if it does.`
+          `User-defined function ${f} does not return a value but it is used as if it does.`
         );
         s.push(new G(o.getLineNumber(), o.getDocIndex(), S));
       }
     } else if (u.expressionNoValue.type === vn && u.expressionNoValue.value.indexOf("print(") === 0) {
-      const h = new E(
+      const f = new E(
         [o],
         "The print function does not return a value but it is used as if it does."
       );
-      s.push(new G(o.getLineNumber(), o.getDocIndex(), h));
+      s.push(new G(o.getLineNumber(), o.getDocIndex(), f));
     }
   }
   for (let o of n) {
-    const h = o.toJSON().unusedFunc.value, p = e.filter((S) => S.getAffectedText() === h);
+    const f = o.toJSON().unusedFunc.value, p = e.filter((S) => S.getAffectedText() === f);
     if (p.length > 0) {
       const S = new E(
         [o, ...p],
-        `User-defined function ${h} prints to the console and returns a value but the value is not used.`
+        `User-defined function ${f} prints to the console and returns a value but the value is not used.`
       );
       s.push(new G(o.getLineNumber(), o.getDocIndex(), S));
     }
@@ -12068,7 +12073,7 @@ const yu = (g, i, e) => {
   let e = [];
   for (let n of i)
     for (let s of n.getAdditionalInfo().branchMatches) {
-      let o = s.map((h) => h.lineNum + 1).join(", "), u = o.lastIndexOf(",");
+      let o = s.map((f) => f.lineNum + 1).join(", "), u = o.lastIndexOf(",");
       o = o.substring(0, u) + " and" + o.substring(u + 1), s.length > 0 && e.push(new G(
         s[0].lineNum,
         s[0].docIndex,
@@ -12085,10 +12090,10 @@ const yu = (g, i, e) => {
   );
   let o = [];
   for (let u of s) {
-    const h = u.getAdditionalInfo().functionBlock;
+    const f = u.getAdditionalInfo().functionBlock;
     let p = "";
     for (const [S, F] of e.entries())
-      if (F.getBlockId() === h) {
+      if (F.getBlockId() === f) {
         p = S;
         break;
       }
@@ -12322,33 +12327,33 @@ class E {
 }
 yn = new WeakMap(), Fs = new WeakMap();
 const Qu = /* @__PURE__ */ new Map([
-  [P.PrintSameAsReturn, Eu],
-  [P.UnusedReturn, Gu],
-  [P.MapToBooleanWithIf, Lu],
-  [P.ComparisonWithBoolLiteral, Cu],
-  [P.DeferredReturn, Ou],
-  [P.TypeMustBeSpecified, zu],
-  [P.CompareMultipleValuesWithOr, Tu],
-  [P.ParenthesesOnlyIfArgument, Uu],
-  [P.FunctionCallsUseSquareBrackets, Du],
-  [P.FunctionCallsNoParentheses, xu],
-  [P.AssignCompares, Fu],
-  [P.ReturnCall, $u],
-  [P.SequentialIfsAreExclusive, Ju],
-  [P.WhileSameAsIf, Hu],
-  [P.IterationRequiresTwoLoops, Bu],
-  [P.StringMethodsModifyTheString, Wu],
-  [P.TypeConversionModifiesArgument, qu],
-  [P.MapToBooleanWithTernaryOperator, Vu],
-  [P.NoReservedWords, Ru],
-  [P.ParameterMustBeAssignedInFunction, Ku],
-  [P.LocalVariablesAreGlobal, ku],
-  [P.IteratorInitialisedOutsideLoop, Au],
-  [P.ForLoopVarIsLocal, Mu],
-  [P.LoopCounter, Pu],
-  [P.NoKeyword, vu],
-  [P.ColonAssigns, Nu],
-  [P.ReturnWaitsForLoop, ju]
+  [L.PrintSameAsReturn, Eu],
+  [L.UnusedReturn, Gu],
+  [L.MapToBooleanWithIf, Lu],
+  [L.ComparisonWithBoolLiteral, Cu],
+  [L.DeferredReturn, Ou],
+  [L.TypeMustBeSpecified, zu],
+  [L.CompareMultipleValuesWithOr, Tu],
+  [L.ParenthesesOnlyIfArgument, Uu],
+  [L.FunctionCallsUseSquareBrackets, Du],
+  [L.FunctionCallsNoParentheses, xu],
+  [L.AssignCompares, Fu],
+  [L.ReturnCall, $u],
+  [L.SequentialIfsAreExclusive, Ju],
+  [L.WhileSameAsIf, Hu],
+  [L.IterationRequiresTwoLoops, Bu],
+  [L.StringMethodsModifyTheString, Wu],
+  [L.TypeConversionModifiesArgument, qu],
+  [L.MapToBooleanWithTernaryOperator, Vu],
+  [L.NoReservedWords, Ru],
+  [L.ParameterMustBeAssignedInFunction, Ku],
+  [L.LocalVariablesAreGlobal, ku],
+  [L.IteratorInitialisedOutsideLoop, Au],
+  [L.ForLoopVarIsLocal, Mu],
+  [L.LoopCounter, Pu],
+  [L.NoKeyword, vu],
+  [L.ColonAssigns, Nu],
+  [L.ReturnWaitsForLoop, ju]
   //27
 ]);
 var Et, Re, St, Ns, Gt, $t, Fn, Zs, xl;
@@ -12503,14 +12508,14 @@ Qi = function(i) {
 Al = function(i, e) {
   c(this, Nn).get(i).add(e);
 };
-var Ts, Te, Se, L, kl, Tt, Pl, Ll, Vl, vl, Rl, Ul, El, Gl, $l, Jl, Xi, Zi, Kl, Wl, ql, jl, Hl, zl, Ht;
+var Ts, Te, Se, V, kl, Tt, Pl, Ll, Vl, vl, Rl, Ul, El, Gl, $l, Jl, Xi, Zi, Kl, Wl, ql, jl, Hl, zl, Ht;
 class Zu {
   /**
    * Creates a new DocInfo object from Python raw text
    * @param {string} text The raw text of the Python file
    */
   constructor(i) {
-    I(this, L);
+    I(this, V);
     /** @type {string} */
     I(this, Ts);
     // The raw text in the document
@@ -12525,7 +12530,13 @@ class Zu {
     l(this, "userDefinedClasses");
     /** @type {Map<string, ModuleInfo>} */
     l(this, "modules");
-    y(this, Ts, i), y(this, Se, new Cs()), this.variables = /* @__PURE__ */ new Map(), this.modules = /* @__PURE__ */ new Map(), x.symptoms = [], m(this, L, kl).call(this, i);
+    y(this, Ts, i), y(this, Se, new Cs()), this.variables = /* @__PURE__ */ new Map(), this.modules = /* @__PURE__ */ new Map(), x.symptoms = [];
+    try {
+      m(this, V, kl).call(this, i);
+    } catch (e) {
+      const n = `Unable to process ${i} due to error: ${e.stack}`;
+      throw new Error(n);
+    }
   }
   //#endregion
   /**
@@ -12600,7 +12611,7 @@ class Zu {
   }
   //#endregion
 }
-Ts = new WeakMap(), Te = new WeakMap(), Se = new WeakMap(), L = new WeakSet(), //#region setup
+Ts = new WeakMap(), Te = new WeakMap(), Se = new WeakMap(), V = new WeakSet(), //#region setup
 /**
  * Main processing method. Converts the raw source code to an AST
  * @param {String} text 
@@ -12611,9 +12622,9 @@ kl = function(i) {
   const n = i.split(/\r?\n/);
   if (n.length > 0) {
     let s = new En(n[0], 0, 0);
-    c(this, Te).push(Jt.createFromSource(s)), s.continuesOnNextLine() || (e = m(this, L, Zi).call(this, c(this, Te)[c(this, Te).length - 1], e));
+    c(this, Te).push(Jt.createFromSource(s)), s.continuesOnNextLine() || (e = m(this, V, Zi).call(this, c(this, Te)[c(this, Te).length - 1], e));
     for (let o = 1; o < n.length; o++) {
-      const u = e.isScopeBlock() ? m(this, L, Xi).call(this, e) : m(this, L, Xi).call(this, e.getScope()), h = Array.from(e.getScope().findAllModules().keys()), p = { varsWithTypeNames: u, moduleNames: h, classDefinitionInProgress: e.hasParentOfEntity(t.ClassDefinition) }, w = s.getDocumentStartIndex() + s.getText().length + 1;
+      const u = e.isScopeBlock() ? m(this, V, Xi).call(this, e) : m(this, V, Xi).call(this, e.getScope()), f = Array.from(e.getScope().findAllModules().keys()), p = { varsWithTypeNames: u, moduleNames: f, classDefinitionInProgress: e.hasParentOfEntity(t.ClassDefinition) }, w = s.getDocumentStartIndex() + s.getText().length + 1;
       if (s.continuesOnNextLine())
         p.groupCharCounts = s.getOpenGroupChars(), p.lastLineExpressions = s.getExpressions(), s.hasOpenComment() && (p.multilineCommentDelimiter = s.getCommentDelimiter()), s.hasOpenString() && (p.stringLiteralDelimiter = s.getStringLiteralDelimiter()), s = new En(n[o], o, w, p), c(this, Te)[c(this, Te).length - 1].continueFromSource(s);
       else if (s.followedBySeparateStatement()) {
@@ -12622,10 +12633,10 @@ kl = function(i) {
         p.startFrom = S, s = new En(n[o], o, s.getDocumentStartIndex(), p), c(this, Te).push(Jt.createFromSource(s));
       } else
         s = new En(n[o], o, w, p), c(this, Te).push(Jt.createFromSource(s));
-      s.continuesOnNextLine() || (e = m(this, L, Zi).call(this, c(this, Te)[c(this, Te).length - 1], e));
+      s.continuesOnNextLine() || (e = m(this, V, Zi).call(this, c(this, Te)[c(this, Te).length - 1], e));
     }
   }
-  m(this, L, Ll).call(this), m(this, L, Vl).call(this), m(this, L, Pl).call(this);
+  m(this, V, Ll).call(this), m(this, V, Vl).call(this), m(this, V, Pl).call(this);
 }, /**
  * Gets all the scope blocks in the document
  * @returns {ScopeBlock[]}
@@ -12633,7 +12644,7 @@ kl = function(i) {
 Tt = function() {
   return [c(this, Se)].concat(c(this, Se).getChildBlocksOfKind(t.FunctionDefinition)).concat(c(this, Se).getChildBlocksOfKind(t.ClassDefinition)).concat(c(this, Se).getChildBlocksOfKind(t.ListComprehension));
 }, Pl = function() {
-  const i = m(this, L, Tt).call(this);
+  const i = m(this, V, Tt).call(this);
   for (const e of i)
     for (const n of e.getStatements()) {
       for (const s of n.getExpressions())
@@ -12646,10 +12657,10 @@ Tt = function() {
   for (const e of this.userDefinedFunctions.values()) {
     const n = e.getParent();
     if (n !== void 0 && n.is(t.FunctionDefinitionStatement)) {
-      const s = n.getParameters().length - n.getOptionalParameterCount(), o = n.getParameters().length, u = Array.from(e.getObservers()).filter((h) => h.is(t.UserDefinedFunctionCall));
-      for (const h of u) {
-        const p = h.getArguments();
-        (p.length < s || p.length > o) && x.symptoms.push(x.createStatementSymptom(b.WrongArgNumber, [h], 0, 0, {
+      const s = n.getParameters().length - n.getOptionalParameterCount(), o = n.getParameters().length, u = Array.from(e.getObservers()).filter((f) => f.is(t.UserDefinedFunctionCall));
+      for (const f of u) {
+        const p = f.getArguments();
+        (p.length < s || p.length > o) && x.symptoms.push(x.createStatementSymptom(b.WrongArgNumber, [f], 0, 0, {
           expectedMinArgs: s,
           expectedMaxArgs: o,
           receivedArgs: p.length
@@ -12659,18 +12670,18 @@ Tt = function() {
   }
   c(this, Se).checkRules(c(this, Se));
 }, Ll = function() {
-  const i = /* @__PURE__ */ new Map(), e = m(this, L, Tt).call(this);
+  const i = /* @__PURE__ */ new Map(), e = m(this, V, Tt).call(this);
   for (const n of e) {
     const s = n.getVariableMap(), o = n.getUserDefinedFunctions();
-    for (const [u, h] of s) {
+    for (const [u, f] of s) {
       let p = !1;
-      const w = h.getUsages()[0].getVariable();
-      w.getDataType() === d.NotParsed && !w.isAssignedOrChanged() && !w.isParameter() && ($.checkIfVariableExistsInParent(h, n) ? p = !0 : o.has(u) ? w.setDataType(d.Function) : (h.getUsages()[0].getVariable().setDataType(d.Undefined), h.checkAndAdjustUndefined())), i.has(u) || i.set(u, []), p || i.get(u).push(h);
+      const w = f.getUsages()[0].getVariable();
+      w.getDataType() === d.NotParsed && !w.isAssignedOrChanged() && !w.isParameter() && ($.checkIfVariableExistsInParent(f, n) ? p = !0 : o.has(u) ? w.setDataType(d.Function) : (f.getUsages()[0].getVariable().setDataType(d.Undefined), f.checkAndAdjustUndefined())), i.has(u) || i.set(u, []), p || i.get(u).push(f);
     }
   }
   this.variables = i;
 }, Vl = function() {
-  this.userDefinedFunctions = m(this, L, El).call(this), this.userDefinedClasses = c(this, Se).getUserDefinedClasses();
+  this.userDefinedFunctions = m(this, V, El).call(this), this.userDefinedClasses = c(this, Se).getUserDefinedClasses();
   const i = c(this, Se).getChildBlocksOfKind(t.FunctionDefinition);
   for (const n of i) {
     let s = n.getLastExecutedStatements();
@@ -12680,14 +12691,14 @@ Tt = function() {
     else {
       const u = n.getParentBlock().getClassType().name;
       if (this.userDefinedClasses.has(u)) {
-        const h = this.userDefinedClasses.get(u).methods;
-        h.has(n.getFunctionName()) && h.get(n.getFunctionName()).addReturns(s, !o);
+        const f = this.userDefinedClasses.get(u).methods;
+        f.has(n.getFunctionName()) && f.get(n.getFunctionName()).addReturns(s, !o);
       }
     }
   }
-  m(this, L, Gl).call(this);
-  const e = m(this, L, Rl).call(this);
-  m(this, L, Ul).call(this, e), m(this, L, vl).call(this), m(this, L, $l).call(this);
+  m(this, V, Gl).call(this);
+  const e = m(this, V, Rl).call(this);
+  m(this, V, Ul).call(this, e), m(this, V, vl).call(this), m(this, V, $l).call(this);
 }, /**
  * Checks for a specific symptom - variables with the same name as a user defined function.
  * Can only be run after all variable and function processing is complete.
@@ -12724,12 +12735,12 @@ Rl = function() {
  */
 Ul = function(i) {
   if (i.length > 0) {
-    const e = m(this, L, Tt).call(this);
+    const e = m(this, V, Tt).call(this);
     for (const n of e) {
       const s = n.getStatements();
       for (const o of s) {
-        const h = o.getExpressions().flatMap((p) => p.getExpressionsOfKind(t.BuiltInFunctionCall)).filter((p) => i.includes(p.getFunctionName()));
-        for (const p of h)
+        const f = o.getExpressions().flatMap((p) => p.getExpressionsOfKind(t.BuiltInFunctionCall)).filter((p) => i.includes(p.getFunctionName()));
+        for (const p of f)
           i.includes(p.getFunctionName()) && p.convertToUserDefinedFunction(this.userDefinedFunctions.get(p.getFunctionName()));
       }
     }
@@ -12740,7 +12751,7 @@ Ul = function(i) {
  */
 El = function() {
   const i = /* @__PURE__ */ new Map();
-  let e = m(this, L, Tt).call(this);
+  let e = m(this, V, Tt).call(this);
   for (const n of e) {
     const s = n.getUserDefinedFunctions();
     for (const [o, u] of s)
@@ -12751,7 +12762,7 @@ El = function() {
  * Helper method to handle any calls to unknown functions
  */
 Gl = function() {
-  const i = m(this, L, Tt).call(this);
+  const i = m(this, V, Tt).call(this);
   for (const e of i) {
     const n = e.getUnconnectedFunctionCalls();
     for (let s of n)
@@ -12759,28 +12770,28 @@ Gl = function() {
         if (this.userDefinedFunctions.has(s[0])) {
           const u = this.userDefinedFunctions.get(s[0]);
           u.addObserver(o), o.setDataType(u.getReturnType());
-        } else m(this, L, Jl).call(this, s[0], e) ? o.convertToImportedFunction() : (o.setDataType(d.Unknown), x.symptoms.push(x.createStatementSymptom(b.UnknownFunction, [o], 0, 0)));
+        } else m(this, V, Jl).call(this, s[0], e) ? o.convertToImportedFunction() : (o.setDataType(d.Unknown), x.symptoms.push(x.createStatementSymptom(b.UnknownFunction, [o], 0, 0)));
   }
 }, /**
  * Helper method to handle any calls to unknown functions
  */
 $l = function() {
-  const i = m(this, L, Tt).call(this);
+  const i = m(this, V, Tt).call(this);
   for (const e of i) {
     const n = e.getUnconnectedMethodCalls();
     for (let s of n)
       for (let o of s[1]) {
         const u = o.getObject();
-        let h;
+        let f;
         if (u.getDataType().isCustom)
-          u.getDataType().methods.has(s[0]) && (h = u.getDataType().methods.get(s[0]));
+          u.getDataType().methods.has(s[0]) && (f = u.getDataType().methods.get(s[0]));
         else
           for (const p of this.userDefinedClasses.values())
             if (p.methods.has(s[0])) {
-              h = p.methods.get(s[0]);
+              f = p.methods.get(s[0]);
               break;
             }
-        h && (h.addObserver(o), o.setDataType(h.getReturnType()));
+        f && (f.addObserver(o), o.setDataType(f.getReturnType()));
       }
   }
 }, /**
@@ -12819,8 +12830,8 @@ Zi = function(i, e) {
   if (!i.isBlank()) {
     const n = i.getFirstExpression(), s = i.getIndentation(), o = n.getStartLineNumber();
     let u;
-    const h = m(this, L, ql).call(this, i);
-    e.isScopeBlock() || (u = e.getScope().getStatementToUpdate(s, o)), n.isOneOf([t.FunctionDefinitionStatement, t.MethodDefinitionStatement]) ? (e = m(this, L, Hl).call(this, e, i, s), n.is(t.MethodDefinitionStatement) && m(this, L, Wl).call(this, e, n)) : n.is(t.ClassDefinitionStatement) ? e = m(this, L, zl).call(this, e, i, s) : n.is(a.BlockDefinitionStatement) && !n.is(t.TernaryStatement) ? e = m(this, L, jl).call(this, e, i, s, u) : u !== void 0 ? (e = m(this, L, Ht).call(this, s, e, o), u.addStatement(i, e)) : (e = m(this, L, Ht).call(this, s, e, o), e.addStatement(i)), h.length > 0 && m(this, L, Kl).call(this, h, e);
+    const f = m(this, V, ql).call(this, i);
+    e.isScopeBlock() || (u = e.getScope().getStatementToUpdate(s, o)), n.isOneOf([t.FunctionDefinitionStatement, t.MethodDefinitionStatement]) ? (e = m(this, V, Hl).call(this, e, i, s), n.is(t.MethodDefinitionStatement) && m(this, V, Wl).call(this, e, n)) : n.is(t.ClassDefinitionStatement) ? e = m(this, V, zl).call(this, e, i, s) : n.is(a.BlockDefinitionStatement) && !n.is(t.TernaryStatement) ? e = m(this, V, jl).call(this, e, i, s, u) : u !== void 0 ? (e = m(this, V, Ht).call(this, s, e, o), u.addStatement(i, e)) : (e = m(this, V, Ht).call(this, s, e, o), e.addStatement(i)), f.length > 0 && m(this, V, Kl).call(this, f, e);
   }
   return e;
 }, Kl = function(i, e) {
@@ -12864,20 +12875,20 @@ ql = function(i) {
  * @returns {StatementBlock}
  */
 jl = function(i, e, n, s) {
-  const o = new Iu(e, i.getScope().getId()), u = new Gr(i, o), h = m(this, L, Ht).call(this, n, i, e.getFirstLineNumber()), p = o.getFirstExpression().isOneOf([t.ElifDefinitionStatement, t.ElseDefinitionStatement]), w = o.getFirstExpression().is(t.ExceptDefinitionStatement);
+  const o = new Iu(e, i.getScope().getId()), u = new Gr(i, o), f = m(this, V, Ht).call(this, n, i, e.getFirstLineNumber()), p = o.getFirstExpression().isOneOf([t.ElifDefinitionStatement, t.ElseDefinitionStatement]), w = o.getFirstExpression().is(t.ExceptDefinitionStatement);
   if (o.isBlockStatement() && (p || w)) {
-    const S = s ? s.getStatements() : h.getStatements(), F = S[S.length - 1], N = p ? [t.IfDefinitionStatement, t.ElifDefinitionStatement, t.ElseDefinitionStatement] : [t.TryDefinitionStatement];
+    const S = s ? s.getStatements() : f.getStatements(), F = S[S.length - 1], N = p ? [t.IfDefinitionStatement, t.ElifDefinitionStatement, t.ElseDefinitionStatement] : [t.TryDefinitionStatement];
     if (F !== void 0 && F.isBlockStatement() && F.getFirstExpression().isOneOf(N)) {
-      const v = h.getChildBlocks(), R = v[v.length - 1], O = R.getBlockEntity();
+      const v = f.getChildBlocks(), A = v[v.length - 1], O = A.getBlockEntity();
       if (p && (O === t.IfDefinition || O === t.ElifDefinition) || w && O === t.TryDefinition) {
-        const Ft = R.getSiblingConditionalBranches();
+        const Ft = A.getSiblingConditionalBranches();
         for (const ur of Ft)
           u.addSibling(ur), ur.addSibling(u);
-        R.addSibling(u), u.addSibling(R);
+        A.addSibling(u), u.addSibling(A);
       }
     }
   }
-  return h.addChildBlock(u), s ? s.addStatement(o, u) : h.addStatement(o), u;
+  return f.addChildBlock(u), s ? s.addStatement(o, u) : f.addStatement(o), u;
 }, /**
  * Helper method. Creates a block for a new function
  * @param {StatementBlock} currentBlock 
@@ -12886,7 +12897,7 @@ jl = function(i, e, n, s) {
  * @returns {StatementBlock}
  */
 Hl = function(i, e, n) {
-  i = m(this, L, Ht).call(this, n, i, e.getFirstLineNumber());
+  i = m(this, V, Ht).call(this, n, i, e.getFirstLineNumber());
   const s = new mi(i, e);
   return i.addChildBlock(s), s;
 }, /**
@@ -12897,7 +12908,7 @@ Hl = function(i, e, n) {
  * @returns {StatementBlock}
  */
 zl = function(i, e, n) {
-  i = m(this, L, Ht).call(this, n, i, e.getFirstLineNumber());
+  i = m(this, V, Ht).call(this, n, i, e.getFirstLineNumber());
   const s = new jc(i, e);
   return i.addChildBlock(s), s;
 }, /**
@@ -12948,73 +12959,74 @@ const Yu = (g) => g.hasOwnProperty("reason") && g.reason.hasOwnProperty("contrib
     for (const e of g.occurrences)
       if (Yu(e))
         switch (g.type) {
-          case P.AssignCompares.name:
+          case L.AssignCompares.name:
             i.push(ed(g.type, e));
             break;
-          case P.ColonAssigns.name:
+          case L.ColonAssigns.name:
             i.push(td(g.type, e));
             break;
-          case P.CompareMultipleValuesWithOr.name:
+          case L.CompareMultipleValuesWithOr.name:
             i.push(nd(g.type, e));
             break;
-          case P.ComparisonWithBoolLiteral.name:
+          case L.ComparisonWithBoolLiteral.name:
             i.push(sd(g.type, e));
             break;
-          case P.DeferredReturn.name:
+          case L.DeferredReturn.name:
             i.push(rd(g.type, e));
             break;
-          case P.ForLoopVarIsLocal.name:
-          // Use this for target outside loop too?
-          case P.IteratorInitialisedOutsideLoop.name:
+          case L.ForLoopVarIsLocal.name:
+          // Warning
+          case L.IteratorInitialisedOutsideLoop.name:
             i.push(od(g.type, e));
             break;
-          case P.FunctionCallsNoParentheses.name:
-          case P.ParenthesesOnlyIfArgument.name:
+          case L.FunctionCallsNoParentheses.name:
+          // Warning
+          case L.ParenthesesOnlyIfArgument.name:
             i.push(ld(g.type, e));
             break;
-          case P.IterationRequiresTwoLoops.name:
+          case L.IterationRequiresTwoLoops.name:
             i.push(cd(g.type, e));
             break;
-          case P.LocalVariablesAreGlobal.name:
+          case L.LocalVariablesAreGlobal.name:
             i.push(ud(g.type, e));
             break;
-          case P.LoopCounter.name:
+          case L.LoopCounter.name:
             i.push(ad(g.type, e));
             break;
-          case P.MapToBooleanWithIf.name:
+          case L.MapToBooleanWithIf.name:
             i.push(dd(g.type, e));
             break;
-          case P.MapToBooleanWithTernaryOperator.name:
+          case L.MapToBooleanWithTernaryOperator.name:
             i.push(hd(g.type, e));
             break;
-          case P.ParameterMustBeAssignedInFunction.name:
+          case L.ParameterMustBeAssignedInFunction.name:
             i.push(fd(g.type, e));
             break;
-          case P.PrintSameAsReturn.name:
+          case L.PrintSameAsReturn.name:
             i.push(gd(g.type, e));
             break;
-          case P.ReturnCall.name:
+          case L.ReturnCall.name:
             i.push(pd(g.type, e));
             break;
-          case P.ReturnWaitsForLoop.name:
+          case L.ReturnWaitsForLoop.name:
             i.push(bd(g.type, e));
             break;
-          case P.SequentialIfsAreExclusive.name:
+          case L.SequentialIfsAreExclusive.name:
             i.push(id(g.type, e));
             break;
-          case P.StringMethodsModifyTheString.name:
+          case L.StringMethodsModifyTheString.name:
             i.push(md(g.type, e));
             break;
-          case P.TypeConversionModifiesArgument.name:
+          case L.TypeConversionModifiesArgument.name:
             i.push(wd(g.type, e));
             break;
-          case P.TypeMustBeSpecified.name:
+          case L.TypeMustBeSpecified.name:
             i.push(Sd(g.type, e));
             break;
-          case P.UnusedReturn.name:
+          case L.UnusedReturn.name:
             i.push(Id(g.type, e));
             break;
-          case P.WhileSameAsIf.name:
+          case L.WhileSameAsIf.name:
             i.push(yd(g.type, e));
             break;
           default:
@@ -13032,15 +13044,15 @@ const Yu = (g) => g.hasOwnProperty("reason") && g.reason.hasOwnProperty("contrib
   return new j(g, n, s, o, u);
 }, nd = (g, i) => {
   const e = "NA", n = i.docIndex, s = i.reason.contributingSymptoms[0].text ? i.reason.contributingSymptoms[0].text : e, o = i.reason.contributingSymptoms[0].completeBooleanExpression ? `${i.reason.contributingSymptoms[0].completeBooleanExpression} will always be True` : "This boolean expression will always be True";
-  let u = e, h = e, p = e;
+  let u = e, f = e, p = e;
   const w = [], S = [], F = [], N = [], v = [];
   for (const O of i.reason.contributingSymptoms)
-    ot(O, b.NaturalLanguageBoolean.name) && (O.completeBooleanExpression && (u = O.completeBooleanExpression), O.parentText && (h = O.parentText), O.parentEntity && (p = O.parentEntity), O.rightSideEntity && (O.rightSideEntity === t.ComparisonExpression.name && (w.length === 0 || w[0] !== O.rightSideText) ? w.unshift(O.rightSideText) : O.rightSideEntity !== t.BooleanExpression.name && (S.length === 0 || S[0] !== O.rightSideText) && (S.unshift(O.rightSideText), N.unshift(O.rightSideEntity), F.unshift(O.rightSideType))), O.leftSideEntity && (O.leftSideEntity === t.ComparisonExpression.name ? w.unshift(O.leftSideText) : O.leftSideEntity !== t.BooleanExpression.name && (S.unshift(O.leftSideText), N.unshift(O.leftSideEntity), F.unshift(O.leftSideType))), v.unshift(O.operator));
-  const R = `${ne(g, i)}&booleanExpressionText=${u}&parentText=${h}&parentEntity=${p}&${w.map((O) => "comparisonText=" + O).join("&")}&${S.map((O) => "otherText=" + O).join("&")}&${N.map((O) => "otherEntity=" + O).join("&")}&${F.map((O) => "otherType=" + O).join("&")}&${v.map((O) => "operator=" + O).join("&")}}`;
-  return new j(g, n, s, o, R);
+    ot(O, b.NaturalLanguageBoolean.name) && (O.completeBooleanExpression && (u = O.completeBooleanExpression), O.parentText && (f = O.parentText), O.parentEntity && (p = O.parentEntity), O.rightSideEntity && (O.rightSideEntity === t.ComparisonExpression.name && (w.length === 0 || w[0] !== O.rightSideText) ? w.unshift(O.rightSideText) : O.rightSideEntity !== t.BooleanExpression.name && (S.length === 0 || S[0] !== O.rightSideText) && (S.unshift(O.rightSideText), N.unshift(O.rightSideEntity), F.unshift(O.rightSideType))), O.leftSideEntity && (O.leftSideEntity === t.ComparisonExpression.name ? w.unshift(O.leftSideText) : O.leftSideEntity !== t.BooleanExpression.name && (S.unshift(O.leftSideText), N.unshift(O.leftSideEntity), F.unshift(O.leftSideType))), v.unshift(O.operator));
+  const A = `${ne(g, i)}&booleanExpressionText=${u}&parentText=${f}&parentEntity=${p}&${w.map((O) => "comparisonText=" + O).join("&")}&${S.map((O) => "otherText=" + O).join("&")}&${N.map((O) => "otherEntity=" + O).join("&")}&${F.map((O) => "otherType=" + O).join("&")}&${v.map((O) => "operator=" + O).join("&")}}`;
+  return new j(g, n, s, o, A);
 }, sd = (g, i) => {
-  const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = e.boolValue, u = e.boolLiteral, h = u === "True" ? `${o} is boolean so == True is not needed` : `${s} is the same as not ${o}`, p = `${ne(g, i)}&text=${s}&boolValue=${o}&boolLiteral=${u}`;
-  return new j(g, n, s, h, p);
+  const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = e.boolValue, u = e.boolLiteral, f = u === "True" ? `${o} is boolean so == True is not needed` : `${s} is the same as not ${o}`, p = `${ne(g, i)}&text=${s}&boolValue=${o}&boolLiteral=${u}`;
+  return new j(g, n, s, f, p);
 }, id = (g, i) => {
   const e = i.docIndex;
   let n = i.reason.contributingSymptoms[0].text;
@@ -13053,11 +13065,11 @@ const Yu = (g) => g.hasOwnProperty("reason") && g.reason.hasOwnProperty("contrib
       s.add(O.lineNum + 1);
     });
     const S = w[0].docIndex - p.docIndex, F = S, N = w[w.length - 1].docIndex - w[0].docIndex + S, v = n.substring(N).indexOf(`
-`), R = v > -1 ? N + v : n.length;
-    n = n.substring(F, R);
+`), A = v > -1 ? N + v : n.length;
+    n = n.substring(F, A);
   }
-  const u = `Should this sequence of if statements be if${Array(s.size - 1).fill("-elif").join("")} instead?`, h = `${ne(g, i)}&fullText=${n}&${[...s].map((p) => "statementLine=" + p).join("&")}`;
-  return new j(g, e, n, u, h);
+  const u = `Should this sequence of if statements be if${Array(s.size - 1).fill("-elif").join("")} instead?`, f = `${ne(g, i)}&fullText=${n}&${[...s].map((p) => "statementLine=" + p).join("&")}`;
+  return new j(g, e, n, u, f);
 }, rd = (g, i) => {
   for (const e of i.reason.contributingSymptoms)
     if (ot(e, b.UnreachableExit.name) && e.exitKeyword === "return") {
@@ -13066,8 +13078,8 @@ const Yu = (g) => g.hasOwnProperty("reason") && g.reason.hasOwnProperty("contrib
     }
   return j.notImplemented();
 }, od = (g, i) => {
-  const e = i.reason.contributingSymptoms[0], n = e.text, s = e.usageText, o = e.overwrittenVar[e.overwrittenVar.length - 1].lineNum + 1, u = e.prevUsageIsDefinition, h = u ? `${n} does not need to be defined if it is only used in the for loop on line ${e.line + 1}` : `This for loop changes the value of an existing variable, ${n}`, p = u ? e.overwrittenVar[0].docIndex : i.docIndex, w = `${ne(g, i)}&loopVariable=${n}&forDefinition=${s}&overwrittenVarLine=${o}&overwrittenIsDefinition=${u}`;
-  return new j(g, p, n, h, w);
+  const e = i.reason.contributingSymptoms[0], n = e.text, s = e.usageText, o = e.overwrittenVar[e.overwrittenVar.length - 1].lineNum + 1, u = e.prevUsageIsDefinition, f = u ? `${n} does not need to be defined if it is only used in the for loop on line ${e.line + 1}` : `This for loop changes the value of an existing variable, ${n}`, p = u ? e.overwrittenVar[0].docIndex : i.docIndex, w = `${ne(g, i)}&loopVariable=${n}&forDefinition=${s}&overwrittenVarLine=${o}&overwrittenIsDefinition=${u}`;
+  return new j(g, p, n, f, w);
 }, ad = (g, i) => {
   const e = i.docIndex, n = i.reason.contributingSymptoms[0], s = n.text, o = `This value of ${s} will be ignored by the next loop iteration`, u = `${ne(g, i)}&loopVarName=${s}&definitionText=${n.definitionText}&loopVarTypeAtDefinition=${n.loopVarTypeAtDefinition}&modificationText=${n.modificationText}`;
   return new j(g, e, s, o, u);
@@ -13075,18 +13087,18 @@ const Yu = (g) => g.hasOwnProperty("reason") && g.reason.hasOwnProperty("contrib
   let e = i.docIndex, n = `${ne(g, i)}`, s = "";
   const o = i.reason.contributingSymptoms;
   if (o.length === 2) {
-    const h = ot(o[0], b.UndefinedVariable.name) ? o[0] : o[1], p = ot(o[1], b.VariableWithSameNameAsFunction.name) ? o[1] : o[0];
-    ot(h, b.UndefinedVariable.name) && ot(p, b.VariableWithSameNameAsFunction.name) && (s = p.text, e = h.docIndex, n = `${n}&funcName=${s}&funcType=${p.funcType}&funcExpectedArgs=${p.numArgsExpected}&matchesUndefinedVarOnLine=${h.line + 1}`);
+    const f = ot(o[0], b.UndefinedVariable.name) ? o[0] : o[1], p = ot(o[1], b.VariableWithSameNameAsFunction.name) ? o[1] : o[0];
+    ot(f, b.UndefinedVariable.name) && ot(p, b.VariableWithSameNameAsFunction.name) && (s = p.text, e = f.docIndex, n = `${n}&funcName=${s}&funcType=${p.funcType}&funcExpectedArgs=${p.numArgsExpected}&matchesUndefinedVarOnLine=${f.line + 1}`);
   } else o.length === 1 && ot(o[0], b.VariableWithSameNameAsFunction.name) && (s = o[0].text, e = o[0].docIndex, n = `${n}&funcName=${s}&funcType=${o[0].funcType}&funcExpectedArgs=${o[0].numArgsExpected}`);
   const u = `Did you forget () after ${s}?`;
   return new j(g, e, s, u, n);
 }, cd = (g, i) => {
-  const e = i.docIndex, n = "This while loop might not be needed", s = i.reason.contributingSymptoms, o = s[0].type === b.LoopVarNotModified.name ? s[0] : s[1], u = s[0].type === b.LoopVarModifiedInChildLoop.name ? s[0] : s[1], h = o.text, p = `${ne(g, i)}&outerLoopText=${h}&outerLoopVariable=${u.text}${u.modifiedIn.map((w) => `&modifiedInType=${w.loopType}&modifiedInStartLine=${w.startLine + 1}`)}`;
-  return new j(g, e, h, n, p);
+  const e = "This while loop might not be needed", n = i.reason.contributingSymptoms, s = n[0].type === b.LoopVarNotModified.name ? n[0] : n[1], o = n[0].type === b.LoopVarModifiedInChildLoop.name ? n[0] : n[1], u = s.text, f = s.docIndex, p = `${ne(g, i)}&outerLoopText=${u}&outerLoopVariable=${o.text}${o.modifiedIn.map((w) => `&modifiedInType=${w.loopType}&modifiedInStartLine=${w.startLine + 1}`)}`;
+  return new j(g, f, u, e, p);
 }, ud = (g, i) => {
   const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = `${s} is undefined`;
   let u = `${ne(g, i)}&text=${s}`;
-  return e.hasOwnProperty("localVariables") && (u = `${u}${e.localVariables.map((h) => `&localScope=${h.scope}${h.hasOwnProperty("functionName") ? "&localFunction=" + h.functionName : "&localFunction=NA"}`).join()}`), new j(g, n, s, o, u);
+  return e.hasOwnProperty("localVariables") && (u = `${u}${e.localVariables.map((f) => `&localScope=${f.scope}${f.hasOwnProperty("functionName") ? "&localFunction=" + f.functionName : "&localFunction=NA"}`).join()}`), new j(g, n, s, o, u);
 }, dd = (g, i) => {
   const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = "This conditional could be shortened to one line";
   let u = `${ne(g, i)}&text=${e.text}&form=${e.form}`;
@@ -13102,114 +13114,128 @@ const Yu = (g) => g.hasOwnProperty("reason") && g.reason.hasOwnProperty("contrib
   const e = i.reason.contributingSymptoms.filter((o) => o.type === b.AssignedNone.name), n = i.reason.contributingSymptoms.filter((o) => b.UnusedReturn);
   let s = `${ne(g, i)}`;
   if (e.length > 0) {
-    const o = e[0], u = o.docIndex, h = o.expressionNoValue.value, p = `${o.expressionNoValue.value} has no value`;
+    const o = e[0], u = o.docIndex, f = o.expressionNoValue.value, p = `${o.expressionNoValue.value} has no value`;
     if (s = `${s}&variant=AssignedNoReturn&expressionNoValueType=${o.expressionNoValue.type}&expressionNoValueUsage=${o.usage}&expressionNoValueText=${o.expressionNoValue.value}&expressionNoValueTarget=${o.target}`, o.expressionNoValue.type === "userDefinedFunction") {
       const w = i.reason.contributingSymptoms.filter((F) => F.type === b.FunctionPrints.name), S = w.length === 1 ? w[0] : void 0;
       S && S.printLines.filter((N) => N.isEndOfExitBranch).length > 0 && !S.functionReturns && (s = `${s}&isFuncPrintNoReturn=true`);
     }
-    return new j(g, u, h, p, s);
+    return new j(g, u, f, p, s);
   } else if (n.length > 0) {
-    const o = n[0], u = o.docIndex, h = o.unusedFunc.value, p = `The value returned by ${h}() is not used`;
+    const o = n[0], u = o.docIndex, f = o.unusedFunc.value, p = `The value returned by ${f}() is not used`;
     if (s = `${s}&variant=UnusedReturn&expressionUnusedType=${o.unusedFunc.type}&expressionUnusedText=${o.unusedFunc.value}`, o.unusedFunc.type === "userDefinedFunction") {
       const w = i.reason.contributingSymptoms.filter((F) => F.type === b.FunctionPrints.name), S = w.length === 1 ? w[0] : void 0;
       S && S.text === o.unusedFunc.value && (s = `${s}&isFuncPrintsAndReturns=true`);
     }
-    return new j(g, u, h, p, s);
+    return new j(g, u, f, p, s);
   }
   return j.notImplemented();
 }, pd = (g, i) => {
   const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = `The () around ${e.textInParentheses} are not needed`, u = `${ne(g, i)}&text=${s}&returnValueType=${e.contents}&returnValueText=${e.textInParentheses}`;
   return new j(g, n, s, o, u);
 }, md = (g, i) => {
-  const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = e.unusedFunc.value, u = e.unusedFunc.returnType, h = new RegExp("[ ]*.[ ]*" + o), p = s.split(h)[0], w = `${o}() will not change ${p}`, S = `${ne(g, i)}&text=${s}&unusedMethod=${o}&unusedReturnType=${u}&stringValue=${p}`;
+  const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = e.unusedFunc.value, u = e.unusedFunc.returnType, f = new RegExp("[ ]*.[ ]*" + o), p = s.split(f)[0], w = `${o}() will not change ${p}`, S = `${ne(g, i)}&text=${s}&unusedMethod=${o}&unusedReturnType=${u}&stringValue=${p}`;
   return new j(g, n, s, w, S);
 }, wd = (g, i) => {
-  const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = e.unusedFunc.value, u = e.unusedFunc.returnType, h = s.substring(s.indexOf("(") + 1, s.lastIndexOf(")")), p = `${o}() will not change ${h}`, w = `${ne(g, i)}&text=${s}&typeFunction=${o}&returnType=${u}&argument=${h}`;
+  const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = e.unusedFunc.value, u = e.unusedFunc.returnType, f = s.substring(s.indexOf("(") + 1, s.lastIndexOf(")")), p = `${o}() will not change ${f}`, w = `${ne(g, i)}&text=${s}&typeFunction=${o}&returnType=${u}&argument=${f}`;
   return new j(g, n, s, p, w);
 }, Sd = (g, i) => {
   const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = "This type conversion is not needed", u = `${ne(g, i)}&text=${s}&argType=${e.argType}&convertedType=${e.convertedType}&convertedValue=${e.convertedValue}`;
   return new j(g, n, s, o, u);
 }, Id = (g, i) => {
-  const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = e.unusedFunc.returnType, u = o !== d.Unknown.name && o !== d.Invalid.name && o !== d.NA.name && o !== d.NotParsed.name, h = u ? `The ${o} returned by ${s} is not used` : `The value returned by ${s} is not used`, p = `${ne(g, i)}&expressionUnusedType=${e.unusedFunc.type}&expressionUnusedText=${e.unusedFunc.value}${u ? "&returnType=" + o : ""}`;
-  return new j(g, n, s, h, p);
+  const e = i.reason.contributingSymptoms[0], n = i.docIndex, s = e.text, o = e.unusedFunc.returnType, u = o !== d.Unknown.name && o !== d.Invalid.name && o !== d.NA.name && o !== d.NotParsed.name, f = u ? `The ${o} returned by ${s} is not used` : `The value returned by ${s} is not used`, p = `${ne(g, i)}&expressionUnusedType=${e.unusedFunc.type}&expressionUnusedText=${e.unusedFunc.value}${u ? "&returnType=" + o : ""}`;
+  return new j(g, n, s, f, p);
 }, bd = (g, i) => {
-  const e = i.docIndex, n = i.reason.contributingSymptoms[0], s = n.text, o = n.loopType, u = n.exitTypes.length, h = n.exitLevel, p = `This ${o} loop always ends the first time it runs because of where return is used`, w = `${ne(g, i)}&text=${s}&loopType=${o}&returnCount=${u}&exitLevel=${h}`;
+  const e = i.docIndex, n = i.reason.contributingSymptoms[0], s = n.text, o = n.loopType, u = n.exitTypes.length, f = n.exitLevel, p = `This ${o} loop always ends the first time it runs because of where return is used`, w = `${ne(g, i)}&text=${s}&loopType=${o}&returnCount=${u}&exitLevel=${f}`;
   return new j(g, e, s, p, w);
 }, yd = (g, i) => {
-  const e = i.docIndex, n = i.reason.contributingSymptoms, s = n.filter((h) => h.type === b.LoopReturn.name), o = n.filter((h) => h.type === b.LoopVarNotModified.name), u = ne(g, i);
+  const e = i.docIndex, n = i.reason.contributingSymptoms, s = n.filter((f) => f.type === b.LoopReturn.name), o = n.filter((f) => f.type === b.LoopVarNotModified.name), u = ne(g, i);
   if (o.length === 1) {
-    const h = o[0].text, p = "Could this while loop be an if statement?", w = `${u}&variant=${o[0].type}&definitionText=${h}&loopText=${o[0].loopText}${o[0].unmodifiedVars.map((S) => `&loopVar=${S}`)}${s.map((S) => `&earlyExitLine=${S.line + 1}&earlyExitText=${S.text}`)}`;
-    return new j(g, e, h, p, w);
+    const f = o[0].text, p = "Could this while loop be an if statement?", w = `${u}&variant=${o[0].type}&definitionText=${f}&loopText=${o[0].loopText}${o[0].unmodifiedVars.map((S) => `&loopVar=${S}`)}${s.map((S) => `&earlyExitLine=${S.line + 1}&earlyExitText=${S.text}`)}`;
+    return new j(g, e, f, p, w);
   }
   return j.notImplemented();
 }, Fd = (g, i) => g.getLineNumber() === i.getLineNumber() && g.getID() === i.getID() ? 0 : g.getLineNumber() < i.getLineNumber() || g.getLineNumber() === i.getLineNumber() && g.getID() < i.getID() ? -1 : 1, Nd = (g, i = !1, e = !1, n = !1) => {
+  const s = [];
   try {
-    let s = new Zu(g);
-    const o = s.getSymptoms().sort(Fd).map((N) => {
+    s.push("Sending to DocInfo");
+    let o = new Zu(g);
+    s.push("Getting symptom information");
+    const u = o.getSymptoms().sort(Fd).map((v) => {
       try {
-        return N.toJSON();
-      } catch (v) {
+        return v.toJSON();
+      } catch (A) {
         return {
           error: "Could not process symptom",
-          msg: v.toString()
+          msg: A.toString()
         };
       }
-    }), u = Array.from(s.getVariables().values()).flat().map((N) => {
+    });
+    s.push("Getting variable information");
+    const f = Array.from(o.getVariables().values()).flat().map((v) => {
       try {
-        return N.toJSON();
-      } catch (v) {
+        return v.toJSON();
+      } catch (A) {
         return {
           error: "Could not process variable",
-          msg: v.toString()
+          msg: A.toString()
         };
       }
-    }), h = Array.from(s.getUserDefinedFunctions().values()).filter((N) => N.is(t.FunctionName)).map((N) => {
+    });
+    s.push("Getting function information");
+    const p = Array.from(o.getUserDefinedFunctions().values()).filter((v) => v.is(t.FunctionName)).map((v) => {
       try {
-        return N.toJSON();
-      } catch (v) {
+        return v.toJSON();
+      } catch (A) {
         return {
           error: "Could not process function",
-          msg: v.toString()
+          msg: A.toString()
         };
       }
-    }), p = Array.from(s.getUserDefinedClasses().values()).map((N) => N.toJSON()), w = Array.from(s.getMisconceptions().values()).map((N) => {
+    });
+    s.push("Getting class information");
+    const w = Array.from(o.getUserDefinedClasses().values()).map((v) => v.toJSON());
+    s.push("Getting misconception information");
+    const S = Array.from(o.getMisconceptions().values()).map((v) => {
       try {
-        return N.toJSON();
-      } catch (v) {
+        return v.toJSON();
+      } catch (A) {
         return {
           error: "Could not process misconception",
-          msg: v.toString()
+          msg: A.toString()
         };
       }
-    }), S = s.getBlocks(), F = {
-      misconceptions: w,
-      symptoms: o,
-      blocks: S.toJSON(),
-      variables: u,
-      functions: h,
-      classes: p
+    });
+    s.push("Getting block information");
+    const F = o.getBlocks(), N = {
+      misconceptions: S,
+      symptoms: u,
+      blocks: F.toJSON(),
+      variables: f,
+      functions: p,
+      classes: w
     };
     if (i) {
-      const N = S.toTree();
-      F.tree = N;
+      const v = F.toTree();
+      N.tree = v;
     }
     if (e) {
-      const N = s.getGraph();
-      F.graph = N.toJSON();
+      const v = o.getGraph();
+      N.graph = v.toJSON();
     }
-    return F;
-  } catch (s) {
-    console.log("Unable to parse", s);
-    const o = {
+    return N;
+  } catch (o) {
+    console.log("Unable to parse", o);
+    const u = {
       misconceptions: [],
       symptoms: [],
       blocks: [],
       variables: [],
       functions: [],
       classes: [],
-      error: "Unable to parse!"
+      error: `Unable to parse! ${o.toString()}`
     };
-    return n && (o.errorDetail = s.toString()), o;
+    return s.push(o.toString()), n && (u.errorDetail = s.join(`
+`)), u;
   }
 }, Cd = () => {
   let g = {};
@@ -13218,8 +13244,8 @@ const Yu = (g) => g.hasOwnProperty("reason") && g.reason.hasOwnProperty("contrib
   return g;
 }, Od = () => {
   let g = {};
-  for (let i in P)
-    g[P[i].name] = P[i].description;
+  for (let i in L)
+    g[L[i].name] = L[i].description;
   return g;
 }, Md = (g, i = !1) => {
   const e = Nd(g), n = {};

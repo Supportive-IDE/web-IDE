@@ -5,6 +5,6 @@ export default defineConfig({
     base: "https://supportive-ide.github.io/web-IDE/",
     build: {
         outDir: 'docs',
-        emptyOutDir: true, // also necessary
+        emptyOutDir: true,
     }
 })
