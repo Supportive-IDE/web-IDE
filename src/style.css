@@ -41,7 +41,6 @@
 
 body {
     min-height: 100vh;
-    line-height: 1.5;
     margin:0;
     padding:0;
 }
@@ -95,6 +94,12 @@ button:focus {
     width: 100%;
 }
 
+.controls.overlay {
+    position: absolute;
+    z-index: 100;
+    background-color: var(--far-background-color);
+}
+
 .pane {
     background-color: var(--far-background-color);
     align-self: stretch;
@@ -131,13 +136,7 @@ button:focus {
     justify-content: flex-end;
     align-items: center;
     padding-right: 5px;
-    gap: 0.5em;
-}
-
-.button-panel.overlay {
-    height: 30px;
-    position: absolute;
-    z-index: 100;
+    gap: 0em;
 }
 
 .overlay + .content {
@@ -187,7 +186,8 @@ button:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    right: calc(50vw + 5px);
+    margin-right: 0.2em;
+    margin-left: 0.4em;
 }
 
 #run:hover {

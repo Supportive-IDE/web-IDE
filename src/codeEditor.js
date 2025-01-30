@@ -139,7 +139,7 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
                 diagnostics.push({
                     from: miscon.docIndex, 
                     to:miscon.docIndex + miscon.affectedText.length, 
-                    severity: errorIndicators.has(miscon.type) ? "error" : "warning", 
+                    severity: errorIndicators.has(miscon.type) ? "error" : "info", 
                     message: miscon.firstMessage,
                     actions: [{
                         name: "More",
@@ -148,7 +148,7 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
                 })
             }
             if (currentFeedback !== "" && !feedbackRelevant) {
-                updateFeedbackStatus("Code has changed");
+                updateFeedbackStatus(feedbackStatus, "Code has changed");
             }
             view.dispatch(setDiagnostics(view.state, diagnostics));
         }

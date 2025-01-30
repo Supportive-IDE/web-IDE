@@ -21,6 +21,14 @@ const createTheme = (mainStyles, highlightStyles, isDark) => {
         {
             backgroundColor: mainStyles.selection,
         },
+        '.cm-lintRange-info': {
+            backgroundImage: "none",
+            backgroundColor: mainStyles.infoHighlight
+        },
+        '.cm-lintRange-error': {
+            backgroundImage: "none",
+            backgroundColor: mainStyles.errorHighlight
+        },
         '.cm-activeLine': {
             borderTop: "1px solid " + mainStyles.lineHighlight,
             borderBottom: "1px solid " + mainStyles.lineHighlight,
@@ -51,7 +59,9 @@ export const lightTheme = createTheme(
 		selection: '#D6D6D6',
 		gutterBackground: '#FFFFFF',
 		gutterForeground: '#4D4D4C80',
-		lineHighlight: '#f2f1f1'
+		lineHighlight: '#f2f1f1',
+        infoHighlight: '#9095fb33',
+        errorHighlight: '#ba060633'
     },
     [
 		{
@@ -102,7 +112,9 @@ export const darkTheme = createTheme(
 		selection: '#D6D6D6',
 		gutterBackground: '#242424',
 		gutterForeground: '#a1a1a1',
-		lineHighlight: '#EFEFEF11'
+		lineHighlight: '#EFEFEF11',
+        infoHighlight: '#535bf233',
+        errorHighlight: '#ba060655'
     },
     [
 		{
