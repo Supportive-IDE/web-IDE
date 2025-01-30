@@ -42,7 +42,19 @@ const createTheme = (mainStyles, highlightStyles, isDark) => {
             borderTop: "1px solid " + mainStyles.lineHighlight,
             borderBottom: "1px solid " + mainStyles.lineHighlight,
             background: "transparent"
+        },
+        '.cm-tooltip button': {
+            display: "block",
+            margin: "0.5em 0em 0em auto",
+            background: "linear-gradient(0.9turn, #535bf2, #9095fb)"
+        },
+        '.cm-tooltip button:hover': {
+            background: "linear-gradient(0.9turn, #08b3f7, #6ed2f9)"
+        },
+        '.cm-tooltip:hover button': {
+            background: "linear-gradient(0.9turn, #08b3f7, #6ed2f9)"
         }
+        
     }, 
     { dark: isDark });
     

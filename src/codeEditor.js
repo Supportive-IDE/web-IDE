@@ -11,11 +11,6 @@ import { getCurrentFeedback, loadFeedback, updateFeedbackStatus } from "./showFe
 import { clearSavedCode, getSavedCode, saveCode } from "./storage";
 import { openSavedDialog } from "./dialog";
 
-/**
- * TODO: 
- * Feedback - set breakpoint and dark mode to match this app
- */
-
 
 /**
  * Configure a Codemirror + Skulpt editor and add it to the DOM
@@ -226,11 +221,40 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
     }
 
 
+    /**
+     * Helper function to check if the code in localStorage is the same as the default editor code
+     * @param {string} savedTitle 
+     * @param {string} savedContents 
+     * @returns {boolean} True if the localStorage code is different from the default code
+     */
     const savedCodeIsDifferent = (savedTitle, savedContents) => {
         if (!editorTitle) {
             return true;
         }
         return savedTitle !== editorTitle.innerText || savedContents !== view.state.doc.toString();
+    }
+
+
+    /**
+     * Helper function to activate a Codemirror diagnostic action when the user 
+     * clicks anywhere in the diagnostic tooltip.
+     */
+    const watchForTooltips = () => {
+        const observer = new MutationObserver((mutationsList, observer) => {
+            const toolTip = document.querySelector(".cm-tooltip");
+            if (toolTip) {
+                toolTip.addEventListener("click", event => {
+                    const tooltipBtn = toolTip.querySelector("button");
+                    if (tooltipBtn) {
+                        tooltipBtn.click();
+                    }
+                });
+            }
+        });
+    
+        const cmEditor = document.querySelector('.cm-editor');
+        const config = { childList: true, subtree: true };
+        observer.observe(cmEditor, config);
     }
 
 
@@ -240,6 +264,8 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
     
     // Create a new Codemirror editor and add it to the DOM
     const view = createView();
+    watchForTooltips();
+
     // Check for saved code
     const savedCode = getSavedCode();
     if (savedCode.hasOwnProperty("title") && savedCode.hasOwnProperty("contents") && savedCodeIsDifferent(savedCode["title"], savedCode["contents"])) {

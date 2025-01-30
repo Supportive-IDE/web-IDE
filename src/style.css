@@ -259,6 +259,7 @@ dialog pre {
 dialog button.confirm {
     background: var(--gradient);
     color: #ffffff;
+    margin-right: 0.5em;
 }
 
 dialog button.confirm:hover {
