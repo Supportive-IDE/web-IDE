@@ -72,7 +72,7 @@ If statements with very similar conditional statements appear in a sequence. The
 
 ```
 def nearestBusStop(street):
-	if street % 8 == 0: 
+    if street % 8 == 0: 
 		stop = street
 	if street % 8 <= 4:
 		stop = street
