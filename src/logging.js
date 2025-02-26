@@ -338,10 +338,10 @@ export class Logger {
      */
     #finaliseID(id) {
         this.#clientID = id;
-        // TODO: UPDATE PENDInG EVENTS
         Logger.#registrationStatus = RegistrationStatus.idReceived;
         this.#startSession();
     }
+
 
     /**
      * Manages the client ID setting process
