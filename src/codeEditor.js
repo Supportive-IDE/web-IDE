@@ -10,6 +10,7 @@ import {feedback} from "./lib/side-lib.es";
 import { getCurrentFeedback, loadFeedback, updateFeedbackStatus } from "./showFeedback";
 import { clearSavedCode, getSavedCode, saveCode } from "./storage";
 import { openSavedDialog } from "./dialog";
+import { Logger } from "./logging";
 
 
 /**
@@ -47,6 +48,8 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
      */
     const runCode = () => {
         const code = view.state.doc.toString();
+        const sideLibResults = feedback(code, true);
+        logger.logRun(sideLibResults);
         Sk.configure({
             output: addOutput,
             __future__: Sk.python3,
@@ -122,8 +125,9 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
         // Only check if code has changed
         if (update.docChanged) {
             saveCode(editorTitle ? editorTitle.innerText : "untitled.py", view.state.doc.toString());
-
-            const feedbackResults = feedback(view.state.doc.toString()).feedback;
+            const sideLibResults = feedback(view.state.doc.toString(), true);
+            logger.log(update, sideLibResults); 
+            const feedbackResults = sideLibResults.feedback;
             const currentFeedback = getCurrentFeedback(help);
             let feedbackRelevant = false;
             const diagnostics = []
@@ -138,7 +142,10 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
                     message: miscon.firstMessage,
                     actions: [{
                         name: "More",
-                        apply(view, from, to) { loadFeedback(help, miscon.extendedFeedbackParams, feedbackAnimator, feedbackStatus) }
+                        apply(view, from, to) { 
+                            logger.logAction(miscon.extendedFeedbackParams);
+                            loadFeedback(help, miscon.extendedFeedbackParams, feedbackAnimator, feedbackStatus); 
+                        }
                     }]
                 })
             }
@@ -256,7 +263,7 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
         const config = { childList: true, subtree: true };
         observer.observe(cmEditor, config);
     }
-
+    
 
     const LINE = "% ";
     
@@ -265,6 +272,9 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
     // Create a new Codemirror editor and add it to the DOM
     const view = createView();
     watchForTooltips();
+
+    // Get the logger ready
+    const logger = Logger.getInstance(true);
 
     // Check for saved code
     const savedCode = getSavedCode();
