@@ -294,10 +294,13 @@ export class Logger {
 
     /**
      * Creates a singleton Logger
-     * @param isActive 
      * @returns The existing Logger if it has already been created or a new Logger instance.
      */
-    static getInstance(isActive) {
+    static getInstance() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const isActive = !urlParams.has("log") || urlParams.get("log") === false;
+        console.log("Logging is active?", isActive);
         if (!Logger.#instance) {
             Logger.#instance = new Logger(isActive);
         }

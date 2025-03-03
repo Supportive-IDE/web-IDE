@@ -274,7 +274,7 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
     watchForTooltips();
 
     // Get the logger ready
-    const logger = Logger.getInstance(true);
+    const logger = Logger.getInstance();
 
     // Check for saved code
     const savedCode = getSavedCode();
