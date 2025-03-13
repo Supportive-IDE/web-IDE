@@ -1,3 +1,5 @@
+import { Logger } from "./logging";
+
 const FEEDBACK_URL = "https://supportive-ide.github.io/symptom-feedback";
 
 /**
@@ -9,7 +11,7 @@ const FEEDBACK_URL = "https://supportive-ide.github.io/symptom-feedback";
  */
 export const loadFeedback = (feedbackPane, urlParams, feedbackAnimator, feedbackStatus) => {
     const iframe = document.createElement("iframe");
-    iframe.setAttribute("src", `${FEEDBACK_URL}${urlParams}`)
+    iframe.setAttribute("src", `${FEEDBACK_URL}${urlParams}&log=${Logger.isActive()}`)
     while (feedbackPane.childElementCount > 0) {
         feedbackPane.removeChild(feedbackPane.firstChild);
     }

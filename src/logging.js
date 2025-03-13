@@ -307,6 +307,14 @@ export class Logger {
         return Logger.#instance;
     }
 
+    /**
+     * Checks if the logger is active
+     * @returns {boolean}
+     */
+    static isActive() {
+        return Logger.#loggingActive;
+    }
+
     //#region ID setup
     
     /**
