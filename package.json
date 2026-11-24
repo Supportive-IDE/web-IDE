@@ -18,9 +18,11 @@
     "@rollup/plugin-commonjs": "^28.0.2",
     "axios": "^1.7.9",
     "codemirror": "^6.0.1",
+    "pyodide": "^314.0.8",
     "rollup-plugin-polyfill-node": "^0.13.0",
     "skulpt": "^1.2.0",
     "thememirror": "^2.0.1",
-    "uuid": "^11.0.5"
+    "uuid": "^11.0.5",
+    "vite-plugin-static-copy": "^4.1.1"
   }
 }

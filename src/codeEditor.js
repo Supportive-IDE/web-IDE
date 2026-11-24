@@ -1,6 +1,6 @@
-import Sk from "skulpt";
+import { loadPyodide } from "pyodide";
 import { EditorState, Compartment } from "@codemirror/state";
-import { keymap} from "@codemirror/view";
+import { keymap } from "@codemirror/view";
 import { basicSetup, EditorView } from "codemirror";
 import { defaultKeymap, indentWithTab } from "@codemirror/commands";
 import { python } from "@codemirror/lang-python";
@@ -38,32 +38,61 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
                                     "PrintSameAsReturn", "ReturnWaitsForLoop", "StringMethodsModifyTheString", "TypeConversionModifiesArgument",
                                     "UnusedReturn"]);
 
+    // UI elements                               
     const downloadBtn = optionalElements.downloadBtn;
     const editorTitle = optionalElements.editorTitle;
     const feedbackAnimator = optionalElements.feedbackAnimator;
     const feedbackStatus = optionalElements.feedbackStatus;
 
+    let pyodide = null;
+
+    const initPyodide = async () => {
+        runBtn.disabled = true;
+        addOutput("Loading Python runtime...");
+
+        pyodide = await loadPyodide();
+
+        pyodide.setStdout({
+            batched: text => {
+                addOutput(text);
+            }
+        });
+
+        pyodide.setStderr({
+            batched: text => {
+                addOutput(`[Error] ${text}`);
+            }
+        });
+
+        pyodide.setStdin({
+            stdin: inputFunc
+        })
+
+        addOutput("Python ready!");
+        runBtn.disabled = false;
+    }
+
     /**
      * Run the code in the editor using Skulpt.
      */
-    const runCode = () => {
-        const code = view.state.doc.toString();
-        const sideLibResults = feedback(code, true);
-        logger.logRun(sideLibResults);
-        Sk.configure({
-            output: addOutput,
-            __future__: Sk.python3,
-            inputfun: inputFunc,
-            inputfunTakesPrompt: true
-        });
+    // const runCode = () => {
+    //     const code = view.state.doc.toString();
+    //     const sideLibResults = feedback(code, true);
+    //     logger.logRun(sideLibResults);
+    //     Sk.configure({
+    //         output: addOutput,
+    //         __future__: Sk.python3,
+    //         inputfun: inputFunc,
+    //         inputfunTakesPrompt: true
+    //     });
 
-        const runner = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
-        runner.then(_ => {
-            console.log("success");
-        }, err => {
-            addOutput(err.toString());
-        });
-    }
+    //     const runner = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
+    //     runner.then(_ => {
+    //         console.log("success");
+    //     }, err => {
+    //         addOutput(err.toString());
+    //     });
+    // }
 
 
     /**
@@ -283,7 +312,24 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
     }
 
     // Button event listeners
-    runBtn.addEventListener("click", runCode);
+    runBtn.addEventListener("click", async () => {
+        if (!pyodide) {
+            addOutput(`[Error] Python runtime not ready!`);
+            return;
+        }
+        const code = view.state.doc.toString();
+        const sideLibResults = feedback(code, true);
+        logger.logRun(sideLibResults);
+
+        try {
+            await pyodide.loadPackagesFromImports(code);
+            await pyodide.runPythonAsync(code);
+        } catch (err) {
+            addOutput(err.toString());
+        }
+
+    });
+
     if (downloadBtn) {
         downloadBtn.addEventListener("click", downloadCode);
     }
@@ -297,4 +343,6 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
             });
         })
     }
+
+    initPyodide();
 }
