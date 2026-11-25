@@ -14,10 +14,11 @@
     --text-color: rgba(255, 255, 255, 0.87);
     --far-background-color: #000000; /* For pane backgrounds */
     --background-color: #242424; /* For content backgrounds */
-    --border-color: #4b4b4b;
+    --border-color: #b9b8b8;
     --gradient: linear-gradient(0.9turn, #535bf2, #9095fb);
     --gradient-transparency: linear-gradient(0.9turn, #535bf2, #6ed2f9aa);
     --gradient-hover: linear-gradient(0.9turn, #08b3f7, #6ed2f9);
+    --gradient-disabled: linear-gradient(0.9turn, #4b4b4b, #bebebe);
     --outline: 4px auto #08b3f7;
     --hover: #08b3f7;
 
@@ -64,6 +65,11 @@ button {
 
 button:hover {
     background: var(--gradient-hover);
+    cursor: pointer;
+}
+
+button:disabled:hover {
+    cursor:default;
 }
 
 button:focus {
@@ -175,7 +181,7 @@ button:focus {
     border-right: solid 1px var(--border-color);
 }
 
-#run {
+#run, #stop {
     background: var(--gradient);
     border: 0;
     padding: 0;
@@ -190,12 +196,17 @@ button:focus {
     margin-left: 0.4em;
 }
 
-#run:hover {
+#run:hover, #stop:hover {
     background: var(--gradient-hover);
 }
 
-#run:focus {
+#run:focus, #stop:focus {
     outline: var(--outline);
+    background: var(--gradient-hover);
+}
+
+#run:disabled, #stop:disabled {
+    background: var(--gradient-disabled);
 }
 
 #run-icon {
@@ -206,6 +217,12 @@ button:focus {
     border-left: 10px solid white;
     border-right: 0px solid transparent;
     margin-left: 3px;
+}
+
+#stop-icon {
+    width: 0;
+    height: 0;
+    border: 4px solid white;
 }
 
 #output {

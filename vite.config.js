@@ -30,4 +30,10 @@ export default defineConfig({
     },
     optimizeDeps: { exclude: ["pyodide"] },
     plugins: [viteStaticCopyPyodide()],
+    server: { // Needed to enable input in pyodide
+        headers: {
+            "Cross-Origin-Opener-Policy": "same-origin", 
+            "Cross-Origin-Embedder-Policy": "require-corp"
+        }
+    }
 })

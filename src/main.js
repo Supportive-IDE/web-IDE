@@ -2,7 +2,8 @@ import './style.css'
 import { setupEditor } from './codeEditor.js'
 
 setupEditor(document.getElementById("code-editor"), document.getElementById("output"), document.getElementById("feedback"),
-            document.getElementById("run"), {
+            document.getElementById("run"),
+            document.getElementById("stop"), {
                 downloadBtn: document.getElementById("download"),
                 editorTitle: document.getElementById("code-title"),
                 feedbackAnimator: document.querySelector(".container"),
