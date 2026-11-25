@@ -1,6 +1,5 @@
-import Sk from "skulpt";
 import { EditorState, Compartment } from "@codemirror/state";
-import { keymap} from "@codemirror/view";
+import { keymap } from "@codemirror/view";
 import { basicSetup, EditorView } from "codemirror";
 import { defaultKeymap, indentWithTab } from "@codemirror/commands";
 import { python } from "@codemirror/lang-python";
@@ -11,6 +10,8 @@ import { getCurrentFeedback, loadFeedback, updateFeedbackStatus } from "./showFe
 import { clearSavedCode, getSavedCode, saveCode } from "./storage";
 import { openSavedDialog } from "./dialog";
 import { Logger } from "./logging";
+import { MSG_TYPE, STATUS } from "./utils";
+import Worker from './pyodideWorker?worker';
 
 
 /**
@@ -26,7 +27,7 @@ import { Logger } from "./logging";
  *      feedbackStatus: undefined | HTMLElement
  * }} optionalElements HTMLElements used for various display changes
  */
-export const setupEditor = (editor, output, help, runBtn, optionalElements = {
+export const setupEditor = (editor, output, help, runBtn, stopBtn, optionalElements = {
     downloadBtn: undefined,
     editorTitle: undefined,
     feedbackAnimator: undefined,
@@ -38,64 +39,19 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
                                     "PrintSameAsReturn", "ReturnWaitsForLoop", "StringMethodsModifyTheString", "TypeConversionModifiesArgument",
                                     "UnusedReturn"]);
 
+    // UI elements                               
     const downloadBtn = optionalElements.downloadBtn;
     const editorTitle = optionalElements.editorTitle;
     const feedbackAnimator = optionalElements.feedbackAnimator;
     const feedbackStatus = optionalElements.feedbackStatus;
 
-    /**
-     * Run the code in the editor using Skulpt.
-     */
-    const runCode = () => {
-        const code = view.state.doc.toString();
-        const sideLibResults = feedback(code, true);
-        logger.logRun(sideLibResults);
-        Sk.configure({
-            output: addOutput,
-            __future__: Sk.python3,
-            inputfun: inputFunc,
-            inputfunTakesPrompt: true
-        });
+    // Web worker
+    let worker = null;
+    const encoder = new TextEncoder();
+    let sharedBuffer = null;
+    let signalArray = null;
+    let dataArray = null;
 
-        const runner = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
-        runner.then(_ => {
-            console.log("success");
-        }, err => {
-            addOutput(err.toString());
-        });
-    }
-
-
-    /**
-     * Handles the Python input function by adding a text input to the output. 
-     * @param {string} prompt The input prompt message
-     * @returns {Promise}
-     */
-    const inputFunc = prompt => {
-        const p = new Promise((resolve, _) => {
-            const userIn = document.createElement("p");
-            const input = document.createElement("input");
-            input.setAttribute("id", "userIn");
-            input.setAttribute("type", "text");
-            input.addEventListener("keydown", event => {
-                if (event.key === "Enter") {
-                    resolve(event.target.value);
-                    userIn.innerText = `${LINE}${prompt}${event.target.value}`;
-                }
-            })
-
-            const label = document.createElement("label");
-            label.setAttribute("for", "userIn");
-            label.innerText = `${LINE}${prompt}`;
-
-
-            userIn.appendChild(label);
-            userIn.appendChild(input);
-            output.appendChild(userIn);
-            scrollToBottom(output);
-        });
-        return p;
-    }
 
     /**
      * Scrolls to the bottom of an element
@@ -110,9 +66,17 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
      * @param {string} text The message to add to the terminal
      */
     const addOutput = text => {
-        const newLine = document.createElement("p");
-        newLine.innerText = `${LINE}${text}`;
-        output.appendChild(newLine);
+        if (text.endsWith("\n")){
+            const newLine = document.createElement("p");
+            newLine.innerText = `${LINE}${text}`;
+            output.appendChild(newLine);
+        } else {
+            if (output.children.length === 0) {
+                const newLine = document.createElement("p");
+                output.appendChild(newLine)
+            }
+            output.lastElementChild.innerHTML += text;
+        }
         scrollToBottom(output);
     }
 
@@ -263,6 +227,110 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
         const config = { childList: true, subtree: true };
         observer.observe(cmEditor, config);
     }
+
+    /**
+     * Handles the terminal UI when an input() prompt is running
+     */
+    const prepareInput = () => {
+        const userIn = document.createElement("p");
+        const input = document.createElement("input");
+        input.setAttribute("id", "userIn");
+        input.setAttribute("type", "text");
+        input.addEventListener("keydown", processInput);
+
+        const label = document.createElement("label");
+        label.setAttribute("for", "userIn");
+        label.innerText = `${LINE}`;
+
+        userIn.appendChild(label);
+        userIn.appendChild(input);
+        output.appendChild(userIn);
+        input.focus();
+        scrollToBottom(output);
+    }
+
+    /**
+     * Processes user input. Written with help from Gemini.
+     * @param {Event} event Keyboard event on a user input field
+     */
+    const processInput = (event) => {
+        if (event.key === "Enter") {
+            //event.target.parentElement.innerText = `${event.target.value}`;
+            event.target.parentElement.remove();
+            addOutput(event.target.value + "\n")
+
+            // Encode text (+ newline for Python's readline) into the shared buffer
+            const encoded = encoder.encode(event.target.value);
+            const byteLength = Math.min(encoded.length, dataArray.length);
+            dataArray.set(encoded.subarray(0, byteLength));
+
+            // Store byte length, flip lock state to 1, and wake the worker
+            Atomics.store(signalArray, 1, byteLength);
+            Atomics.store(signalArray, 0, 1);
+            Atomics.notify(signalArray, 0, 1);
+        }
+
+    }
+
+    /**
+     * Starts the pyodide web worker. Written with help from Gemini.
+     */
+    const spawnWorker = () => {
+        // Terminate any running worker
+        if (worker) {
+            worker.terminate();
+        }
+
+        // Allocated 4096 bytes: 8 bytes header + 4088 bytes text buffer
+        sharedBuffer = new SharedArrayBuffer(4096);
+        signalArray = new Int32Array(sharedBuffer, 0, 2);
+        dataArray = new Uint8Array(sharedBuffer, 8);
+
+        worker = new Worker();
+        worker.postMessage({ type: MSG_TYPE.INIT, sharedBuffer });
+
+        worker.onmessage = event => {
+            const { type, text, status } = event.data;
+
+            switch (type) {
+                case MSG_TYPE.STDOUT:
+                    addOutput(text);
+                    break;
+                case MSG_TYPE.STDERR:
+                    addOutput(`[Error] ${text}\n`);
+                    break;
+                case MSG_TYPE.INPUT_REQ:
+                    prepareInput();
+                    break;
+                case MSG_TYPE.STATUS:
+                    if (status === STATUS.LOADING) {
+                        runBtn.disabled = true;
+                        stopBtn.disabled = true;
+                        console.log("Loading...\n");
+                    } else if (status === STATUS.READY) {
+                        runBtn.disabled = false;
+                        stopBtn.disabled = true;
+                        console.log("Ready!\n");
+                    } else if (status === STATUS.RUNNING) {
+                        runBtn.disabled = true;
+                        stopBtn.disabled = false;
+                    }
+                    break;
+                default:
+                    console.log("Unknown message type from pyodide:", type);
+                    break;
+            }
+        }
+
+        worker.onerror = (err) => {
+            console.log(err)
+            runBtn.disabled = false;
+            stopBtn.disabled = true;
+        }
+    }
+
+    // Start the web worker
+    spawnWorker();
     
 
     const LINE = "% ";
@@ -283,7 +351,25 @@ export const setupEditor = (editor, output, help, runBtn, optionalElements = {
     }
 
     // Button event listeners
-    runBtn.addEventListener("click", runCode);
+    runBtn.addEventListener("click", () => {
+        if (!worker) {
+            addOutput(`[Error] Python runtime not ready!\n`);
+            return;
+        }
+        const code = view.state.doc.toString();
+        const sideLibResults = feedback(code, true);
+        logger.logRun(sideLibResults);
+        worker.postMessage({ type: MSG_TYPE.RUN, code });
+
+    });
+
+    stopBtn.addEventListener("click", () => {
+        runBtn.disabled = false;
+        stopBtn.disabled = true;
+        addOutput("[Info] Execution stopped!\n");
+        spawnWorker();
+    })
+
     if (downloadBtn) {
         downloadBtn.addEventListener("click", downloadCode);
     }
