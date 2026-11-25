@@ -1,4 +1,4 @@
-import { loadPyodide } from "pyodide";
+import { loadPyodide, version as pyodideVersion } from "pyodide";
 import { STATUS, MSG_TYPE } from "./utils";
 
 let pyodide = null;
@@ -17,7 +17,7 @@ async function init(sharedBuffer) {
 
     self.postMessage({ type: MSG_TYPE.STATUS, status: STATUS.LOADING });
 
-    pyodide = await loadPyodide();
+    pyodide = await loadPyodide({indexURL: `https://cdn.jsdelivr.net/pyodide/v${pyodideVersion}/full/`});
 
     // Stream print() output back to the main thread in real time
     pyodide.setStdout({
