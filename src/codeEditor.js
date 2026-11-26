@@ -62,21 +62,29 @@ export const setupEditor = (editor, output, help, runBtn, stopBtn, optionalEleme
     }
 
     /**
+     * Create a new line in the output
+     */
+    const prepOutputLine = () => {
+        const newLine = document.createElement("p");
+        newLine.innerHTML = LINE;
+        output.appendChild(newLine);
+    }
+
+    /**
      * Adds output to the "terminal"
      * @param {string} text The message to add to the terminal
      */
     const addOutput = text => {
-        if (text.endsWith("\n")){
-            const newLine = document.createElement("p");
-            newLine.innerText = `${LINE}${text}`;
-            output.appendChild(newLine);
-        } else {
-            if (output.children.length === 0) {
-                const newLine = document.createElement("p");
-                output.appendChild(newLine)
-            }
+        if (output.children.length === 0) {
+            prepOutputLine();
+        }
+        if (text !== "\n") {
             output.lastElementChild.innerHTML += text;
         }
+        if (text.endsWith("\n")) {
+            prepOutputLine();
+        }
+
         scrollToBottom(output);
     }
 
@@ -255,8 +263,7 @@ export const setupEditor = (editor, output, help, runBtn, stopBtn, optionalEleme
      */
     const processInput = (event) => {
         if (event.key === "Enter") {
-            //event.target.parentElement.innerText = `${event.target.value}`;
-            event.target.parentElement.remove();
+            event.target.remove();
             addOutput(event.target.value + "\n")
 
             // Encode text (+ newline for Python's readline) into the shared buffer
