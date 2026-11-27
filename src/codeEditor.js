@@ -97,7 +97,7 @@ export const setupEditor = (editor, output, help, runBtn, stopBtn, optionalEleme
         // Only check if code has changed
         if (update.docChanged) {
             saveCode(editorTitle ? editorTitle.innerText : "untitled.py", view.state.doc.toString());
-            const sideLibResults = feedback(view.state.doc.toString(), true);
+            const sideLibResults = feedback(view.state.doc.toString(), true, {showConcepts: true, showFunctions: true, showBlocks: true});
             logger.log(update, sideLibResults); 
             const feedbackResults = sideLibResults.feedback;
             const currentFeedback = getCurrentFeedback(help);

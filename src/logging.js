@@ -8,6 +8,7 @@ import { v4 as uuidV4 } from 'uuid';
 
 const UNREGISTERED = "unregistered";
 const ID_STORE = "side-clientID";
+const VERSION_ID = "TEST";
 
 //#region enums
 class Status {
@@ -158,7 +159,7 @@ class InteractionEvent extends BaseEvent {
 
 
 /**
- * Describes a Misconception
+ * Describes a Misconception. Also describes a concept
  */
 class MisconceptionEvent extends BaseEvent {
     #misconceptionName; // string, the type e.g. CompareMultipleWithOr
@@ -193,6 +194,231 @@ class MisconceptionEvent extends BaseEvent {
             misconceptionName: this.getMisconceptionName(),
             rawInfo: this.getRawInfo()
         };
+    }
+}
+
+/**
+ * Describes a Symptom. New for V2.
+ */
+class Symptom {
+    #type;
+    #block;
+    #docIndex;
+    #line;
+    #lineIndex;
+    #text;
+    #otherProps;
+
+    /**
+     * 
+     * @param {string} type 
+     * @param {string} block 
+     * @param {number} docIndex 
+     * @param {number} line 
+     * @param {number} lineIndex 
+     * @param {string} text 
+     * @param {{[key: string]: unknown}} otherProps 
+     */
+    constructor(type, block, docIndex, line, lineIndex, text, otherProps = {}) {
+        this.#type = type;
+        this.#block = block;
+        this.#docIndex = docIndex;
+        this.#line = line;
+        this.#lineIndex = lineIndex;
+        this.#text = text;
+        this.#otherProps = otherProps;
+    }
+
+    /**
+     * 
+     * @returns {string}
+     */
+    getType() {
+        return this.#type;
+    }
+
+    /**
+     * 
+     * @returns {string}
+     */
+    getBlock() {
+        return this.#block;
+    }
+
+    /**
+     * 
+     * @returns {number}
+     */
+    getDocIndex() {
+        return this.#docIndex;
+    }
+
+    /**
+     * 
+     * @returns {string}
+     */
+    getText() {
+        return this.#text;
+    }
+}
+
+/**
+ * Describes a reason for detecting a symptom. New for V2.
+ */
+class Reason {
+    #explanation;
+    #contributingSymptoms;
+
+    /**
+     * 
+     * @param {string} explanation 
+     * @param {Symptom[]} contributingSymptoms 
+     */
+    constructor(explanation, contributingSymptoms = []) {
+        this.#explanation = explanation;
+        this.#contributingSymptoms = contributingSymptoms;
+    }
+
+    /**
+     * 
+     * @returns {Symptom[]}
+     */
+    getContributingSymptoms() {
+        return this.#contributingSymptoms;
+    }
+}
+
+/**
+ * Describes a misconception occurrence. New for V2.
+ */
+class MisconceptionOccurrence {
+    #docIndex;
+    #line;
+    #reason;
+
+    /**
+     * 
+     * @param {number} docIndex 
+     * @param {number} line 
+     * @param {Reason} reason 
+     */
+    constructor(docIndex, line, reason) {
+        this.#docIndex = docIndex;
+        this.#line = line;
+        this.#reason = reason;
+    }
+
+    /**
+     * 
+     * @returns {Reason}
+     */
+    getReason() {
+        return this.#reason;
+    }
+}
+
+
+/**
+ * Describes a misconception in the V2 logging format.
+ */
+class MisconceptionV2Event extends BaseEvent {
+    #misconceptionName;
+    #occurrence;
+    #symptomNames;
+    #symptomBlocks;
+    #symptomDocIndices;
+    #symptomTexts;
+
+    /**
+     * 
+     * @param {number} eventID 
+     * @param {string} misconceptionName 
+     * @param {number} occId 
+     * @param {MisconceptionOccurrence} occ 
+     */
+    constructor(eventID, misconceptionName, occId, occ) {
+        super(`${eventID}-${misconceptionName}-${occId}`);
+        this.#misconceptionName = misconceptionName;
+        this.#occurrence = occId;
+        this.#symptomNames = [];
+        this.#symptomBlocks = [];
+        this.#symptomDocIndices = [];
+        this.#symptomTexts = [];
+        this.#populate(occ);
+    }
+
+    /**
+     * 
+     * @param {MisconceptionOccurrence} occ 
+     */
+    #populate(occ) {
+        for (const symptom of occ.reason.contributingSymptoms) {
+            this.#symptomNames.push(symptom.type);
+            this.#symptomBlocks.push(symptom.block);
+            this.#symptomDocIndices.push(symptom.docIndex);
+            this.#symptomTexts.push(symptom.text);
+        }
+    }
+
+    /**
+     * 
+     * @returns {string}
+     */
+    getMisconceptionName() {
+        return this.#misconceptionName;
+    }
+
+    /**
+     * 
+     * @returns {number};
+     */
+    getOccurrence() {
+        return this.#occurrence
+    }
+
+    /**
+     * 
+     * @returns {string[]}
+     */
+    getSymptomNames() {
+        return this.#symptomNames;
+    }
+
+    /**
+     * 
+     * @returns {string[]}
+     */
+    getSymptomBlocks() {
+        return this.#symptomBlocks;
+    }
+
+    /**
+     * 
+     * @returns {number[]}
+     */
+    getSymptomDocIndices() {
+        return this.#symptomDocIndices;
+    }
+
+    /**
+     * 
+     * @returns {string[]}
+     */
+    getSymptomTexts() {
+        return this.#symptomTexts;
+    }
+
+    toLogFormat(clientID, sessionID) {
+        return {
+            clientID, sessionID,
+            eventID: this.getEventID(),
+            misconceptionName: this.getMisconceptionName(),
+            occurrence: this.getOccurrence(),
+            symptomNames: this.getSymptomNames(),
+            symptomBlocks: this.getSymptomBlocks(),
+            symptomDocIndices: this.getSymptomDocIndices(),
+            symptomTexts: this.getSymptomTexts()
+        }
     }
 }
 
@@ -269,6 +495,47 @@ class FeedbackActionEvent extends BaseEvent {
 
 }
 
+/**
+ * Describes a function object returned by SIDE-lib. New for V2 logging.
+ */
+class FunctionEvent extends BaseEvent {
+    #docIndex;
+    #name;
+    #block;
+    #parameters;
+    #returnTypes;
+
+    /**
+     * 
+     * @param {number} eventID 
+     * @param {number} docIndex 
+     * @param {string} name 
+     * @param {string} block 
+     * @param {string[]} parameters 
+     * @param {string[]} returnTypes 
+     */
+    constructor(eventID, docIndex, name, block, parameters = [], returnTypes = []) {
+        super(eventID, `${eventID}-${name}-${docIndex}`);
+        this.#docIndex = docIndex;
+        this.#name = name;
+        this.#block = block;
+        this.#parameters = parameters;
+        this.#returnTypes = returnTypes;
+    }
+
+    toLogFormat(clientID, sessionID) {
+        return {
+            clientID, sessionID,
+            eventID: this.getEventID(),
+            docIndex: this.#docIndex,
+            name: this.#name,
+            block: this.#block,
+            parameters: this.#parameters,
+            returnTypes: this.#returnTypes
+        }
+    }
+}
+
 //#endregion
 
 export class Logger {
@@ -283,8 +550,10 @@ export class Logger {
     #lastInteractionEvent; // InteractionEvent | undefined
     #interactionEvents = [];
     #misconceptionEvents = [];
+    #conceptEvents = [];
     #feedbackEvents = [];
     #feedbackActionEvents = [];
+    #functionEvents = [];
 
     constructor(loggingActive = true) {
         Logger.#loggingActive = loggingActive;
@@ -386,8 +655,13 @@ export class Logger {
     async #startSession() {
         if (Logger.#loggingActive) {
             try {
-                await axios.put(`${API_URL}/session`, { clientID: this.#clientID, sessionID: this.#sessionID});
-                console.log("session started", this.#sessionID);
+                await axios.put(`${API_URL}/sessionV2`, { 
+                    clientID: this.#clientID, 
+                    sessionID: this.#sessionID,
+                    extensionVersion: VERSION_ID,
+                    showCodeLens: false
+                });
+                console.log("session started", this.#sessionID, "IDE version", VERSION_ID);
             } catch (error) {
                 console.log("Couldn't start a logging session:", error);
             }
@@ -457,14 +731,26 @@ export class Logger {
             for (const miscon of allMiscons) {
                 this.#addMisconception(eventID, miscon);
             }
+            const allConcepts = sideLibResult.parse && sideLibResult.parse.concepts? sideLibResult.parse.concepts: [];
+            for (const concept of allConcepts) {
+                this.#addConcept(eventID, concept);
+            }
             const allFeedback = sideLibResult.feedback ? sideLibResult.feedback : [];
             for (const feedback of allFeedback) {
                 this.#addFeedback(eventID, feedback);
             }
+            const allBlocks = sideLibResult.parse.blocks ? sideLibResult.parse.blocks : {};
+            const allFunctions = sideLibResult.parse.functions ? sideLibResult.parse.functions: [];
+            if (Object.keys(allBlocks).length > 0) {
+                const childBlocks = new Map(allBlocks.children.map(c => [c.id, c]));
+                for (const func of allFunctions) {
+                    const funcBlock = childBlocks.get(func.block);
+                    let docIndex = funcBlock ? funcBlock.startIndex: -1;
+                    this.#addFunction(eventID, func, docIndex);
+                }
+            }
         }
     }
-
-    // TODO: Log action hovers and clicks - check in VSCode ext if miscons should be recorded too... prob not?
 
     /**
      * Tracks an interaction event
@@ -495,7 +781,25 @@ export class Logger {
      * @param {object} misconceptionInfo Information about the misconception
      */
     #addMisconception(eventID, misconceptionInfo) {
-        this.#misconceptionEvents.push(new MisconceptionEvent(eventID, misconceptionInfo.type, misconceptionInfo));
+        // V1
+        // this.#misconceptionEvents.push(new MisconceptionEvent(eventID, misconceptionInfo.type, misconceptionInfo));
+
+        // V2
+        for (const [occId, occ] of misconceptionInfo.occurrences.entries()) {
+            this.#misconceptionEvents.push(new MisconceptionV2Event(eventID, misconceptionInfo.type, occId, occ));
+        }
+    }
+
+
+    /**
+     * Track a new detected concept. From V2 logging onwards.
+     * @param {number} eventID 
+     * @param {object} conceptInfo 
+     */
+    #addConcept(eventID, conceptInfo) {
+        for (const[occId, occ] of conceptInfo.occurrences.entries()) {
+            this.#conceptEvents.push(new MisconceptionV2Event(eventID, conceptInfo.type, occId, occ));
+        }
     }
 
 
@@ -517,6 +821,16 @@ export class Logger {
         this.#feedbackActionEvents.push(new FeedbackActionEvent(eventID, feedbackParams, "click"));
     }
 
+    /**
+     * 
+     * @param {number} eventID 
+     * @param {object} functionInfo 
+     * @param {number} docIndex 
+     */
+    #addFunction(eventID, functionInfo, docIndex) {
+        this.#functionEvents.push(new FunctionEvent(eventID, docIndex, functionInfo.name, functionInfo.block, functionInfo.parameters, functionInfo.returnTypes));
+    }
+
     //#endregion
 
     //#region send to database
@@ -529,8 +843,11 @@ export class Logger {
         return Logger.#registrationStatus === RegistrationStatus.idReceived
                 && (this.#interactionEvents.length >= Logger.#maxLogSize
                 || this.#misconceptionEvents.length >= Logger.#maxLogSize
+                || this.#conceptEvents.length >= Logger.#maxLogSize
                 || this.#feedbackEvents.length >= Logger.#maxLogSize
-                || this.#feedbackActionEvents.length >= Logger.#maxLogSize);
+                || this.#feedbackActionEvents.length >= Logger.#maxLogSize
+                || this.#functionEvents.length >=Logger.#maxLogSize
+            );
     }
 
     /**
@@ -560,8 +877,12 @@ export class Logger {
             const misconceptions = this.#prepareToSend(this.#misconceptionEvents);
             const feedback = this.#prepareToSend(this.#feedbackEvents);
             const feedbackActions = this.#prepareToSend(this.#feedbackActionEvents);
-            if (interactions.length > 0 || misconceptions.length > 0 || feedback.length > 0 || feedbackActions.length > 0) {
-                const response = (await axios.put(`${API_URL}/store`, { interactions, misconceptions, feedback, feedbackActions})).data;
+            const concepts = this.#prepareToSend(this.#conceptEvents);
+            const functions = this.#prepareToSend(this.#functionEvents);
+            if (interactions.length > 0 || misconceptions.length > 0 || feedback.length > 0 || feedbackActions.length > 0
+                || concepts.length > 0 || functions.length > 0
+            ) {
+                const response = (await axios.put(`${API_URL}/storeV2`, { interactions, misconceptions, feedback, feedbackActions, concepts, functions})).data;
                 
                 /**
                  * Updates the log status of an event
@@ -584,6 +905,8 @@ export class Logger {
                 this.#misconceptionEvents = this.#misconceptionEvents.filter(event => updateAndKeep(event, response.savedMisconceptions, response.failedMisconceptions));
                 this.#feedbackEvents = this.#feedbackEvents.filter(event => updateAndKeep(event, response.savedFeedback, response.failedFeedback));
                 this.#feedbackActionEvents = this.#feedbackActionEvents.filter(event => updateAndKeep(event, response.savedActions, response.failedActions));
+                this.#conceptEvents = this.#conceptEvents.filter(event => updateAndKeep(event, response.savedConcepts, response.failedConcepts));
+                this.#functionEvents = this.#functionEvents.filter(event => updateAndKeep(event, response.savedFunctions, response.failedFunctions));
                 if (this.#logIsReady()) {
                     this.#checkAndSendData();
                 }

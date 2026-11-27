@@ -551,7 +551,7 @@ const q = class q extends xt {
 l(q, "EqualityExpression", new q("EqualityExpression", "An equality operator is used in a Boolean expression.")), l(q, "ValidAssignment", new q("ValidAssignment", "A variable is assigned correctly")), l(q, "StandaloneBooleanVariable", new q("StandaloneBooleanVariable", "A boolean variable is used as a complete term in a condition.")), l(q, "ReturnLast", new q("ReturnLast", "A return statement is the last statement in its branch.")), l(q, "NewForLoopVar", new q("NewForLoopVar", "A new variable is created in a for loop definition.")), l(q, "ValidFunctionCall", new q("ValidFunctionCall", "A function is called with parentheses.")), l(q, "CounterLoop", new q("CounterLoop", "A for loop that counts (uses range() or enumerate()).")), l(q, "ValidGlobalVariable", new q("ValidGlobalVariable", "A variable in document scope is properly assigned")), l(q, "FunctionScopeVariable", new q("FunctionScopeVariable", "A variable is defined in function scope")), l(q, "ForLoopTargetNotModified", new q("ForLoopTargetNotModified", "A for loop target variable is called and not modified in the loop.")), l(q, "NonLiteralBooleanAssigned", new q("NonLiteralBooleanAssigned", "A non-literal Boolean expression is assigned to a variable without a conditional.")), l(q, "NonLiteralBooleanReturned", new q("NonLiteralBooleanReturned", "A non-literal Boolean expression is returned without a conditional.")), l(q, "UsedReturn", new q("UsedReturn", "The value returned by a function call is used or assigned.")), l(q, "NoReturnStandaloneCall", new q("NoReturnStandaloneCall", "A function that does not return is called as a standalone statement.")), l(q, "ReturnNoParentheses", new q("ReturnNoParentheses", "A return value is not in parentheses.")), l(q, "IfElif", new q("IfElif", "An if statement is followed by an elif or an else.")), l(q, "ParameterCalled", new q("ParameterCalled", "An function parameter is called in the function before or without modification.")), l(q, "LoopExitsSometimes", new q("LoopExitsSometimes", "A loop contains a return that is conditional.")), l(q, "WhileLoopVarModified", new q("WhileLoopVarModified", "A while loop's loop variable is modified in the loop, allowing it to progress."));
 let B = q;
 const $n = "userDefinedFunction", Wc = "userDefinedVariable", Kn = "builtInFunction", Oi = "valueReturned", Ti = "valueAssigned", qc = "True", Io = "return", jc = "string", Hc = "list", zc = "literal", Uo = "functionCall", Qc = "variable", Go = "compoundTypeDefinition", Jo = "compoundExpression", ko = "booleanExpression", yo = "forLoopVariable", Xc = "forLoopTargetReplacesIterable", Fo = "assignment", Co = "same", $o = "different", Js = "unknown", we = "empty", Zc = "orNonBoolean", Yc = "andOr", _c = "topLevel", eu = "allBranchesOfExhaustiveConditional", Ko = "functionArgument", tu = "calculation", nu = "comparison";
-function X(g, i) {
+function Z(g, i) {
   this.entity = g, this.category = i;
 }
 function pi(g) {
@@ -4341,7 +4341,7 @@ class _o {
   }
 }
 dn = new WeakMap(), gt = new WeakMap(), pt = new WeakMap();
-var $e, mt, de, us, Z, $, tr, nr, sr, ir, or, rr, Mi, Di, Ai, Bi, ar, ki, Pi, Vi, qn;
+var $e, mt, le, us, Q, $, tr, nr, sr, ir, or, rr, Mi, Di, Ai, Bi, ar, ki, Pi, Vi, qn;
 class er extends wi {
   /**
    * Creates a new StatementBlock representing a block of Python code
@@ -4359,14 +4359,14 @@ class er extends wi {
     b(this, mt);
     // The parent of the current Block. This will either be another Block or undefined if this is the document root.
     /** @type {StatementBlock[]} */
-    b(this, de);
+    b(this, le);
     // A list of child blocks. This list only includes immediate children. Nested children will be stored as the children of the relevant child node.
     /** @type {Number}  */
     b(this, us);
     // The number of spaces of indentation of the first line in the Block (the definition line in most cases).
     /** @type {Statement[]} */
-    b(this, Z);
-    y(this, $e, e), y(this, mt, n), y(this, de, []), y(this, us, s), y(this, Z, []), this.addRules([
+    b(this, Q);
+    y(this, $e, e), y(this, mt, n), y(this, le, []), y(this, us, s), y(this, Q, []), this.addRules([
       m(this, $, ar),
       m(this, $, or),
       m(this, $, ir),
@@ -4386,7 +4386,7 @@ class er extends wi {
    * @returns {String} A unique String identifier for this Block.
    */
   getId() {
-    return `${u(this, $e) === t.DocumentDefinition ? 0 : u(this, Z).length > 0 ? u(this, Z)[0].getFirstLineNumber() : -1}-${u(this, $e).name}`;
+    return `${u(this, $e) === t.DocumentDefinition ? 0 : u(this, Q).length > 0 ? u(this, Q)[0].getFirstLineNumber() : -1}-${u(this, $e).name}`;
   }
   /**
    * Gets the parent block of this Block.
@@ -4410,7 +4410,7 @@ class er extends wi {
    * @returns {StatementBlock[]} An array of containing all immediate children of this Block
    */
   getChildBlocks() {
-    return u(this, de);
+    return u(this, le);
   }
   /**
    * Gets all child blocks (including this block) that match the given entity
@@ -4419,7 +4419,7 @@ class er extends wi {
    */
   getChildBlocksOfKind(e) {
     let n = [];
-    for (const s of u(this, de))
+    for (const s of u(this, le))
       n = n.concat(s.getChildBlocksOfKind(e));
     return u(this, $e) === e && n.push(this), n;
   }
@@ -4428,7 +4428,7 @@ class er extends wi {
    * @param {StatementBlock} block The Block to add.
    */
   addChildBlock(e) {
-    u(this, de).push(e), e.setParentBlock(this);
+    u(this, le).push(e), e.setParentBlock(this);
   }
   /**
    * Checks if this block is the child of a particular type of parent block
@@ -4495,7 +4495,7 @@ class er extends wi {
    * @returns {Number} The zero-based document line number of the Block definition.
    */
   getStartLine() {
-    return u(this, $e) === t.DocumentDefinition ? 0 : u(this, Z).length > 0 ? u(this, Z)[0].getFirstLineNumber() : -1;
+    return u(this, $e) === t.DocumentDefinition ? 0 : u(this, Q).length > 0 ? u(this, Q)[0].getFirstLineNumber() : -1;
   }
   /**
    * Checks whether this is a scope block
@@ -4531,7 +4531,7 @@ class er extends wi {
    * @param {Statement} statement 
    */
   addStatement(e) {
-    u(this, Z).push(e);
+    u(this, Q).push(e);
     for (const n of e.getExpressions())
       n.setBlockId(this.getId()), n.setScopeId(this.getScope().getId());
     try {
@@ -4542,7 +4542,7 @@ class er extends wi {
     } catch (n) {
       console.log("Unable to update blockId for statement symptoms / counter symptoms", n);
     }
-    H.makeGraphConnections(u(this, Z));
+    H.makeGraphConnections(u(this, Q));
   }
   /**
    * Gets the last statement in the block
@@ -4550,9 +4550,9 @@ class er extends wi {
    * @throws Throws an error if the block has no statements.
    */
   getLastStatement() {
-    if (u(this, Z).length === 0)
+    if (u(this, Q).length === 0)
       throw new Error("No statements in the block. Could not get the last statement.");
-    return u(this, Z)[u(this, Z).length - 1];
+    return u(this, Q)[u(this, Q).length - 1];
   }
   /**
    * Replaces the last statement in the block with the new statement
@@ -4560,9 +4560,9 @@ class er extends wi {
    * @throws Throws an error if there are no statements in the block.
    */
   replaceLastStatement(e) {
-    if (u(this, Z).length === 0)
+    if (u(this, Q).length === 0)
       throw new Error("No statements in block. Cannot replace last statement.");
-    u(this, Z)[u(this, Z).length - 1] = e;
+    u(this, Q)[u(this, Q).length - 1] = e;
   }
   /**
    * When the last statement is a BlockStatement, adds the statement to the BlockStatement
@@ -4583,7 +4583,7 @@ class er extends wi {
    * @returns {Statement[]}
    */
   getStatements() {
-    return u(this, Z);
+    return u(this, Q);
   }
   /**
    * Tests if this block is the same as or a parent of childBlock.
@@ -4610,8 +4610,8 @@ class er extends wi {
    * @returns {StatementBlock | undefined}
    */
   getBlockContainingLineNumber(e) {
-    if (u(this, Z).length === 0 && console.log("stop"), !(u(this, Z)[0].getFirstLineNumber() > e || this.getLastStatement().getLastLineNumber() < e)) {
-      for (let n of u(this, de))
+    if (u(this, Q).length === 0 && console.log("stop"), !(u(this, Q)[0].getFirstLineNumber() > e || this.getLastStatement().getLastLineNumber() < e)) {
+      for (let n of u(this, le))
         if (n.getBlockContainingLineNumber() !== void 0)
           return n;
       return this;
@@ -4625,14 +4625,14 @@ class er extends wi {
    */
   getLastExecutedStatements() {
     let e = [];
-    for (let n of u(this, de))
+    for (let n of u(this, le))
       n.isScopeBlock() || (e = e.concat(n.getLastExecutedStatements()));
-    for (let n = 0; n < u(this, Z).length; n++)
-      if (!u(this, Z)[n].isBlockStatement()) {
-        if (n === u(this, Z).length - 1)
-          e.push(u(this, Z)[n]);
-        else if (!u(this, Z)[n].isBlank() && u(this, Z)[n].getFirstExpression().isOneOf([t.ReturnStatement, t.BreakKeyword])) {
-          e.push(u(this, Z)[n]);
+    for (let n = 0; n < u(this, Q).length; n++)
+      if (!u(this, Q)[n].isBlockStatement()) {
+        if (n === u(this, Q).length - 1)
+          e.push(u(this, Q)[n]);
+        else if (!u(this, Q)[n].isBlank() && u(this, Q)[n].getFirstExpression().isOneOf([t.ReturnStatement, t.BreakKeyword])) {
+          e.push(u(this, Q)[n]);
           break;
         }
       }
@@ -4645,20 +4645,20 @@ class er extends wi {
   alwaysReturnsAValue() {
     if (u(this, $e) === t.DocumentDefinition)
       return !1;
-    if (u(this, de).length === 0) {
+    if (u(this, le).length === 0) {
       const e = this.getLastExecutedStatements();
       return e.length === 1 && !e[0].isBlank() && e[0].getFirstExpression().is(t.ReturnStatement);
     } else {
       if (this.hasTopLevelReturn())
         return !0;
-      let e = !1, n = u(this, de).length - 1;
+      let e = !1, n = u(this, le).length - 1;
       for (; n >= 0; ) {
-        if (u(this, de)[n].getBlockEntity() === t.ElseDefinition && u(this, de)[n].alwaysReturnsAValue())
+        if (u(this, le)[n].getBlockEntity() === t.ElseDefinition && u(this, le)[n].alwaysReturnsAValue())
           e = !0;
-        else if (e && u(this, de)[n].getBlockEntity() === t.ElifDefinition && u(this, de)[n].alwaysReturnsAValue())
+        else if (e && u(this, le)[n].getBlockEntity() === t.ElifDefinition && u(this, le)[n].alwaysReturnsAValue())
           e = !0;
         else {
-          if (e && u(this, de)[n].getBlockEntity() === t.IfDefinition && u(this, de)[n].alwaysReturnsAValue())
+          if (e && u(this, le)[n].getBlockEntity() === t.IfDefinition && u(this, le)[n].alwaysReturnsAValue())
             return !0;
           e = !1;
         }
@@ -4672,7 +4672,7 @@ class er extends wi {
    * @returns {Boolean}
    */
   hasTopLevelReturn() {
-    for (let e of u(this, Z))
+    for (let e of u(this, Q))
       if (!e.isBlockStatement() && !e.isBlank() && e.getFirstExpression().is(t.ReturnStatement))
         return !0;
     return !1;
@@ -4696,14 +4696,24 @@ class er extends wi {
    * @returns {Object} A JSON representation of this Block, including the unique block ID, the start line and the array of child blocks.
    */
   toJSON() {
-    const e = this.getLastStatement().getExpressions();
-    return {
-      id: this.getId(),
-      startLine: this.getStartLine(),
-      children: u(this, de).map((n) => n.toJSON()),
-      startIndex: u(this, Z)[0].getFirstExpression().getDocumentStartIndex(),
-      endIndex: e[e.length - 1].getDocumentEndIndex()
-    };
+    try {
+      const e = this.getLastStatement().getExpressions();
+      return {
+        id: this.getId(),
+        startLine: this.getStartLine(),
+        children: u(this, le).map((n) => n.toJSON()),
+        startIndex: u(this, Q).length > 0 ? u(this, Q)[0].getFirstExpression().getDocumentStartIndex() : 0,
+        endIndex: e[e.length - 1].getDocumentEndIndex()
+      };
+    } catch {
+      return {
+        id: this.getId(),
+        startLine: this.getStartLine(),
+        children: u(this, le).map((n) => n.toJSON()),
+        startIndex: 0,
+        endIndex: 0
+      };
+    }
   }
   /**
    * Creates an AST representation of this Block.
@@ -4712,8 +4722,8 @@ class er extends wi {
   toTree() {
     return {
       id: this.getId(),
-      statements: u(this, Z).map((e) => e.toJSON()),
-      children: u(this, de).map((e) => e.toTree())
+      statements: u(this, Q).map((e) => e.toJSON()),
+      children: u(this, le).map((e) => e.toTree())
     };
   }
   /**
@@ -4736,7 +4746,7 @@ class er extends wi {
     }
   }
 }
-$e = new WeakMap(), mt = new WeakMap(), de = new WeakMap(), us = new WeakMap(), Z = new WeakMap(), $ = new WeakSet(), /**
+$e = new WeakMap(), mt = new WeakMap(), le = new WeakMap(), us = new WeakMap(), Q = new WeakMap(), $ = new WeakSet(), /**
  * Rule finder.
  * @param {StatementBlock} block 
  * @returns {Symptom[]}
@@ -6107,7 +6117,7 @@ Tr = function(i) {
  * @returns {number} The index of the next character to process
  */
 xr = function(i) {
-  const e = m(this, N, Tr).call(this, i), n = new X(t.Decorator, c.SyntacticSugar), s = on(e, n, u(this, Pe), u(this, ve) + i, i);
+  const e = m(this, N, Tr).call(this, i), n = new Z(t.Decorator, c.SyntacticSugar), s = on(e, n, u(this, Pe), u(this, ve) + i, i);
   return u(this, te).push(s), i + e.length - 1;
 }, //#endregion - parsing decorators
 //#region - parsing keywords and identifiers
@@ -6131,7 +6141,7 @@ Mr = function(i) {
 Dr = function(i, e, n, s) {
   let o = m(this, N, Ar).call(this, i), a = m(this, N, Br).call(this, o, m(this, N, vr).call(this, i + o.length), e, n, s);
   const h = on(o, a, u(this, Pe), u(this, ve) + i, i);
-  return m(this, N, ze).call(this) && (a.entity === t.InKeyword && m(this, N, Ae).call(this).is(t.NotOperator) || a.entity === t.NotOperator && m(this, N, Ae).call(this).is(t.IsKeyword)) ? (o = ge([m(this, N, Ae).call(this), h]), a = new X(a.entity === t.InKeyword ? t.NotInKeyword : t.IsNotKeyword, c.ComparisonOperators), i = m(this, N, Ae).call(this).getDocumentStartIndex() - u(this, ve), u(this, te)[u(this, te).length - 1] = on(o, a, u(this, Pe), m(this, N, Ae).call(this).getDocumentStartIndex())) : u(this, te).push(h), i + o.length - 1;
+  return m(this, N, ze).call(this) && (a.entity === t.InKeyword && m(this, N, Ae).call(this).is(t.NotOperator) || a.entity === t.NotOperator && m(this, N, Ae).call(this).is(t.IsKeyword)) ? (o = ge([m(this, N, Ae).call(this), h]), a = new Z(a.entity === t.InKeyword ? t.NotInKeyword : t.IsNotKeyword, c.ComparisonOperators), i = m(this, N, Ae).call(this).getDocumentStartIndex() - u(this, ve), u(this, te)[u(this, te).length - 1] = on(o, a, u(this, Pe), m(this, N, Ae).call(this).getDocumentStartIndex())) : u(this, te).push(h), i + o.length - 1;
 }, /**
  * Gets the string text of a possibile identifier or keyword. E.g., if the entity is a 
  * variable, this returns the variable name.
@@ -6162,36 +6172,36 @@ Br = function(i, e, n, s, o) {
   if (m(this, N, ze).call(this)) {
     const h = m(this, N, Ae).call(this);
     if (h.is(t.FunctionDefinition))
-      return o ? new X(t.MethodName, c.Identifiers) : new X(t.FunctionName, c.Identifiers);
+      return o ? new Z(t.MethodName, c.Identifiers) : new Z(t.FunctionName, c.Identifiers);
     if (h.is(t.ClassDefinition))
-      return new X(t.ClassName, c.Identifiers);
+      return new Z(t.ClassName, c.Identifiers);
     if (h.is(t.FromKeyword) || m(this, N, Mt).call(this, t.ImportKeyword) && !m(this, N, Mt).call(this, t.FromKeyword))
       if (h.is(t.AsKeyword) && u(this, te).length > 1) {
         const p = u(this, te)[u(this, te).length - 2];
-        return new X(p.getEntity(), p.getCategory());
+        return new Z(p.getEntity(), p.getCategory());
       } else
-        return a.entity === t.Unknown ? new X(t.ModuleName, c.Identifiers) : a;
+        return a.entity === t.Unknown ? new Z(t.ModuleName, c.Identifiers) : a;
     else if (m(this, N, sn).call(this)) {
       if (e !== "(")
-        return a.category === c.Unknown ? new X(t.PropertyName, c.ModuleProperties) : a;
+        return a.category === c.Unknown ? new Z(t.PropertyName, c.ModuleProperties) : a;
       {
         const p = this.getExpressions();
         if (p.length >= 2) {
           const w = p[p.length - 2];
-          return w.is(c.BuiltInModules) && a.category === c.ModuleFunctions || a.category === c.BuiltInMethods ? a : w.is(t.ModuleName) ? new X(t.MethodName, c.ModuleFunctions) : new X(t.MethodName, c.OtherMethods);
+          return w.is(c.BuiltInModules) && a.category === c.ModuleFunctions || a.category === c.BuiltInMethods ? a : w.is(t.ModuleName) ? new Z(t.MethodName, c.ModuleFunctions) : new Z(t.MethodName, c.OtherMethods);
         }
       }
     } else {
       if (m(this, N, Mt).call(this, t.FromKeyword) && m(this, N, Mt).call(this, t.ImportKeyword))
         return m(this, N, Lr).call(this, i);
       if ((i === "sep" || i === "end") && !(h.is(t.Comma) && e === "="))
-        return new X(t.VariableName, c.Identifiers);
+        return new Z(t.VariableName, c.Identifiers);
       if (a.entity !== t.VariableName && su(i) && m(this, N, Mt).call(this, t.FunctionDefinition) && h.isOneOf([t.OpenParenthesis, t.Comma]))
-        return new X(t.VariableName, c.Identifiers);
+        return new Z(t.VariableName, c.Identifiers);
     }
   } else if (i === "sep" || i === "end")
-    return new X(t.VariableName, c.Identifiers);
-  return e === t.OpenParenthesis.name ? m(this, N, kr).call(this, a, i) : (a.entity === t.R || a.entity === t.F) && e !== "'" && e !== '"' ? new X(t.VariableName, c.Identifiers) : a.category === c.Types && n.includes(i) ? new X(t.VariableName, c.Identifiers) : a.category === c.BuiltInModules && !s.includes(i) ? new X(t.VariableName, c.Identifiers) : a.category === c.BuiltInFunctions && Po(i).entity !== t.Unknown && e !== "=" ? n.includes(i) ? new X(t.VariableName, c.Identifiers) : Po(i) : a.category === c.OtherKeywords || a.category === c.BlockDefinitions || a.category === c.LogicalOperators || a.category === c.BuiltInExceptions || a.category === c.BuiltInModules || a.category === c.Types || a.category === c.SpecialVariables || a.category === c.ComparisonOperators ? a : a.category === c.Unknown && s.includes(i) ? new X(t.ModuleName, c.Identifiers) : new X(t.VariableName, c.Identifiers);
+    return new Z(t.VariableName, c.Identifiers);
+  return e === t.OpenParenthesis.name ? m(this, N, kr).call(this, a, i) : (a.entity === t.R || a.entity === t.F) && e !== "'" && e !== '"' ? new Z(t.VariableName, c.Identifiers) : a.category === c.Types && n.includes(i) ? new Z(t.VariableName, c.Identifiers) : a.category === c.BuiltInModules && !s.includes(i) ? new Z(t.VariableName, c.Identifiers) : a.category === c.BuiltInFunctions && Po(i).entity !== t.Unknown && e !== "=" ? n.includes(i) ? new Z(t.VariableName, c.Identifiers) : Po(i) : a.category === c.OtherKeywords || a.category === c.BlockDefinitions || a.category === c.LogicalOperators || a.category === c.BuiltInExceptions || a.category === c.BuiltInModules || a.category === c.Types || a.category === c.SpecialVariables || a.category === c.ComparisonOperators ? a : a.category === c.Unknown && s.includes(i) ? new Z(t.ModuleName, c.Identifiers) : new Z(t.VariableName, c.Identifiers);
 }, /**
  * Finds the appropriate function or method information for the given identifier
  * @param {Object} knownEntity An object with entity and category values. Returned by the lookup for the given identifier.
@@ -6199,7 +6209,7 @@ Br = function(i, e, n, s, o) {
  * @returns {Object} An object with entity and category values that best represent the identifier
  */
 kr = function(i, e) {
-  return m(this, N, Pr).call(this, i) || m(this, N, Vr).call(this, i) ? i : i.entity === t.Format ? m(this, N, sn).call(this) ? new X(t.Format, c.BuiltInMethods) : new X(t.FormatFunction, c.BuiltInFunctions) : m(this, N, sn).call(this) ? e === "exit" ? Ci[e] : new X(t.MethodName, c.OtherMethods) : Ci.hasOwnProperty(e) ? Ci[e] : i.category !== c.BuiltInFunctions && i.category !== c.BuiltInMethods && i.category !== c.Unknown && i.category !== c.ModuleFunctions ? i : new X(t.FunctionName, c.Identifiers);
+  return m(this, N, Pr).call(this, i) || m(this, N, Vr).call(this, i) ? i : i.entity === t.Format ? m(this, N, sn).call(this) ? new Z(t.Format, c.BuiltInMethods) : new Z(t.FormatFunction, c.BuiltInFunctions) : m(this, N, sn).call(this) ? e === "exit" ? Ci[e] : new Z(t.MethodName, c.OtherMethods) : Ci.hasOwnProperty(e) ? Ci[e] : i.category !== c.BuiltInFunctions && i.category !== c.BuiltInMethods && i.category !== c.Unknown && i.category !== c.ModuleFunctions ? i : new Z(t.FunctionName, c.Identifiers);
 }, Pr = function(i) {
   return i.category === c.BuiltInFunctions && !m(this, N, sn).call(this);
 }, Vr = function(i) {
@@ -6222,11 +6232,11 @@ Lr = function(i) {
     let e = Ze(i);
     if (e.category === c.ModuleFunctions || e.category === c.ModuleProperties) {
       const n = Vo.has(e.entity) ? Vo.get(e.entity) : void 0;
-      return n && m(this, N, Mt).call(this, n) ? e : new X(t.NamedImport, c.Identifiers);
+      return n && m(this, N, Mt).call(this, n) ? e : new Z(t.NamedImport, c.Identifiers);
     }
-    return e.entity === t.Unknown ? new X(t.NamedImport, c.Identifiers) : e;
+    return e.entity === t.Unknown ? new Z(t.NamedImport, c.Identifiers) : e;
   }
-  return new X(t.NamedImport, c.Identifiers);
+  return new Z(t.NamedImport, c.Identifiers);
 }, /**
  * DON'T NEED NOT FULLY IMPLEMENTED YET: DEPENDENT ON MODULE TRACKING
  * @param {String} aliasName The alias name
@@ -6234,7 +6244,7 @@ Lr = function(i) {
  * @returns {Object} An object containing the ExpressionEntity and ExpressionCategory of the given identifier. Either a known module entity or the generic module entity.
  */
 td = function(i, e) {
-  return new X(t.ModuleName, c.Identifiers);
+  return new Z(t.ModuleName, c.Identifiers);
 }, /**
  * Helper method to find the next character that is not a space
  * @param {Number} startIndex The local index to start searching from
@@ -6301,7 +6311,7 @@ Jr = function(i) {
   for (; (n === "!" || Ze(n).entity !== t.Unknown) && s < u(this, K).length; )
     e = n, s++, n += u(this, K).charAt(s);
   let o = Ze(e);
-  return e === "*" && m(this, N, ze).call(this) && m(this, N, Ae).call(this).is(t.ImportKeyword) && (o = new X(t.ImportAll, c.OtherKeywords)), u(this, te).push(on(e, o, u(this, Pe), u(this, ve) + i, i)), i + e.length - 1;
+  return e === "*" && m(this, N, ze).call(this) && m(this, N, Ae).call(this).is(t.ImportKeyword) && (o = new Z(t.ImportAll, c.OtherKeywords)), u(this, te).push(on(e, o, u(this, Pe), u(this, ve) + i, i)), i + e.length - 1;
 }, /**
  * Checks if the current
  * @param {Character} currentCharCategory 
@@ -7829,7 +7839,7 @@ class id extends ee {
   }
   //#endregion - extension
 }
-var he, ue, ba, Ia, Ws, ya, Fa, Ca, Na, Oa;
+var he, de, ba, Ia, Ws, ya, Fa, Ca, Na, Oa;
 const oi = class oi extends ee {
   /**
    * Creates a new MultiPartExpressionNode
@@ -7841,9 +7851,9 @@ const oi = class oi extends ee {
    */
   constructor(e, n, s, o) {
     super(e, n, s, o);
-    b(this, ue);
+    b(this, de);
     b(this, he);
-    if (m(this, ue, Ws).call(this), this.isComplete()) {
+    if (m(this, de, Ws).call(this), this.isComplete()) {
       const h = n.length - 2;
       if (h < 2)
         y(this, he, []);
@@ -7854,7 +7864,7 @@ const oi = class oi extends ee {
           u(this, he)[w].length > 1 && (u(this, he)[w] = H.createTree(u(this, he)[w]));
       }
     } else y(this, he, []);
-    m(this, ue, Ia).call(this), this.addRules([m(this, ue, Na), m(this, ue, ya)]), this.addCounterRules([m(this, ue, Oa), m(this, ue, Fa), m(this, ue, Ca)]), m(this, ue, ba).call(this);
+    m(this, de, Ia).call(this), this.addRules([m(this, de, Na), m(this, de, ya)]), this.addCounterRules([m(this, de, Oa), m(this, de, Fa), m(this, de, Ca)]), m(this, de, ba).call(this);
   }
   //#region - overrides
   /**
@@ -7868,13 +7878,13 @@ const oi = class oi extends ee {
    * @override
    */
   addChild(e) {
-    super.addChild(e), m(this, ue, Ws).call(this);
+    super.addChild(e), m(this, de, Ws).call(this);
   }
   /**
    * @override
    */
   setChildren(e) {
-    super.setChildren(e), m(this, ue, Ws).call(this);
+    super.setChildren(e), m(this, de, Ws).call(this);
   }
   /**
    * @override
@@ -8008,7 +8018,7 @@ const oi = class oi extends ee {
   }
   //#endregion - custom
 };
-he = new WeakMap(), ue = new WeakSet(), ba = function() {
+he = new WeakMap(), de = new WeakSet(), ba = function() {
   for (const e of u(this, he))
     for (const n of e)
       n.addConnection(this);
@@ -10030,7 +10040,7 @@ el = function(e) {
   const n = [];
   return (e.getParent() === void 0 || e.getParent().is(t.GroupStatement) && e.getParent().getParent() === void 0) && n.push(O.createStatementSymptom(I.UnusedValue, [e], 0, 0)), n;
 };
-var le, Rn, tl, nl;
+var ce, Rn, tl, nl;
 class rt extends ee {
   /**
    * Creates a new BlockDefinitionStatement
@@ -10043,20 +10053,20 @@ class rt extends ee {
     super(e, n, s, c.BlockDefinitionStatement, d.NA);
     b(this, Rn);
     /** @type {ExpressionNode[]} */
-    b(this, le, []);
+    b(this, ce, []);
     if (n.length > 1) {
       const o = m(this, Rn, tl).call(this);
       let a = H.createTree(n.slice(1, o));
       if (s === t.ForDefinitionStatement && a.length > 0)
         if (a[0].is(t.IteratorExpression))
-          y(this, le, a);
+          y(this, ce, a);
         else if (a[0].is(t.ComparisonExpression)) {
-          a[0] = a[0].convertToIterator(), y(this, le, [a[0]]);
+          a[0] = a[0].convertToIterator(), y(this, ce, [a[0]]);
           const h = a.slice(1).filter((p) => !p.is(t.Colon));
-          h.length > 0 && y(this, le, u(this, le).concat(h));
+          h.length > 0 && y(this, ce, u(this, ce).concat(h));
         } else
-          a = [new xo(e, a)], y(this, le, a);
-      else s === t.WithDefinitionStatement || s === t.ExceptDefinitionStatement ? a.length === 3 && a[1].is(t.AsKeyword) && a[2].is(t.VariableName) && y(this, le, [new sl(e, a)]) : y(this, le, a);
+          a = [new xo(e, a)], y(this, ce, a);
+      else s === t.WithDefinitionStatement || s === t.ExceptDefinitionStatement ? a.length === 3 && a[1].is(t.AsKeyword) && a[2].is(t.VariableName) && y(this, ce, [new sl(e, a)]) : y(this, ce, a);
       for (const h of a)
         h.setParent(this), this.addConnection(h);
     }
@@ -10083,7 +10093,7 @@ class rt extends ee {
    */
   getVariableExpressions() {
     let e = [];
-    for (let n of u(this, le))
+    for (let n of u(this, ce))
       n.is(t.VariableName) ? e.push(n) : e = e.concat(n.getVariableExpressions());
     return e;
   }
@@ -10095,7 +10105,7 @@ class rt extends ee {
    */
   getExpressionsOfKind(e) {
     let n = super.getExpressionsOfKind(e);
-    for (let s of u(this, le))
+    for (let s of u(this, ce))
       s.is(e) ? n.push(s) : n = n.concat(s.getExpressionsOfKind(e));
     return n;
   }
@@ -10119,7 +10129,7 @@ class rt extends ee {
   getFirstExpressionOf(e) {
     let n = super.getFirstExpressionOf(e);
     if (n === void 0)
-      for (const s of u(this, le)) {
+      for (const s of u(this, ce)) {
         if (s.isOneOf(e))
           return s;
         if (n = s.getFirstExpressionOf(e), n !== void 0) return n;
@@ -10131,7 +10141,7 @@ class rt extends ee {
    */
   checkForSymptoms() {
     this.checkRules(this);
-    for (const e of u(this, le))
+    for (const e of u(this, ce))
       e.checkForSymptoms();
   }
   /**
@@ -10139,32 +10149,32 @@ class rt extends ee {
    */
   checkForCounterRules(e) {
     super.checkForCounterRules(e);
-    for (const n of u(this, le))
+    for (const n of u(this, ce))
       n.checkForCounterRules(n);
   }
   /**
    * @inheritdoc
    */
   getAllNestedExpressions() {
-    return [...super.getAllNestedExpressions(), ...u(this, le).flatMap((n) => n.getAllNestedExpressions())];
+    return [...super.getAllNestedExpressions(), ...u(this, ce).flatMap((n) => n.getAllNestedExpressions())];
   }
   getCondition() {
-    return u(this, le);
+    return u(this, ce);
   }
   toJSON() {
     const e = super.toJSON();
-    return e.keyword = this.getChildren()[0].getTextValue(), e.condition = u(this, le).map((n) => n.toJSON()), e;
+    return e.keyword = this.getChildren()[0].getTextValue(), e.condition = u(this, ce).map((n) => n.toJSON()), e;
   }
   //#endregion - overrides
   getCondition() {
-    return u(this, le);
+    return u(this, ce);
   }
   /** Gets the entity of the defining keyword */
   getBlockEntity() {
     return this.getChildren()[0].getEntity();
   }
 }
-le = new WeakMap(), Rn = new WeakSet(), tl = function() {
+ce = new WeakMap(), Rn = new WeakSet(), tl = function() {
   const e = this.getChildren();
   for (let n = e.length - 1; n >= 0; n--)
     if (e[n].is(t.Colon))
@@ -10178,12 +10188,12 @@ le = new WeakMap(), Rn = new WeakSet(), tl = function() {
 nl = function(e) {
   const n = [], s = e.getChildren();
   if (e.is(t.WhileDefinitionStatement)) {
-    const o = u(e, le);
+    const o = u(e, ce);
     ge(s, !0), o.length === 1 && (o[0].is(t.TrueType) || o[0].is(t.GroupStatement) && o[0].getContents().length === 1 && o[0].getContents()[0].is(t.TrueType)) && n.push(O.createStatementSymptom(I.WhileTrue, s, 0, s.length - 1));
   }
   return n;
 };
-var Q, be, z, il, ol, rl, al, js, ll, Xi, Zi, cl, ul, dl, hl, fl;
+var X, be, z, il, ol, rl, al, js, ll, Xi, Zi, cl, ul, dl, hl, fl;
 class sl extends ee {
   /**
    * Creates a new AssignmentExpression
@@ -10195,7 +10205,7 @@ class sl extends ee {
     super(e, n, t.AssignmentStatement, c.Assignment, d.NotParsed);
     b(this, z);
     /** @type {ExpressionNode[]} */
-    b(this, Q, []);
+    b(this, X, []);
     /** @type {ExpressionNode[]} */
     b(this, be, []);
     m(this, z, il).call(this), this.addRules([m(this, z, fl), m(this, z, cl), m(this, z, ul)]), this.addCounterRules([m(this, z, dl), m(this, z, hl)]);
@@ -10208,18 +10218,18 @@ class sl extends ee {
     let e = [];
     for (let n of u(this, be))
       e = e.concat(n.getVariableExpressions());
-    for (let n of u(this, Q))
+    for (let n of u(this, X))
       e = e.concat(n.getVariableExpressions());
     return e;
   }
   targetVariablesAreValid() {
-    for (let e of u(this, Q))
+    for (let e of u(this, X))
       if (!e.is(t.VariableName))
         return !1;
     return !0;
   }
   setDataType(e) {
-    e = en(u(this, Q).map((n) => n.getDataType())), super.setDataType(e);
+    e = en(u(this, X).map((n) => n.getDataType())), super.setDataType(e);
   }
   /**
    * @override
@@ -10237,11 +10247,11 @@ class sl extends ee {
    * @inheritdoc
    */
   getAllNestedExpressions() {
-    return [...super.getAllNestedExpressions(), ...u(this, Q).flatMap((n) => n.getAllNestedExpressions()), ...u(this, be).flatMap((n) => n.getAllNestedExpressions())];
+    return [...super.getAllNestedExpressions(), ...u(this, X).flatMap((n) => n.getAllNestedExpressions()), ...u(this, be).flatMap((n) => n.getAllNestedExpressions())];
   }
   toJSON() {
     const e = super.toJSON();
-    return e.targets = u(this, Q).map((n) => n.toJSON()), e.values = u(this, be).map((n) => n.toJSON()), e;
+    return e.targets = u(this, X).map((n) => n.toJSON()), e.values = u(this, be).map((n) => n.toJSON()), e;
   }
   //#endregion - overrides
   //#region - extension
@@ -10250,7 +10260,7 @@ class sl extends ee {
    * @returns {ExpressionNode[]}
    */
   getTargetVariables() {
-    return u(this, Q);
+    return u(this, X);
   }
   /**
    * The values on the right side of the assignment.
@@ -10261,7 +10271,7 @@ class sl extends ee {
   }
   //#endregion - extension
 }
-Q = new WeakMap(), be = new WeakMap(), z = new WeakSet(), /**
+X = new WeakMap(), be = new WeakMap(), z = new WeakSet(), /**
  * Helper method. Populates the #variables and #values arrays, sets the data types of
  * each variable and adds the variables as observers on the values as appropriate
  */
@@ -10274,17 +10284,17 @@ il = function() {
     s.push(H.split(n[o], t.Comma));
   if (n.length === 2 && s.length === 2) {
     for (let o of s[1])
-      o[0].is(t.VariableName) ? o[0].setAssignedOrChanged() : o[0].is(t.PropertyCallExpression) && o[0].getProperty().is(t.PropertyName) && o[0].getProperty().setAssignedOrChanged(), u(this, Q).push(o[0]);
+      o[0].is(t.VariableName) ? o[0].setAssignedOrChanged() : o[0].is(t.PropertyCallExpression) && o[0].getProperty().is(t.PropertyName) && o[0].getProperty().setAssignedOrChanged(), u(this, X).push(o[0]);
     for (let o of s[0])
       u(this, be).push(o[0]);
   }
-  u(this, Q).length === u(this, be).length ? m(this, z, js).call(this) : u(this, Q).length > u(this, be).length ? m(this, z, Xi).call(this) : m(this, z, Zi).call(this);
+  u(this, X).length === u(this, be).length ? m(this, z, js).call(this) : u(this, X).length > u(this, be).length ? m(this, z, Xi).call(this) : m(this, z, Zi).call(this);
 }, rl = function(e) {
   const n = H.split(e, t.WalrusOperator);
   if (n.length === 2) {
     const s = n[0], o = n[1];
-    s[0].is(t.VariableName) ? s[0].setAssignedOrChanged() : s[0].is(t.SubscriptedExpression) && s[0].getChildren()[0].is(t.VariableName) ? s[0].getChildren()[0].setAssignedOrChanged() : s[0].is(t.PropertyCallExpression) && s[0].getProperty().is(t.PropertyName) && s[0].getProperty().setAssignedOrChanged(), u(this, Q).push(s[0]), u(this, be).push(o[0]), m(this, z, js).call(this);
-    for (const a of u(this, Q))
+    s[0].is(t.VariableName) ? s[0].setAssignedOrChanged() : s[0].is(t.SubscriptedExpression) && s[0].getChildren()[0].is(t.VariableName) ? s[0].getChildren()[0].setAssignedOrChanged() : s[0].is(t.PropertyCallExpression) && s[0].getProperty().is(t.PropertyName) && s[0].getProperty().setAssignedOrChanged(), u(this, X).push(s[0]), u(this, be).push(o[0]), m(this, z, js).call(this);
+    for (const a of u(this, X))
       a.addObserver(this), this.addConnection(a);
     this.setDataType(o[0].getDataType());
   } else
@@ -10297,17 +10307,17 @@ il = function() {
   }
   if (n.length === 2 && s.length === 2) {
     for (let o of s[0])
-      o[0].is(t.VariableName) ? o[0].setAssignedOrChanged() : o[0].is(t.SubscriptedExpression) && o[0].getChildren()[0].is(t.VariableName) ? o[0].getChildren()[0].setAssignedOrChanged() : o[0].is(t.PropertyCallExpression) && o[0].getProperty().is(t.PropertyName) && o[0].getProperty().setAssignedOrChanged(), u(this, Q).push(o[0]);
+      o[0].is(t.VariableName) ? o[0].setAssignedOrChanged() : o[0].is(t.SubscriptedExpression) && o[0].getChildren()[0].is(t.VariableName) ? o[0].getChildren()[0].setAssignedOrChanged() : o[0].is(t.PropertyCallExpression) && o[0].getProperty().is(t.PropertyName) && o[0].getProperty().setAssignedOrChanged(), u(this, X).push(o[0]);
     for (let o of s[1])
       u(this, be).push(o[0]);
   }
-  u(this, Q).length === u(this, be).length ? m(this, z, js).call(this) : u(this, Q).length > u(this, be).length ? m(this, z, Xi).call(this) : m(this, z, Zi).call(this);
-  for (const o of u(this, Q))
+  u(this, X).length === u(this, be).length ? m(this, z, js).call(this) : u(this, X).length > u(this, be).length ? m(this, z, Xi).call(this) : m(this, z, Zi).call(this);
+  for (const o of u(this, X))
     o.addObserver(this), this.addConnection(o);
-  this.setDataType(en(u(this, Q).map((o) => o.getDataType())));
+  this.setDataType(en(u(this, X).map((o) => o.getDataType())));
 }, js = function() {
-  for (let e = 0; e < u(this, Q).length; e++)
-    u(this, Q)[e].isOneOf([t.VariableName, t.SubscriptedExpression, t.PropertyCallExpression]) ? (u(this, Q)[e].setDataType(u(this, be)[e].getDataType()), u(this, be)[e].addObserver(u(this, Q)[e]), u(this, be)[e].addConnection(u(this, Q)[e])) : u(this, Q)[e].is(t.TupleDefinition) ? m(this, z, ll).call(this, u(this, Q)[e]) : u(this, Q)[e].is(c.SpecialVariables) || this.setDataType(d.Invalid);
+  for (let e = 0; e < u(this, X).length; e++)
+    u(this, X)[e].isOneOf([t.VariableName, t.SubscriptedExpression, t.PropertyCallExpression]) ? (u(this, X)[e].setDataType(u(this, be)[e].getDataType()), u(this, be)[e].addObserver(u(this, X)[e]), u(this, be)[e].addConnection(u(this, X)[e])) : u(this, X)[e].is(t.TupleDefinition) ? m(this, z, ll).call(this, u(this, X)[e]) : u(this, X)[e].is(c.SpecialVariables) || this.setDataType(d.Invalid);
 }, /**
  * When the variable assigned is actually a tuple of variables, assign each variable unknown
  * @param {CompoundTypeExpression} tuple 
@@ -10320,13 +10330,13 @@ ll = function(e) {
  * Unknown. No need to add as observers.
  */
 Xi = function() {
-  for (let e of u(this, Q))
+  for (let e of u(this, X))
     e.isOneOf([t.VariableName, t.SubscriptedExpression]) ? e.setDataType(d.Unknown) : console.log("stop");
 }, /**
  * If there are more values than variables, assign the value of tuple. No need to set observers.
  */
 Zi = function() {
-  for (let e of u(this, Q))
+  for (let e of u(this, X))
     e.isOneOf([t.VariableName, t.SubscriptedExpression]) ? e.setDataType(d.Tuple) : console.log("stop");
 }, /** 
  * Rule function. Checks if the expression calculates with something with no value and if so,
@@ -10396,7 +10406,7 @@ fl = function(e) {
     {
       expression: h,
       usage: Fo,
-      target: u(e, Q)[0].getTextValue()
+      target: u(e, X)[0].getTextValue()
     }
   ))), n;
 };
@@ -11365,7 +11375,7 @@ Ul = function(e) {
   return n;
 }, b(_n, Ts);
 let so = _n;
-var yn, ce, ie, Me, Gl, Jl, $l, oo, Kl, Wl;
+var yn, ue, ie, Me, Gl, Jl, $l, oo, Kl, Wl;
 class xo extends ee {
   /**
    * Creates a new IteratorExpression 
@@ -11379,7 +11389,7 @@ class xo extends ee {
     /** @type {Number} */
     b(this, yn);
     /** @type {ExpressionNode} */
-    b(this, ce);
+    b(this, ue);
     /** @type {ExpressionNode[]} */
     b(this, ie, []);
     m(this, Me, Jl).call(this), m(this, Me, Gl).call(this), this.addRules([m(this, Me, Wl), m(this, Me, Kl)]);
@@ -11388,7 +11398,7 @@ class xo extends ee {
    * @override
    */
   checkForSymptoms() {
-    this.checkRules(this), u(this, ce).checkForSymptoms();
+    this.checkRules(this), u(this, ue).checkForSymptoms();
     for (const e of u(this, ie))
       e.checkForSymptoms();
   }
@@ -11396,7 +11406,7 @@ class xo extends ee {
    * @override
    */
   checkForCounterRules(e) {
-    super.checkForCounterRules(e), u(this, ce).checkForCounterRules(u(this, ce));
+    super.checkForCounterRules(e), u(this, ue).checkForCounterRules(u(this, ue));
     for (const n of u(this, ie))
       n.checkForCounterRules(n);
   }
@@ -11405,7 +11415,7 @@ class xo extends ee {
    * @override
    */
   getVariableExpressions() {
-    let e = u(this, ce).getVariableExpressions();
+    let e = u(this, ue).getVariableExpressions();
     for (let n of u(this, ie))
       e = e.concat(n.getVariableExpressions());
     return e;
@@ -11428,21 +11438,21 @@ class xo extends ee {
    * @inheritdoc
    */
   getAllNestedExpressions() {
-    return [...super.getAllNestedExpressions(), ...u(this, ie).flatMap((n) => n.getAllNestedExpressions()), ...u(this, ce).getAllNestedExpressions()];
+    return [...super.getAllNestedExpressions(), ...u(this, ie).flatMap((n) => n.getAllNestedExpressions()), ...u(this, ue).getAllNestedExpressions()];
   }
   toJSON() {
     const e = super.toJSON();
-    return e.loopVariables = u(this, ie).map((n) => n.toJSON()), e.iterable = u(this, ce).toJSON(), e;
+    return e.loopVariables = u(this, ie).map((n) => n.toJSON()), e.iterable = u(this, ue).toJSON(), e;
   }
   getLoopVariables() {
     return u(this, ie);
   }
   getIterable() {
-    return u(this, ce);
+    return u(this, ue);
   }
   //#endregion - extensions
 }
-yn = new WeakMap(), ce = new WeakMap(), ie = new WeakMap(), Me = new WeakSet(), Gl = function() {
+yn = new WeakMap(), ue = new WeakMap(), ie = new WeakMap(), Me = new WeakSet(), Gl = function() {
   const e = this.getChildren();
   for (let n = 0; n < e.length; n++)
     this.addConnection(e[n]), n < e.length - 1 && e[n].addConnection(e[n + 1]);
@@ -11450,19 +11460,19 @@ yn = new WeakMap(), ce = new WeakMap(), ie = new WeakMap(), Me = new WeakSet(), 
 //#region - extensions
 Jl = function() {
   const e = this.getChildren();
-  y(this, yn, Yt(e, t.InKeyword)), y(this, ce, e[e.length - 1]), y(this, ie, u(this, yn) === 1 && e[0].is(t.TupleDefinition) ? e[0].getElements().filter((n) => n[0].is(t.VariableName)).map((n) => n[0]) : e.slice(0, u(this, yn)).filter((n) => n.is(t.VariableName)));
+  y(this, yn, Yt(e, t.InKeyword)), y(this, ue, e[e.length - 1]), y(this, ie, u(this, yn) === 1 && e[0].is(t.TupleDefinition) ? e[0].getElements().filter((n) => n[0].is(t.VariableName)).map((n) => n[0]) : e.slice(0, u(this, yn)).filter((n) => n.is(t.VariableName)));
   for (let n of u(this, ie))
     n.setAssignedOrChanged();
   m(this, Me, $l).call(this);
 }, $l = function() {
-  if (u(this, ce).isOneOf([t.BuiltInFunctionCall, t.BuiltInMethodCall])) {
-    const e = u(this, ce).is(t.BuiltInMethodCall) ? u(this, ce).getMethodEntity() : u(this, ce).getFunctionEntity();
+  if (u(this, ue).isOneOf([t.BuiltInFunctionCall, t.BuiltInMethodCall])) {
+    const e = u(this, ue).is(t.BuiltInMethodCall) ? u(this, ue).getMethodEntity() : u(this, ue).getFunctionEntity();
     if (e === t.EnumerateFunction)
       if (u(this, ie).length === 1)
         u(this, ie)[0].setDataType(d.Tuple);
       else if (u(this, ie).length === 2) {
         u(this, ie)[0].setDataType(d.Int);
-        const n = u(this, ce).getArguments(), s = n.length === 1 && n[0].length === 1 && n[0][0].getDataType() === d.String ? d.String : d.Unknown;
+        const n = u(this, ue).getArguments(), s = n.length === 1 && n[0].length === 1 && n[0][0].getDataType() === d.String ? d.String : d.Unknown;
         u(this, ie)[1].setDataType(s);
       } else
         for (const n of u(this, ie))
@@ -11475,9 +11485,9 @@ Jl = function() {
       for (const n of u(this, ie))
         n.setDataType(d.Unknown);
   } else
-    u(this, ce).addObserver(this), m(this, Me, oo).call(this);
+    u(this, ue).addObserver(this), m(this, Me, oo).call(this);
 }, oo = function() {
-  const e = u(this, ce).getDataType() === d.String || u(this, ce).getDataType() === d.File ? d.String : d.Unknown;
+  const e = u(this, ue).getDataType() === d.String || u(this, ue).getDataType() === d.File ? d.String : d.Unknown;
   for (let n of u(this, ie))
     n.setDataType(e);
 }, /**
@@ -11486,7 +11496,7 @@ Jl = function() {
  * @returns {Symptom[]}
  */
 Kl = function(e) {
-  const n = [], s = u(e, ce).getVariableExpressions();
+  const n = [], s = u(e, ue).getVariableExpressions();
   for (const o of u(e, ie))
     for (const a of s)
       if (o.getTextValue() === a.getTextValue()) {
@@ -12146,7 +12156,7 @@ nc = function(e) {
   if (e.length > 0 && e[0].is(t.OpenParenthesis) && u(this, Ie).length > 0 && u(this, Ie)[u(this, Ie).length - 1].is(t.VariableName)) {
     const n = u(this, Ie).length - 1, s = u(this, Ie)[n];
     let o = Ze(u(this, Ie)[u(this, Ie).length - 1]);
-    o.category !== c.BuiltInFunctions && (o = new X(t.FunctionName, c.Identifiers)), u(this, Ie)[n] = on(s.getTextValue(), o, s.getStartLineNumber(), s.getDocumentStartIndex(), s.getDocumentEndIndex(), s.getEndLineNumber());
+    o.category !== c.BuiltInFunctions && (o = new Z(t.FunctionName, c.Identifiers)), u(this, Ie)[n] = on(s.getTextValue(), o, s.getStartLineNumber(), s.getDocumentStartIndex(), s.getDocumentEndIndex(), s.getEndLineNumber());
   }
   y(this, Ie, u(this, Ie).concat(e));
 }, /**
